@@ -1,0 +1,24 @@
+دليل النشر على Hostinger Control Panel
+
+أنت الآن في لوحة تحكم Hostinger! اتبع هذه الخطوات:
+
+1. ابحث عن "File Manager" في القائمة
+2. انقر على "File Manager"
+3. اذهب إلى مجلد "public_html"
+4. انقر على "Upload Files"
+5. اختر جميع الملفات من مجلد deploy
+
+الملفات المطلوبة رفعها:
+- index.html
+- css/style.css
+- js/script.js
+- images/ (كامل المجلد)
+- admin/ (كامل المجلد)
+- .htaccess
+- robots.txt
+- sitemap.xml
+
+بعد الرفع:
+- اختبر الموقع على: http://your-domain.com
+- لوحة التحكم: http://your-domain.com/admin/
+- صفحة الطلبات: http://your-domain.com/admin/requests.html

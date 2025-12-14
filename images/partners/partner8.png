@@ -1,0 +1,14 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad18" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3f2fbb;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#fcff74;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="200" height="200" fill="url(#grad18)" rx="20" />
+  <circle cx="100" cy="100" r="50" fill="#ffffff" opacity="0.2" />
+  <circle cx="100" cy="100" r="30" fill="#ffffff" opacity="0.3" />
+  <text x="100" y="110" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">
+    شريك 8
+  </text>
+</svg>
