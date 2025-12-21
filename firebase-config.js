@@ -62,57 +62,48 @@ function initializeLocalAuth() {
                 uid: 'user-456',
                 email: 'user@ebdaa.com',
                 password: 'user123', // In production, this should be hashed
-                displayName: 'مستخدم تجريبي',
                 role: 'user',
-                createdAt: new Date().toISOString()
+                name: 'مستخدم تجريبي'
             }
         ];
-        localStorage.setItem('ebdaa_users', JSON.stringify(defaultUsers));
+        localStorage.setItem('users', JSON.stringify(defaultUsers));
     }
     
     auth = {
         signInWithEmailAndPassword: async (email, password) => {
-            await new Promise(resolve => setTimeout(resolve, 800)); // Simulate network delay
+            console.log("Local: Attempting sign in", email);
+            await new Promise(resolve => setTimeout(resolve, 500));
             
-            const users = JSON.parse(localStorage.getItem('ebdaa_users') || '[]');
             const user = users.find(u => u.email === email && u.password === password);
-            
             if (user) {
-                // Update last login
-                user.lastLogin = new Date().toISOString();
-                localStorage.setItem('ebdaa_users', JSON.stringify(users));
+                // Store current user in localStorage
+                localStorage.setItem('currentUser', JSON.stringify({
+                    email: user.email,
+                    role: user.role || 'customer',
+                    name: user.name || 'عميل'
+                }));
                 
-                return {
+                return { 
                     user: {
-                        uid: user.uid,
                         email: user.email,
-                        displayName: user.displayName,
-                        role: user.role
+                        uid: user.email.replace(/[^a-zA-Z0-9]/g, '_'),
+                        role: user.role || 'customer'
                     }
                 };
             } else {
-                throw {
-                    code: "auth/wrong-password",
-                    message: "البريد الإلكتروني أو كلمة المرور غير صحيحة"
-                };
+                throw new Error('Invalid email or password');
             }
         },
         
         createUserWithEmailAndPassword: async (email, password) => {
-            await new Promise(resolve => setTimeout(resolve, 800));
+            console.log("Local: Attempting user creation", email);
+            await new Promise(resolve => setTimeout(resolve, 500));
             
-            const users = JSON.parse(localStorage.getItem('ebdaa_users') || '[]');
-            
-            // Check if user already exists
             if (users.find(u => u.email === email)) {
-                throw {
-                    code: "auth/email-already-in-use",
-                    message: "البريد الإلكتروني مستخدم بالفعل"
-                };
+                throw new Error('User already exists');
             }
             
             const newUser = {
-                uid: 'user-' + Date.now(),
                 email: email,
                 password: password, // In production, hash this
                 displayName: email.split('@')[0],

@@ -363,9 +363,14 @@
                     
                     showAlert('تم تسجيل الدخول بنجاح!', 'success');
                     
-                    // Redirect to admin panel or dashboard
+                    // Redirect to appropriate dashboard based on user role
                     setTimeout(() => {
-                        window.location.href = 'admin.html';
+                        const userRole = userCredential.user.role || 'customer';
+                        if (userRole === 'admin') {
+                            window.location.href = 'admin.html';
+                        } else {
+                            window.location.href = 'customer-dashboard.html';
+                        }
                     }, 1500);
                     
                 } catch (error) {

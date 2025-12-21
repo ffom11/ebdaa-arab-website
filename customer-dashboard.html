@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة التحكم - مؤسسة إبداع العرب</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+    <style>
+        .dashboard-container {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .sidebar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            min-height: 100vh;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .main-content {
+            padding: 2rem;
+        }
+        
+        .stat-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .nav-item {
+            margin-bottom: 0.5rem;
+        }
+        
+        .nav-link {
+            color: #333;
+            padding: 0.75rem 1rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            background: #667eea;
+            color: white;
+        }
+        
+        .nav-link.active {
+            background: #667eea;
+            color: white;
+        }
+        
+        .project-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .status-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+        }
+        
+        .status-pending {
+            background: #ffc107;
+            color: #333;
+        }
+        
+        .status-progress {
+            background: #17a2b8;
+            color: white;
+        }
+        
+        .status-completed {
+            background: #28a745;
+            color: white;
+        }
+        
+        .btn-request {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-request:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- Sidebar -->
+                <div class="col-md-3 col-lg-2 p-0">
+                    <div class="sidebar p-3">
+                        <div class="text-center mb-4">
+                            <h4 class="text-primary">
+                                <i class="fas fa-camera"></i> إبداع
+                            </h4>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <div class="text-center">
+                                <i class="fas fa-user-circle fa-3x text-muted mb-2"></i>
+                                <h6 class="mb-1">عميل</h6>
+                                <small class="text-muted" id="customerEmail">customer@ebdaa.com</small>
+                            </div>
+                        </div>
+                        
+                        <nav class="nav flex-column">
+                            <a class="nav-link active" href="#" onclick="showSection('dashboard')">
+                                <i class="fas fa-home ms-2"></i>
+                                لوحة التحكم
+                            </a>
+                            <a class="nav-link" href="#" onclick="showSection('projects')">
+                                <i class="fas fa-folder ms-2"></i>
+                                مشاريعي
+                            </a>
+                            <a class="nav-link" href="#" onclick="showSection('requests')">
+                                <i class="fas fa-plus-circle ms-2"></i>
+                                طلب خدمة
+                            </a>
+                            <a class="nav-link" href="#" onclick="showSection('messages')">
+                                <i class="fas fa-envelope ms-2"></i>
+                                الرسائل
+                            </a>
+                            <a class="nav-link" href="#" onclick="showSection('profile')">
+                                <i class="fas fa-user ms-2"></i>
+                                الملف الشخصي
+                            </a>
+                            <hr>
+                            <a class="nav-link text-danger" href="#" onclick="logout()">
+                                <i class="fas fa-sign-out-alt ms-2"></i>
+                                تسجيل الخروج
+                            </a>
+                        </nav>
+                    </div>
+                </div>
+                
+                <!-- Main Content -->
+                <div class="col-md-9 col-lg-10">
+                    <div class="main-content">
+                        <!-- Dashboard Section -->
+                        <div id="dashboardSection" class="section-content">
+                            <div class="d-flex justify-content-between align-items-center mb-4">
+                                <h2 class="text-white">لوحة التحكم</h2>
+                                <div class="text-white">
+                                    <span id="currentDateTime"></span>
+                                    <button class="btn btn-light btn-sm ms-2" onclick="refreshPage()">
+                                        <i class="fas fa-sync-alt"></i> تحديث
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <!-- Stats Cards -->
+                            <div class="row mb-4">
+                                <div class="col-md-3 mb-3">
+                                    <div class="stat-card text-center">
+                                        <i class="fas fa-folder fa-2x text-primary mb-2"></i>
+                                        <h3>3</h3>
+                                        <p class="mb-0">مشاريعي</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <div class="stat-card text-center">
+                                        <i class="fas fa-clock fa-2x text-warning mb-2"></i>
+                                        <h3>1</h3>
+                                        <p class="mb-0">قيد التنفيذ</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <div class="stat-card text-center">
+                                        <i class="fas fa-check-circle fa-2x text-success mb-2"></i>
+                                        <h3>2</h3>
+                                        <p class="mb-0">مكتملة</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <div class="stat-card text-center">
+                                        <i class="fas fa-star fa-2x text-info mb-2"></i>
+                                        <h3>5</h3>
+                                        <p class="mb-0">الخدمات المشتركة</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Recent Projects -->
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="stat-card">
+                                        <h5 class="mb-3">مشاريعي الأخيرة</h5>
+                                        <div class="project-card">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <h6 class="mb-1">تصوير منتجات تجارية</h6>
+                                                    <small class="text-muted">تم الطلب: 15/12/2024</small>
+                                                </div>
+                                                <span class="status-badge status-progress">قيد التنفيذ</span>
+                                            </div>
+                                        </div>
+                                        <div class="project-card">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <h6 class="mb-1">مونتاج فيديو إعلاني</h6>
+                                                    <small class="text-muted">تم الطلب: 10/12/2024</small>
+                                                </div>
+                                                <span class="status-badge status-completed">مكتمل</span>
+                                            </div>
+                                        </div>
+                                        <div class="project-card">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <h6 class="mb-1">تصميم هوية بصرية</h6>
+                                                    <small class="text-muted">تم الطلب: 05/12/2024</small>
+                                                </div>
+                                                <span class="status-badge status-completed">مكتمل</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-4">
+                                    <div class="stat-card">
+                                        <h5 class="mb-3">الخدمات المتاحة</h5>
+                                        <div class="mb-2">
+                                            <div class="d-flex justify-content-between mb-1">
+                                                <span>التصوير الفوتوغرافي</span>
+                                                <span class="text-primary">مفعل</span>
+                                            </div>
+                                        </div>
+                                        <div class="mb-2">
+                                            <div class="d-flex justify-content-between mb-1">
+                                                <span>المونتاج الاحترافي</span>
+                                                <span class="text-primary">مفعل</span>
+                                            </div>
+                                        </div>
+                                        <div class="mb-2">
+                                            <div class="d-flex justify-content-between mb-1">
+                                                <span>التصاميم الإبداعية</span>
+                                                <span class="text-primary">مفعل</span>
+                                            </div>
+                                        </div>
+                                        <button class="btn-request w-100 mt-3" onclick="showSection('requests')">
+                                            <i class="fas fa-plus-circle"></i> طلب خدمة جديدة
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Projects Section -->
+                        <div id="projectsSection" class="section-content" style="display: none;">
+                            <h2 class="text-white mb-4">مشاريعي</h2>
+                            <div class="stat-card">
+                                <h5 class="mb-3">جميع المشاريع</h5>
+                                <div class="project-card">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h6 class="mb-1">تصوير منتجات تجارية</h6>
+                                            <p class="text-muted mb-1">تصوير احترافي لمنتجات المتجر الإلكتروني</p>
+                                            <small class="text-muted">تم الطلب: 15/12/2024 | التسليم المتوقع: 25/12/2024</small>
+                                        </div>
+                                        <span class="status-badge status-progress">قيد التنفيذ</span>
+                                    </div>
+                                </div>
+                                <div class="project-card">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h6 class="mb-1">مونتاج فيديو إعلاني</h6>
+                                            <p class="text-muted mb-1">فيديو إعلاني لمنتج جديد مدته 30 ثانية</p>
+                                            <small class="text-muted">تم الطلب: 10/12/2024 | تم التسليم: 18/12/2024</small>
+                                        </div>
+                                        <span class="status-badge status-completed">مكتمل</span>
+                                    </div>
+                                </div>
+                                <div class="project-card">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h6 class="mb-1">تصميم هوية بصرية</h6>
+                                            <p class="text-muted mb-1">شعار كامل وهوية بصرية للشركة</p>
+                                            <small class="text-muted">تم الطلب: 05/12/2024 | تم التسليم: 12/12/2024</small>
+                                        </div>
+                                        <span class="status-badge status-completed">مكتمل</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Request Service Section -->
+                        <div id="requestsSection" class="section-content" style="display: none;">
+                            <h2 class="text-white mb-4">طلب خدمة جديدة</h2>
+                            <div class="stat-card">
+                                <form id="serviceRequestForm">
+                                    <div class="mb-3">
+                                        <label class="form-label">نوع الخدمة</label>
+                                        <select class="form-select" required>
+                                            <option value="">اختر الخدمة</option>
+                                            <option value="photography">التصوير الفوتوغرافي</option>
+                                            <option value="video">المونتاج الاحترافي</option>
+                                            <option value="social">إدارة التواصل الاجتماعي</option>
+                                            <option value="ads">الحملات الإعلانية</option>
+                                            <option value="ecommerce">المتاجر الإلكترونية</option>
+                                            <option value="design">التصاميم الإبداعية</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">عنوان المشروع</label>
+                                        <input type="text" class="form-control" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">وصف المشروع</label>
+                                        <textarea class="form-control" rows="4" required></textarea>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">الميزانية المتوقعة</label>
+                                        <input type="text" class="form-control" placeholder="ريال سعودي">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">التاريخ المطلوب للتسليم</label>
+                                        <input type="date" class="form-control" required>
+                                    </div>
+                                    <button type="submit" class="btn-request">
+                                        <i class="fas fa-paper-plane"></i> إرسال الطلب
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                        
+                        <!-- Messages Section -->
+                        <div id="messagesSection" class="section-content" style="display: none;">
+                            <h2 class="text-white mb-4">الرسائل</h2>
+                            <div class="stat-card">
+                                <h5 class="mb-3">الرسائل الواردة</h5>
+                                <div class="project-card">
+                                    <div class="d-flex">
+                                        <div class="me-3">
+                                            <i class="fas fa-user-circle fa-2x text-muted"></i>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <h6 class="mb-1">فريق إبداع العرب</h6>
+                                            <p class="mb-1">تم بدء العمل على مشروعك بنجاح. سيتم إعلامك بالتقدم.</p>
+                                            <small class="text-muted">منذ 3 أيام</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="project-card">
+                                    <div class="d-flex">
+                                        <div class="me-3">
+                                            <i class="fas fa-user-circle fa-2x text-muted"></i>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <h6 class="mb-1">فريق إبداع العرب</h6>
+                                            <p class="mb-1">شكراً لثقتك بنا. تم استلام طلبك وجاري مراجعته.</p>
+                                            <small class="text-muted">منذ أسبوع</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Profile Section -->
+                        <div id="profileSection" class="section-content" style="display: none;">
+                            <h2 class="text-white mb-4">الملف الشخصي</h2>
+                            <div class="stat-card">
+                                <form id="profileForm">
+                                    <div class="mb-3">
+                                        <label class="form-label">الاسم الكامل</label>
+                                        <input type="text" class="form-control" value="عميل إبداع">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">البريد الإلكتروني</label>
+                                        <input type="email" class="form-control" value="customer@ebdaa.com" readonly>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">رقم الهاتف</label>
+                                        <input type="tel" class="form-control" value="0501234567">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">اسم الشركة (اختياري)</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">العنوان</label>
+                                        <textarea class="form-control" rows="2"></textarea>
+                                    </div>
+                                    <button type="submit" class="btn-request">
+                                        <i class="fas fa-save"></i> حفظ التغييرات
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="firebase-config.js"></script>
+    <script>
+        // Check authentication
+        function checkAuth() {
+            const user = localStorage.getItem('currentUser');
+            if (!user) {
+                window.location.href = 'login.html';
+                return;
+            }
+            
+            // Update user info
+            const userData = JSON.parse(user);
+            document.getElementById('customerEmail').textContent = userData.email || 'customer@ebdaa.com';
+        }
+        
+        // Show section
+        function showSection(sectionName) {
+            // Hide all sections
+            document.querySelectorAll('.section-content').forEach(section => {
+                section.style.display = 'none';
+            });
+            
+            // Show selected section
+            document.getElementById(sectionName + 'Section').style.display = 'block';
+            
+            // Update active nav
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+        
+        // Refresh page
+        function refreshPage() {
+            location.reload();
+        }
+        
+        // Logout
+        function logout() {
+            if (confirm('هل أنت متأكد من تسجيل الخروج؟')) {
+                localStorage.removeItem('currentUser');
+                window.location.href = 'login.html';
+            }
+        }
+        
+        // Update date/time
+        function updateDateTime() {
+            const now = new Date();
+            const dateTimeStr = now.toLocaleDateString('ar-SA', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+            document.getElementById('currentDateTime').textContent = dateTimeStr;
+        }
+        
+        // Handle service request form
+        document.getElementById('serviceRequestForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('تم إرسال طلبك بنجاح! سنتواصل معك قريباً.');
+            this.reset();
+            showSection('dashboard');
+        });
+        
+        // Handle profile form
+        document.getElementById('profileForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('تم حفظ التغييرات بنجاح!');
+        });
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            checkAuth();
+            updateDateTime();
+            setInterval(updateDateTime, 60000); // Update every minute
+        });
+    </script>
+</body>
+</html>
