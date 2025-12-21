@@ -1,0 +1,13 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad15" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fcff74;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#5b0f4f;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="200" height="200" fill="url(#grad15)" rx="20" />
+  <rect x="60" y="60" width="80" height="80" fill="#ffffff" opacity="0.2" rx="10" />
+  <text x="100" y="110" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">
+    شريك 5
+  </text>
+</svg>

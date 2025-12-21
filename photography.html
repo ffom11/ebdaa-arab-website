@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>التصوير الفوتوغرافي - مؤسسة إبداع العرب</title>
+    <meta name="description" content="خدمات التصوير الفوتوغرافي الاحترافية، تصوير المنتجات، المناسبات، والبورتريه">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-camera"></i> مؤسسة إبداع العرب
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">الرئيسية</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="photography.html">التصوير</a></li>
+                    <li class="nav-item"><a class="nav-link" href="video.html">المونتاج</a></li>
+                    <li class="nav-item"><a class="nav-link" href="social.html">التواصل الاجتماعي</a></li>
+                    <li class="nav-item"><a class="nav-link" href="advertising.html">الحملات الإعلانية</a></li>
+                    <li class="nav-item"><a class="nav-link" href="ecommerce.html">المتاجر الإلكترونية</a></li>
+                    <li class="nav-item"><a class="nav-link" href="design.html">التصاميم</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#portfolio">معرض الأعمال</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">تواصل معنا</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero hero-photography">
+        <div class="container">
+            <div class="row align-items-center min-vh-60">
+                <div class="col-lg-8" data-aos="fade-right">
+                    <h1 class="display-4 fw-bold mb-4">التصوير الفوتوغرافي الاحترافي</h1>
+                    <p class="lead mb-4">نحول اللحظات إلى ذكريات خالدة بكاميراتنا الاحترافية وفريقنا المبدع</p>
+                    <div class="d-flex gap-3">
+                        <a href="https://wa.me/966566166251" class="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-whatsapp"></i> اطلب خدمتك الآن
+                        </a>
+                        <a href="#portfolio" class="btn btn-outline-light btn-lg">شاهد أعمالنا</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Details -->
+    <section class="py-5">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2 class="display-5 fw-bold">خدمات التصوير التي نقدمها</h2>
+                <p class="lead text-muted">تخصصات متنوعة تلبي جميع احتياجاتك</p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4" data-aos="fade-up">
+                    <div class="service-card h-100">
+                        <div class="service-icon">
+                            <i class="fas fa-box"></i>
+                        </div>
+                        <h3>تصوير المنتجات</h3>
+                        <p>تصوير احترافي للمنتجات للتجارة الإلكترونية والمواقع التسويقية</p>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success"></i> خلفيات بيضاء</li>
+                            <li><i class="fas fa-check text-success"></i> تصوير 360 درجة</li>
+                            <li><i class="fas fa-check text-success"></i> تعديل احترافي</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-card h-100">
+                        <div class="service-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>تصوير المناسبات</h3>
+                        <p>تغطية احترافية لجميع المناسبات والفعاليات الخاصة</p>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success"></i> حفلات زفاف</li>
+                            <li><i class="fas fa-check text-success"></i> مؤتمرات</li>
+                            <li><i class="fas fa-check text-success"></i> مناسبات خاصة</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-card h-100">
+                        <div class="service-icon">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <h3>تصوير البورتريه</h3>
+                        <p>صور شخصية احترافية للملفات الشخصية والسير الذاتية</p>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success"></i> صور شخصية</li>
+                            <li><i class="fas fa-check text-success"></i> صور عائلية</li>
+                            <li><i class="fas fa-check text-success"></i> صور مهنية</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-card h-100">
+                        <div class="service-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <h3>تصوير معماري</h3>
+                        <p>تصوير احترافي للمباني والفلل والمنشآت التجارية</p>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success"></i> تصوير داخلي</li>
+                            <li><i class="fas fa-check text-success"></i> تصوير خارجي</li>
+                            <li><i class="fas fa-check text-success"></i> تصوير جوي</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="service-card h-100">
+                        <div class="service-icon">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <h3>تصوير الطعام</h3>
+                        <p>تصوير احترافي للأطعمة والمطاعم والمنتجات الغذائية</p>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success"></i> قوائم الطعام</li>
+                            <li><i class="fas fa-check text-success"></i> منتجات غذائية</li>
+                            <li><i class="fas fa-check text-success"></i> تصوير إبداعي</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500">
+                    <div class="service-card h-100">
+                        <div class="service-icon">
+                            <i class="fas fa-tshirt"></i>
+                        </div>
+                        <h3>تصوير الأزياء</h3>
+                        <p>تصوير احترافي للملابس والعلامات التجارية للأزياء</p>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success"></i> كتالوجات أزياء</li>
+                            <li><i class="fas fa-check text-success"></i> حملات إعلانية</li>
+                            <li><i class="fas fa-check text-success"></i> تصوير الموديلات</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2 class="display-5 fw-bold">باقات الأسعار</h2>
+                <p class="lead text-muted">اختر الباقة التي تناسب احتياجاتك</p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="fade-up">
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3>باقة أساسية</h3>
+                            <div class="price">500<span class="currency">ريال</span></div>
+                        </div>
+                        <ul class="pricing-features">
+                            <li><i class="fas fa-check"></i> 20 صورة معدلة</li>
+                            <li><i class="fas fa-check"></i> جلسة تصوير 2 ساعة</li>
+                            <li><i class="fas fa-check"></i> استلام خلال 3 أيام</li>
+                            <li><i class="fas fa-times"></i> تصوير في الموقع</li>
+                        </ul>
+                        <a href="https://wa.me/966566166251" class="btn btn-outline-primary w-100" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
+                    </div>
+                </div>
+
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="pricing-card featured">
+                        <div class="pricing-header">
+                            <h3>باقة احترافية</h3>
+                            <div class="price">1000<span class="currency">ريال</span></div>
+                        </div>
+                        <ul class="pricing-features">
+                            <li><i class="fas fa-check"></i> 50 صورة معدلة</li>
+                            <li><i class="fas fa-check"></i> جلسة تصوير 4 ساعات</li>
+                            <li><i class="fas fa-check"></i> استلام خلال يومين</li>
+                            <li><i class="fas fa-check"></i> تصوير في الموقع</li>
+                        </ul>
+                        <a href="https://wa.me/966566166251" class="btn btn-primary w-100" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
+                    </div>
+                </div>
+
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3>باقة مميزة</h3>
+                            <div class="price">2000<span class="currency">ريال</span></div>
+                        </div>
+                        <ul class="pricing-features">
+                            <li><i class="fas fa-check"></i> 100 صورة معدلة</li>
+                            <li><i class="fas fa-check"></i> جلسة تصوير 8 ساعات</li>
+                            <li><i class="fas fa-check"></i> استلام خلال 24 ساعة</li>
+                            <li><i class="fas fa-check"></i> تصوير في الموقع + استوديو</li>
+                        </ul>
+                        <a href="https://wa.me/966566166251" class="btn btn-outline-primary w-100" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2 class="display-5 fw-bold">معرض أعمال التصوير</h2>
+                <p class="lead text-muted">شاهد إبداعاتنا في عالم التصوير</p>
+            </div>
+
+            <div class="row g-4" id="photography-portfolio">
+                <!-- Portfolio items will be dynamically added here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2 class="display-5 fw-bold">تواصل معنا لخدمة التصوير</h2>
+                <p class="lead text-muted">نحن هنا لخدمتك وتحويل أفكارك إلى صور احترافية</p>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="contact-info">
+                        <h3 class="mb-4">طرق التواصل</h3>
+                        <div class="contact-item mb-3">
+                            <i class="fas fa-phone text-primary"></i>
+                            <div>
+                                <h5>الهاتف</h5>
+                                <p><a href="tel:+966566166251">056 616 6251</a></p>
+                            </div>
+                        </div>
+                        <div class="contact-item mb-3">
+                            <i class="fab fa-whatsapp text-primary"></i>
+                            <div>
+                                <h5>WhatsApp</h5>
+                                <p><a href="https://wa.me/966566166251" target="_blank" rel="noopener noreferrer">056 616 6251</a></p>
+                            </div>
+                        </div>
+                        <div class="contact-item mb-3">
+                            <i class="fas fa-envelope text-primary"></i>
+                            <div>
+                                <h5>البريد الإلكتروني</h5>
+                                <p>info@ebdaa.shop</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6" data-aos="fade-left">
+                    <form id="photography-contact-form" class="contact-form">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">الاسم</label>
+                            <input type="text" class="form-control" id="name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">رقم الهاتف</label>
+                            <input type="tel" class="form-control" id="phone" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="service-type" class="form-label">نوع التصوير المطلوب</label>
+                            <select class="form-select" id="service-type" required>
+                                <option value="">اختر نوع التصوير</option>
+                                <option value="products">تصوير المنتجات</option>
+                                <option value="events">تصوير المناسبات</option>
+                                <option value="portrait">تصوير البورتريه</option>
+                                <option value="architectural">تصوير معماري</option>
+                                <option value="food">تصوير الطعام</option>
+                                <option value="fashion">تصوير الأزياء</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">تفاصيل المشروع</label>
+                            <textarea class="form-control" id="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-lg w-100">إرسال الطلب</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5><i class="fas fa-camera"></i> مؤسسة إبداع العرب</h5>
+                    <p>مؤسسة إبداع العرب للتصوير الفوتوغرافي</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p>&copy; 2024 مؤسسة إبداع العرب. جميع الحقوق محفوظة.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS Animation -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Custom JS -->
+    <script src="js/script.js"></script>
+    <script>
+        // Initialize photography portfolio
+        document.addEventListener('DOMContentLoaded', function() {
+            AOS.init();
+            
+            // Photography portfolio data
+            const photographyItems = [
+                {
+                    id: 1,
+                    category: 'products',
+                    title: 'تصوير منتجات تجارية',
+                    image: 'images/photography/product1.jpg',
+                    description: 'تصوير احترافي للمنتجات التسويقية'
+                },
+                {
+                    id: 2,
+                    category: 'events',
+                    title: 'حفلة زفاف',
+                    image: 'images/photography/wedding1.jpg',
+                    description: 'تغطية احترافية لحفلات الزفاف'
+                },
+                {
+                    id: 3,
+                    category: 'portrait',
+                    title: 'بورتريه احترافي',
+                    image: 'images/photography/portrait1.jpg',
+                    description: 'صور شخصية احترافية'
+                },
+                {
+                    id: 4,
+                    category: 'architectural',
+                    title: 'تصوير معماري',
+                    image: 'images/photography/architecture1.jpg',
+                    description: 'تصوير فلل ومباني سكنية'
+                },
+                {
+                    id: 5,
+                    category: 'food',
+                    title: 'تصوير طعام',
+                    image: 'images/photography/food1.jpg',
+                    description: 'تصوير احترافي للأطعمة'
+                },
+                {
+                    id: 6,
+                    category: 'fashion',
+                    title: 'تصوير أزياء',
+                    image: 'images/photography/fashion1.jpg',
+                    description: 'كتالوج أزياء احترافي'
+                }
+            ];
+
+            // Render photography portfolio
+            const portfolioGrid = document.getElementById('photography-portfolio');
+            photographyItems.forEach(item => {
+                const portfolioItem = document.createElement('div');
+                portfolioItem.className = 'col-md-6 col-lg-4';
+                portfolioItem.setAttribute('data-aos', 'fade-up');
+                portfolioItem.innerHTML = `
+                    <div class="portfolio-item">
+                        <img src="${item.image}" alt="${item.title}" class="img-fluid rounded">
+                        <div class="portfolio-overlay">
+                            <h4>${item.title}</h4>
+                            <p>${item.description}</p>
+                        </div>
+                    </div>
+                `;
+                portfolioGrid.appendChild(portfolioItem);
+            });
+
+            // Handle contact form submission
+            document.getElementById('photography-contact-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const formData = new FormData(this);
+                const data = Object.fromEntries(formData);
+                
+                // Send WhatsApp message
+                const whatsappMessage = `طلب خدمة تصوير جديد:%0A` +
+                    `الاسم: ${data.name}%0A` +
+                    `الهاتف: ${data.phone}%0A` +
+                    `نوع التصوير: ${data['service-type']}%0A` +
+                    `التفاصيل: ${data.message}`;
+                
+                window.open(`https://wa.me/966566166251?text=${whatsappMessage}`, '_blank');
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إدارة الطلبات - مؤسسة إبداع العرب</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Admin CSS -->
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-md-3 col-lg-2 admin-sidebar p-0">
+                <div class="p-3">
+                    <h5 class="text-center mb-4">
+                        <i class="fas fa-cog"></i> لوحة التحكم
+                    </h5>
+                    <nav class="nav flex-column">
+                        <a href="index.html" class="nav-link-admin">
+                            <i class="fas fa-tachometer-alt"></i> الرئيسية
+                        </a>
+                        <a href="requests.html" class="nav-link-admin active">
+                            <i class="fas fa-clipboard-list"></i> الطلبات
+                        </a>
+                        <a href="index.html#content" class="nav-link-admin">
+                            <i class="fas fa-edit"></i> المحتوى
+                        </a>
+                        <a href="index.html#services" class="nav-link-admin">
+                            <i class="fas fa-briefcase"></i> الخدمات
+                        </a>
+                        <a href="index.html#portfolio" class="nav-link-admin">
+                            <i class="fas fa-images"></i> معرض الأعمال
+                        </a>
+                        <a href="index.html#partners" class="nav-link-admin">
+                            <i class="fas fa-handshake"></i> الشركاء
+                        </a>
+                        <a href="index.html#contact" class="nav-link-admin">
+                            <i class="fas fa-phone"></i> التواصل
+                        </a>
+                        <a href="index.html#settings" class="nav-link-admin">
+                            <i class="fas fa-cog"></i> الإعدادات
+                        </a>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="col-md-9 col-lg-10 admin-content">
+                <div class="p-4">
+                    <!-- Header -->
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h2>إدارة الطلبات</h2>
+                        <div>
+                            <button class="btn btn-success" onclick="exportRequests()">
+                                <i class="fas fa-download"></i> تصدير
+                            </button>
+                            <button class="btn btn-primary" onclick="refreshRequests()">
+                                <i class="fas fa-sync"></i> تحديث
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Statistics -->
+                    <div class="row mb-4">
+                        <div class="col-md-3">
+                            <div class="stats-card">
+                                <h3 id="total-requests">0</h3>
+                                <p>إجمالي الطلبات</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="stats-card bg-warning text-white">
+                                <h3 id="pending-requests">0</h3>
+                                <p>في الانتظار</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="stats-card bg-success text-white">
+                                <h3 id="completed-requests">0</h3>
+                                <p>مكتملة</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="stats-card bg-info text-white">
+                                <h3 id="today-requests">0</h3>
+                                <p>طلبات اليوم</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Filters -->
+                    <div class="content-card mb-4">
+                        <h5><i class="fas fa-filter"></i> فلترة الطلبات</h5>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label class="form-label" for="status-filter">فلترة بالحالة</label>
+                                <select class="form-select" id="status-filter" title="اختر حالة الطلب">
+                                    <option value="">كل الحالات</option>
+                                    <option value="pending">في الانتظار</option>
+                                    <option value="processing">قيد المعالجة</option>
+                                    <option value="completed">مكتملة</option>
+                                    <option value="cancelled">ملغية</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label" for="service-filter">فلترة بالخدمة</label>
+                                <select class="form-select" id="service-filter" title="اختر نوع الخدمة">
+                                    <option value="">كل الخدمات</option>
+                                    <option value="photography">التصوير</option>
+                                    <option value="video">المونتاج</option>
+                                    <option value="social">التواصل الاجتماعي</option>
+                                    <option value="advertising">الحملات الإعلانية</option>
+                                    <option value="ecommerce">المتاجر الإلكترونية</option>
+                                    <option value="design">التصاميم</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label" for="date-filter">فلترة بالتاريخ</label>
+                                <input type="date" class="form-control" id="date-filter" title="اختر التاريخ">
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label" for="search-filter">بحث</label>
+                                <input type="text" class="form-control" id="search-filter" placeholder="بحث بالاسم أو البريد" title="اكتب للبحث">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Requests Table -->
+                    <div class="content-card">
+                        <h5><i class="fas fa-list"></i> قائمة الطلبات</h5>
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>الاسم</th>
+                                        <th>البريد الإلكتروني</th>
+                                        <th>الهاتف</th>
+                                        <th>الخدمة</th>
+                                        <th>الحالة</th>
+                                        <th>التاريخ</th>
+                                        <th>الإجراءات</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="requests-tbody">
+                                    <!-- Requests will be loaded here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Request Details Modal -->
+    <div class="modal fade" id="requestModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">تفاصيل الطلب</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" title="إغلاق النافذة"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="request-details">
+                        <!-- Request details will be loaded here -->
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" title="إغلاق النافذة">إغلاق</button>
+                    <button type="button" class="btn btn-success" onclick="updateRequestStatus('completed')" title="تحديث الحالة إلى مكتملة">مكتملة</button>
+                    <button type="button" class="btn btn-warning" onclick="updateRequestStatus('processing')" title="تحديث الحالة إلى قيد المعالجة">قيد المعالجة</button>
+                    <button type="button" class="btn btn-danger" onclick="updateRequestStatus('cancelled')" title="تحديث الحالة إلى ملغية">ملغية</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reply Modal -->
+    <div class="modal fade" id="replyModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">الرد على العميل</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" title="إغلاق النافذة"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label">البريد الإلكتروني</label>
+                        <input type="email" class="form-control" id="reply-email" readonly placeholder="البريد الإلكتروني للعميل">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">الرسالة</label>
+                        <textarea class="form-control" id="reply-message" rows="5" placeholder="اكتب رسالتك هنا..."></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" title="إغلاق النافذة">إغلاق</button>
+                    <button type="button" class="btn btn-primary" onclick="sendReply()" title="إرسال الرد">
+                        <i class="fas fa-paper-plane"></i> إرسال
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Requests JS -->
+    <script src="requests.js"></script>
+</body>
+</html>
