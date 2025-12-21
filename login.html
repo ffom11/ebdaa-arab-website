@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الدخول - مؤسسة إبداع العرب</title>
+    <meta name="description" content="سجل دخولك إلى حسابك في مؤسسة إبداع العرب">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <style>
+        .login-container {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .login-card {
+            background: rgba(255, 255, 255, 0.95);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            max-width: 1000px;
+            width: 100%;
+        }
+        
+        .login-left {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 60px 40px;
+            color: white;
+            position: relative;
+        }
+        
+        .login-left::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('images/hero-bg.jpg') center/cover;
+            opacity: 0.1;
+            z-index: 0;
+        }
+        
+        .login-left > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .login-right {
+            padding: 60px 40px;
+        }
+        
+        .form-control {
+            border-radius: 10px;
+            border: 2px solid #e9ecef;
+            padding: 12px 15px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+        }
+        
+        .btn-login {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            border-radius: 10px;
+            padding: 12px 30px;
+            font-size: 16px;
+            font-weight: 600;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+        
+        .social-login-btn {
+            border-radius: 10px;
+            padding: 10px;
+            margin: 0 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-login-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .feature-item i {
+            font-size: 24px;
+            margin-left: 15px;
+            color: #ffd700;
+        }
+        
+        @media (max-width: 768px) {
+            .login-left {
+                display: none;
+            }
+            
+            .login-right {
+                padding: 40px 20px;
+            }
+        }
+        
+        .alert {
+            border-radius: 10px;
+            border: none;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .loading-spinner {
+            display: none;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-card">
+            <div class="row g-0">
+                <!-- Left Side -->
+                <div class="col-lg-6">
+                    <div class="login-left">
+                        <div class="text-center mb-5">
+                            <img src="images/logo.jpg" alt="إبداع العرب" width="80" height="80" class="mb-3">
+                            <h2 class="mb-3">مرحباً بعودتك!</h2>
+                            <p>سجل دخولك للوصول إلى خدماتك المميزة</p>
+                        </div>
+                        
+                        <div class="features">
+                            <div class="feature-item">
+                                <i class="fas fa-camera"></i>
+                                <div>
+                                    <h5>تصوير احترافي</h5>
+                                    <p>خدمات تصوير عالية الجودة</p>
+                                </div>
+                            </div>
+                            
+                            <div class="feature-item">
+                                <i class="fas fa-video"></i>
+                                <div>
+                                    <h5>مونتاج متقدم</h5>
+                                    <p>إنتاج فيديو احترافي</p>
+                                </div>
+                            </div>
+                            
+                            <div class="feature-item">
+                                <i class="fas fa-bullhorn"></i>
+                                <div>
+                                    <h5>حملات إعلانية</h5>
+                                    <p>تسويق فعال وموجه</p>
+                                </div>
+                            </div>
+                            
+                            <div class="feature-item">
+                                <i class="fas fa-palette"></i>
+                                <div>
+                                    <h5>تصاميم إبداعية</h5>
+                                    <p>هويات بصرية مميزة</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right Side -->
+                <div class="col-lg-6">
+                    <div class="login-right">
+                        <div class="text-center mb-4">
+                            <img src="images/logo.jpg" alt="إبداع العرب" width="60" height="60" class="mb-3 d-lg-none">
+                            <h3>تسجيل الدخول</h3>
+                            <p class="text-muted">أدخل بياناتك للوصول إلى حسابك</p>
+                        </div>
+                        
+                        <div id="alert-container"></div>
+                        
+                        <form id="loginForm">
+                            <div class="mb-3">
+                                <label for="email" class="form-label">
+                                    <i class="fas fa-envelope"></i> البريد الإلكتروني
+                                </label>
+                                <input type="email" class="form-control" id="email" name="email" required>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="password" class="form-label">
+                                    <i class="fas fa-lock"></i> كلمة المرور
+                                </label>
+                                <div class="input-group">
+                                    <input type="password" class="form-control" id="password" name="password" required>
+                                    <button class="btn btn-outline-secondary" type="button" id="togglePassword" title="إظهار/إخفاء كلمة المرور" aria-label="إظهار/إخفاء كلمة المرور">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3 form-check">
+                                <input type="checkbox" class="form-check-input" id="rememberMe">
+                                <label class="form-check-label" for="rememberMe">
+                                    تذكرني
+                                </label>
+                            </div>
+                            
+                            <div class="d-grid gap-2 mb-4">
+                                <button type="submit" class="btn btn-login">
+                                    <span class="button-text">تسجيل الدخول</span>
+                                    <div class="loading-spinner ms-2"></div>
+                                </button>
+                            </div>
+                        </form>
+                        
+                        <div class="text-center mb-4">
+                            <p>أو سجل الدخول باستخدام</p>
+                            <div class="d-flex justify-content-center">
+                                <button class="btn btn-outline-info social-login-btn" title="تسجيل الدخول عبر جوجل" aria-label="تسجيل الدخول عبر جوجل">
+                                    <i class="fab fa-google"></i>
+                                </button>
+                                <button class="btn btn-outline-primary social-login-btn" title="تسجيل الدخول عبر فيسبوك" aria-label="تسجيل الدخول عبر فيسبوك">
+                                    <i class="fab fa-facebook"></i>
+                                </button>
+                                <button class="btn btn-outline-dark social-login-btn" title="تسجيل الدخول عبر آبل" aria-label="تسجيل الدخول عبر آبل">
+                                    <i class="fab fa-apple"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="text-center">
+                            <p>ليس لديك حساب؟ <a href="register.html" class="text-decoration-none">إنشاء حساب جديد</a></p>
+                            <p><a href="#" class="text-decoration-none">نسيت كلمة المرور؟</a></p>
+                        </div>
+                        
+                        <div class="text-center mt-4">
+                            <a href="index.html" class="btn btn-link text-decoration-none">
+                                <i class="fas fa-arrow-right"></i> العودة للرئيسية
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <!-- Firebase Config -->
+    <script src="firebase-config.js"></script>
+    <!-- Login Script -->
+    <script>
+        // Wait for Firebase to be ready
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if Firebase is initialized
+            if (typeof firebase !== 'undefined' && firebase.apps.length > 0) {
+                console.log('Firebase is ready');
+                initializeLogin();
+            } else {
+                console.error('Firebase not initialized');
+                showAlert('حدث خطأ في تحميل Firebase. يرجى تحديث الصفحة.', 'danger');
+            }
+        });
+        
+        function initializeLogin() {
+            // Toggle password visibility
+            document.getElementById('togglePassword').addEventListener('click', function() {
+                const passwordInput = document.getElementById('password');
+                const icon = this.querySelector('i');
+                
+                if (passwordInput.type === 'password') {
+                    passwordInput.type = 'text';
+                    icon.classList.remove('fa-eye');
+                    icon.classList.add('fa-eye-slash');
+                } else {
+                    passwordInput.type = 'password';
+                    icon.classList.remove('fa-eye-slash');
+                    icon.classList.add('fa-eye');
+                }
+            });
+            
+            // Show alert function
+            function showAlert(message, type = 'info') {
+                const alertContainer = document.getElementById('alert-container');
+                const alertDiv = document.createElement('div');
+                alertDiv.className = `alert alert-${type} alert-dismissible fade show`;
+                alertDiv.innerHTML = `
+                    ${message}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                `;
+                alertContainer.appendChild(alertDiv);
+                
+                // Auto remove after 5 seconds
+                setTimeout(() => {
+                    alertDiv.remove();
+                }, 5000);
+            }
+            
+            // Login form submission
+            document.getElementById('loginForm').addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+                const rememberMe = document.getElementById('rememberMe').checked;
+                const button = this.querySelector('button[type="submit"]');
+                const buttonText = button.querySelector('.button-text');
+                const spinner = button.querySelector('.loading-spinner');
+                
+                // Show loading
+                buttonText.textContent = 'جاري تسجيل الدخول...';
+                spinner.style.display = 'inline-block';
+                button.disabled = true;
+                
+                try {
+                    // Use local authentication instead of Firebase
+                    const userCredential = await auth.signInWithEmailAndPassword(email, password);
+                    
+                    // Store current user in localStorage for persistence
+                    localStorage.setItem('ebdaa_current_user', JSON.stringify(userCredential.user));
+                    
+                    // Remember me functionality
+                    if (rememberMe) {
+                        localStorage.setItem('rememberMe', 'true');
+                        localStorage.setItem('userEmail', email);
+                    } else {
+                        localStorage.removeItem('rememberMe');
+                        localStorage.removeItem('userEmail');
+                    }
+                    
+                    showAlert('تم تسجيل الدخول بنجاح!', 'success');
+                    
+                    // Redirect to admin panel or dashboard
+                    setTimeout(() => {
+                        window.location.href = 'admin.html';
+                    }, 1500);
+                    
+                } catch (error) {
+                    console.error('Login error:', error);
+                    
+                    let errorMessage = 'حدث خطأ في تسجيل الدخول';
+                    
+                    // Handle different error codes
+                    if (error.code === 'auth/configuration-not-found') {
+                        errorMessage = 'نظام المصادقة غير متاح حالياً. يرجى المحاولة لاحقاً';
+                    } else if (error.code === 'auth/user-not-found') {
+                        errorMessage = 'البريد الإلكتروني غير مسجل';
+                    } else if (error.code === 'auth/wrong-password') {
+                        errorMessage = 'كلمة المرور غير صحيحة';
+                    } else if (error.code === 'auth/invalid-email') {
+                        errorMessage = 'البريد الإلكتروني غير صالح';
+                    } else if (error.code === 'auth/user-disabled') {
+                        errorMessage = 'الحساب معطل';
+                    } else if (error.code === 'auth/too-many-requests') {
+                        errorMessage = 'محاولات كثيرة جداً، يرجى المحاولة لاحقاً';
+                    } else {
+                        errorMessage = error.message || 'حدث خطأ غير متوقع';
+                    }
+                    
+                    showAlert(errorMessage, 'danger');
+                    
+                    // Reset button
+                    buttonText.textContent = 'تسجيل الدخول';
+                    spinner.style.display = 'none';
+                    button.disabled = false;
+                }
+            });
+            
+            // Check for remembered user
+            const rememberMe = localStorage.getItem('rememberMe');
+            const userEmail = localStorage.getItem('userEmail');
+            
+            if (rememberMe === 'true' && userEmail) {
+                document.getElementById('email').value = userEmail;
+                document.getElementById('rememberMe').checked = true;
+            }
+            
+            // Social login handlers
+            document.querySelectorAll('.social-login-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    showAlert('تسجيل الدخول عبر وسائل التواصل الاجتماعي سيكون متاحاً قريباً', 'info');
+                });
+            });
+            
+            // Make showAlert function globally available
+            window.showAlert = showAlert;
+        }
+    </script>
+</body>
+</html>

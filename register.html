@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إنشاء حساب جديد - مؤسسة إبداع العرب</title>
+    <meta name="description" content="إنشاء حساب جديد في مؤسسة إبداع العرب للوصول إلى جميع الخدمات">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <style>
+        .register-container {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .register-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            max-width: 1200px;
+            width: 100%;
+        }
+        
+        .register-left {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 60px 40px;
+            color: white;
+            position: relative;
+        }
+        
+        .register-left::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('images/hero-bg.jpg') center/cover;
+            opacity: 0.1;
+            z-index: 0;
+        }
+        
+        .register-left > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .register-right {
+            padding: 40px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        
+        .form-control {
+            border-radius: 10px;
+            border: 2px solid #e9ecef;
+            padding: 12px 15px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+        }
+        
+        .btn-register {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            border-radius: 10px;
+            padding: 12px 30px;
+            font-size: 16px;
+            font-weight: 600;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-register:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+        
+        .step-indicator {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        
+        .step {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 10px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .step.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .step.completed {
+            background: #28a745;
+            color: white;
+        }
+        
+        .form-section {
+            display: none;
+        }
+        
+        .form-section.active {
+            display: block;
+        }
+        
+        .password-strength {
+            height: 5px;
+            border-radius: 3px;
+            background: #e9ecef;
+            margin-top: 5px;
+            overflow: hidden;
+        }
+        
+        .password-strength-bar {
+            height: 100%;
+            width: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .strength-weak { background: #dc3545; width: 33%; }
+        .strength-medium { background: #ffc107; width: 66%; }
+        .strength-strong { background: #28a745; width: 100%; }
+        
+        .service-checkbox {
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .service-checkbox:hover {
+            border-color: #667eea;
+            background: rgba(102, 126, 234, 0.05);
+        }
+        
+        .service-checkbox.selected {
+            border-color: #667eea;
+            background: rgba(102, 126, 234, 0.1);
+        }
+        
+        .loading-spinner {
+            display: none;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @media (max-width: 768px) {
+            .register-left {
+                display: none;
+            }
+            
+            .register-right {
+                padding: 20px;
+            }
+            
+            .step {
+                width: 30px;
+                height: 30px;
+                margin: 0 5px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="register-container">
+        <div class="register-card">
+            <div class="row g-0">
+                <!-- Left Side -->
+                <div class="col-lg-5">
+                    <div class="register-left">
+                        <div class="text-center mb-5">
+                            <img src="images/logo.jpg" alt="إبداع العرب" width="80" height="80" class="mb-3">
+                            <h2 class="mb-3">إنضم إلينا!</h2>
+                            <p>احصل على حسابك الخاص واستمتع بجميع خدماتنا المميزة</p>
+                        </div>
+                        
+                        <div class="benefits">
+                            <h4 class="mb-4">مميزات الانضمام:</h4>
+                            
+                            <div class="benefit-item mb-3">
+                                <i class="fas fa-check-circle me-2"></i>
+                                <span>وصول لجميع الخدمات الإبداعية</span>
+                            </div>
+                            
+                            <div class="benefit-item mb-3">
+                                <i class="fas fa-check-circle me-2"></i>
+                                <span>أسعار خاصة للأعضاء</span>
+                            </div>
+                            
+                            <div class="benefit-item mb-3">
+                                <i class="fas fa-check-circle me-2"></i>
+                                <span>دعم فني متخصص</span>
+                            </div>
+                            
+                            <div class="benefit-item mb-3">
+                                <i class="fas fa-check-circle me-2"></i>
+                                <span>متابعة المشاريع بشكل مباشر</span>
+                            </div>
+                            
+                            <div class="benefit-item mb-3">
+                                <i class="fas fa-check-circle me-2"></i>
+                                <span>مكتبة خاصة بأعمالك</span>
+                            </div>
+                            
+                            <div class="benefit-item mb-3">
+                                <i class="fas fa-check-circle me-2"></i>
+                                <span>عروض حصرية ومميزة</span>
+                            </div>
+                        </div>
+                        
+                        <div class="text-center mt-5">
+                            <p>لديك حساب بالفعل؟</p>
+                            <a href="login.html" class="btn btn-light btn-lg rounded-pill">
+                                <i class="fas fa-sign-in-alt ms-2"></i>
+                                تسجيل الدخول
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right Side -->
+                <div class="col-lg-7">
+                    <div class="register-right">
+                        <div class="text-center mb-4">
+                            <img src="images/logo.jpg" alt="إبداع العرب" width="60" height="60" class="mb-3 d-lg-none">
+                            <h3>إنشاء حساب جديد</h3>
+                            <p class="text-muted">املأ البيانات التالية لإنشاء حسابك</p>
+                        </div>
+                        
+                        <div id="alert-container"></div>
+                        
+                        <!-- Step Indicator -->
+                        <div class="step-indicator">
+                            <div class="step active" data-step="1">1</div>
+                            <div class="step" data-step="2">2</div>
+                            <div class="step" data-step="3">3</div>
+                            <div class="step" data-step="4">4</div>
+                        </div>
+                        
+                        <form id="registerForm">
+                            <!-- Step 1: Basic Information -->
+                            <div class="form-section active" data-section="1">
+                                <h4 class="mb-4">المعلومات الأساسية</h4>
+                                
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="firstName" class="form-label">
+                                            <i class="fas fa-user"></i> الاسم الأول
+                                        </label>
+                                        <input type="text" class="form-control" id="firstName" name="firstName" required>
+                                    </div>
+                                    
+                                    <div class="col-md-6 mb-3">
+                                        <label for="lastName" class="form-label">
+                                            <i class="fas fa-user"></i> اسم العائلة
+                                        </label>
+                                        <input type="text" class="form-control" id="lastName" name="lastName" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">
+                                        <i class="fas fa-envelope"></i> البريد الإلكتروني
+                                    </label>
+                                    <input type="email" class="form-control" id="email" name="email" required>
+                                    <small class="text-muted">سيتم إرسال رابط التأكيد إلى هذا البريد</small>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="phone" class="form-label">
+                                        <i class="fas fa-phone"></i> رقم الهاتف
+                                    </label>
+                                    <input type="tel" class="form-control" id="phone" name="phone" required>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="company" class="form-label">
+                                        <i class="fas fa-building"></i> اسم الشركة (اختياري)
+                                    </label>
+                                    <input type="text" class="form-control" id="company" name="company">
+                                </div>
+                                
+                                <div class="d-flex justify-content-between">
+                                    <button type="button" class="btn btn-secondary" onclick="window.location.href='index.html'">
+                                        <i class="fas fa-arrow-right ms-2"></i>
+                                        العودة
+                                    </button>
+                                    <button type="button" class="btn btn-primary" onclick="nextStep(1)">
+                                        التالي
+                                        <i class="fas fa-arrow-left ms-2"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <!-- Step 2: Account Information -->
+                            <div class="form-section" data-section="2">
+                                <h4 class="mb-4">معلومات الحساب</h4>
+                                
+                                <div class="mb-3">
+                                    <label for="username" class="form-label">
+                                        <i class="fas fa-user-tag"></i> اسم المستخدم
+                                    </label>
+                                    <input type="text" class="form-control" id="username" name="username" required>
+                                    <small class="text-muted">سيتم استخدامه لتسجيل الدخول</small>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="password" class="form-label">
+                                        <i class="fas fa-lock"></i> كلمة المرور
+                                    </label>
+                                    <div class="input-group">
+                                        <input type="password" class="form-control" id="password" name="password" required>
+                                        <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                    </div>
+                                    <div class="password-strength">
+                                        <div class="password-strength-bar" id="passwordStrength"></div>
+                                    </div>
+                                    <small class="text-muted">استخدم 8 أحرف على الأقل مع أحرف كبيرة وصغيرة وأرقام</small>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="confirmPassword" class="form-label">
+                                        <i class="fas fa-lock"></i> تأكيد كلمة المرور
+                                    </label>
+                                    <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
+                                </div>
+                                
+                                <div class="d-flex justify-content-between">
+                                    <button type="button" class="btn btn-secondary" onclick="previousStep(2)">
+                                        <i class="fas fa-arrow-right ms-2"></i>
+                                        السابق
+                                    </button>
+                                    <button type="button" class="btn btn-primary" onclick="nextStep(2)">
+                                        التالي
+                                        <i class="fas fa-arrow-left ms-2"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <!-- Step 3: Services Selection -->
+                            <div class="form-section" data-section="3">
+                                <h4 class="mb-4">اختر الخدمات المطلوبة</h4>
+                                
+                                <div class="service-checkbox" data-service="photography">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="photography" id="servicePhotography">
+                                        <label class="form-check-label w-100" for="servicePhotography">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <h6 class="mb-1">
+                                                        <i class="fas fa-camera ms-2"></i>
+                                                        التصوير الفوتوغرافي
+                                                    </h6>
+                                                    <small class="text-muted">تصوير احترافي للمنتجات والأفراد</small>
+                                                </div>
+                                                <span class="badge bg-primary">مميز</span>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <div class="service-checkbox" data-service="video">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="video" id="serviceVideo">
+                                        <label class="form-check-label w-100" for="serviceVideo">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <h6 class="mb-1">
+                                                        <i class="fas fa-video ms-2"></i>
+                                                        المونتاج الاحترافي
+                                                    </h6>
+                                                    <small class="text-muted">إنتاج وتحرير الفيديو</small>
+                                                </div>
+                                                <span class="badge bg-success">شائع</span>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <div class="service-checkbox" data-service="social">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="social" id="serviceSocial">
+                                        <label class="form-check-label w-100" for="serviceSocial">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <h6 class="mb-1">
+                                                        <i class="fas fa-users ms-2"></i>
+                                                        إدارة التواصل الاجتماعي
+                                                    </h6>
+                                                    <small class="text-muted">إدارة الحسابات والمحتوى</small>
+                                                </div>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <div class="service-checkbox" data-service="ads">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="ads" id="serviceAds">
+                                        <label class="form-check-label w-100" for="serviceAds">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <h6 class="mb-1">
+                                                        <i class="fas fa-bullhorn ms-2"></i>
+                                                        الحملات الإعلانية
+                                                    </h6>
+                                                    <small class="text-muted">إعلانات مدفوعة ومستهدفة</small>
+                                                </div>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <div class="service-checkbox" data-service="ecommerce">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="ecommerce" id="serviceEcommerce">
+                                        <label class="form-check-label w-100" for="serviceEcommerce">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <h6 class="mb-1">
+                                                        <i class="fas fa-shopping-cart ms-2"></i>
+                                                        المتاجر الإلكترونية
+                                                    </h6>
+                                                    <small class="text-muted">إنشاء وإدارة المتاجر</small>
+                                                </div>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <div class="service-checkbox" data-service="design">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="design" id="serviceDesign">
+                                        <label class="form-check-label w-100" for="serviceDesign">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <h6 class="mb-1">
+                                                        <i class="fas fa-palette ms-2"></i>
+                                                        التصاميم الإبداعية
+                                                    </h6>
+                                                    <small class="text-muted">هويات بصرية وتصاميم جرافيك</small>
+                                                </div>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-flex justify-content-between">
+                                    <button type="button" class="btn btn-secondary" onclick="previousStep(3)">
+                                        <i class="fas fa-arrow-right ms-2"></i>
+                                        السابق
+                                    </button>
+                                    <button type="button" class="btn btn-primary" onclick="nextStep(3)">
+                                        التالي
+                                        <i class="fas fa-arrow-left ms-2"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <!-- Step 4: Terms and Submit -->
+                            <div class="form-section" data-section="4">
+                                <h4 class="mb-4">الشروط والأحكام</h4>
+                                
+                                <div class="mb-4">
+                                    <div class="card">
+                                        <div class="card-body" style="max-height: 200px; overflow-y: auto;">
+                                            <h6>شروط استخدام الخدمات:</h6>
+                                            <ul class="small">
+                                                <li>أوافق على استخدام بياناتي لأغراض تحسين الخدمات</li>
+                                                <li>أتعهد بتقديم معلومات صحيحة وحقيقية</li>
+                                                <li>ألتزم بالشروط والأحكام المحددة</li>
+                                                <li>أوافق على سياسة الخصوصية وحماية البيانات</li>
+                                                <li>أفهم أن الخدمات قد تتطلب رسوماً إضافية</li>
+                                                <li>ألتزم بعدم استخدام الخدمات لأغراض غير قانونية</li>
+                                                <li>أوافق على تلقي الرسائل والتحديثات</li>
+                                                <li>أفهم حقوقي ومسؤولياتي كمستخدم</li>
+                                            </ul>
+                                            
+                                            <h6 class="mt-3">سياسة الخصوصية:</h6>
+                                            <ul class="small">
+                                                <li>نحافظ على سرية بياناتك الشخصية</li>
+                                                <li>لا نشارك معلوماتك مع أطراف ثالثة</li>
+                                                <li>نستخدم بياناتك لتحسين جودة الخدمات</li>
+                                                <li>يمكنك طلب حذف بياناتك في أي وقت</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="agreeTerms" required>
+                                        <label class="form-check-label" for="agreeTerms">
+                                            أوافق على الشروط والأحكام وسياسة الخصوصية
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="newsletter">
+                                        <label class="form-check-label" for="newsletter">
+                                            أرغب في تلقي النشرة الإخبارية والعروض الخاصة
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-grid gap-2">
+                                    <button type="submit" class="btn btn-register">
+                                        <span class="button-text">إنشاء الحساب</span>
+                                        <div class="loading-spinner ms-2"></div>
+                                    </button>
+                                </div>
+                                
+                                <div class="d-flex justify-content-between mt-3">
+                                    <button type="button" class="btn btn-secondary" onclick="previousStep(4)">
+                                        <i class="fas fa-arrow-right ms-2"></i>
+                                        السابق
+                                    </button>
+                                    <a href="login.html" class="btn btn-link text-decoration-none">
+                                        لديك حساب بالفعل؟
+                                    </a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <!-- Firebase Config -->
+    <script src="firebase-config.js"></script>
+    <!-- Register Script -->
+        <script>
+        let currentStep = 1;
+        const totalSteps = 4;
+        
+        // Step navigation
+        function nextStep(step) {
+            if (validateStep(step)) {
+                document.querySelector(`.form-section[data-section="${step}"]`).classList.remove('active');
+                document.querySelector(`.step[data-step="${step}"]`).classList.remove('active');
+                document.querySelector(`.step[data-step="${step}"]`).classList.add('completed');
+                
+                currentStep = step + 1;
+                document.querySelector(`.form-section[data-section="${currentStep}"]`).classList.add('active');
+                document.querySelector(`.step[data-step="${currentStep}"]`).classList.add('active');
+            }
+        }
+        
+        function previousStep(step) {
+            document.querySelector(`.form-section[data-section="${step}"]`).classList.remove('active');
+            document.querySelector(`.step[data-step="${step}"]`).classList.remove('active');
+            
+            currentStep = step - 1;
+            document.querySelector(`.form-section[data-section="${currentStep}"]`).classList.add('active');
+            document.querySelector(`.step[data-step="${currentStep}"]`).classList.add('active');
+        }
+        
+        // Validation functions
+        function validateStep(step) {
+            switch(step) {
+                case 1:
+                    const firstName = document.getElementById('firstName').value;
+                    const lastName = document.getElementById('lastName').value;
+                    const email = document.getElementById('email').value;
+                    const phone = document.getElementById('phone').value;
+                    
+                    if (!firstName || !lastName || !email || !phone) {
+                        showAlert('يرجى ملء جميع الحقول المطلوبة', 'danger');
+                        return false;
+                    }
+                    
+                    if (!validateEmail(email)) {
+                        showAlert('البريد الإلكتروني غير صالح', 'danger');
+                        return false;
+                    }
+                    
+                    if (!validatePhone(phone)) {
+                        showAlert('رقم الهاتف غير صالح', 'danger');
+                        return false;
+                    }
+                    
+                    return true;
+                    
+                case 2:
+                    const username = document.getElementById('username').value;
+                    const password = document.getElementById('password').value;
+                    const confirmPassword = document.getElementById('confirmPassword').value;
+                    
+                    if (!username || !password || !confirmPassword) {
+                        showAlert('يرجى ملء جميع الحقول المطلوبة', 'danger');
+                        return false;
+                    }
+                    
+                    if (username.length < 3) {
+                        showAlert('اسم المستخدم يجب أن يكون 3 أحرف على الأقل', 'danger');
+                        return false;
+                    }
+                    
+                    if (password.length < 8) {
+                        showAlert('كلمة المرور يجب أن تكون 8 أحرف على الأقل', 'danger');
+                        return false;
+                    }
+                    
+                    if (password !== confirmPassword) {
+                        showAlert('كلمات المرور غير متطابقة', 'danger');
+                        return false;
+                    }
+                    
+                    return true;
+                    
+                case 3:
+                    const services = document.querySelectorAll('.service-checkbox input:checked');
+                    if (services.length === 0) {
+                        showAlert('يرجى اختيار خدمة واحدة على الأقل', 'danger');
+                        return false;
+                    }
+                    return true;
+                    
+                default:
+                    return true;
+            }
+        }
+        
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+        
+        function validatePhone(phone) {
+            const re = /^[\d\s\-\+\(\)]+$/;
+            return re.test(phone) && phone.length >= 10;
+        }
+        
+        // Password strength checker
+        document.getElementById('password').addEventListener('input', function() {
+            const password = this.value;
+            const strengthBar = document.getElementById('passwordStrength');
+            
+            if (password.length < 6) {
+                strengthBar.className = 'password-strength-bar strength-weak';
+            } else if (password.length < 10 || !/(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/.test(password)) {
+                strengthBar.className = 'password-strength-bar strength-medium';
+            } else {
+                strengthBar.className = 'password-strength-bar strength-strong';
+            }
+        });
+        
+        // Toggle password visibility
+        document.getElementById('togglePassword').addEventListener('click', function() {
+            const passwordInput = document.getElementById('password');
+            const icon = this.querySelector('i');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        });
+        
+        // Service selection
+        document.querySelectorAll('.service-checkbox').forEach(checkbox => {
+            checkbox.addEventListener('click', function() {
+                const input = this.querySelector('input[type="checkbox"]');
+                input.checked = !input.checked;
+                this.classList.toggle('selected', input.checked);
+            });
+        });
+        
+        // Show alert function
+        function showAlert(message, type = 'info') {
+            const alertContainer = document.getElementById('alert-container');
+            const alertDiv = document.createElement('div');
+            alertDiv.className = `alert alert-${type} alert-dismissible fade show`;
+            alertDiv.innerHTML = `
+                ${message}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            `;
+            alertContainer.appendChild(alertDiv);
+            
+            setTimeout(() => {
+                alertDiv.remove();
+            }, 5000);
+        }
+        
+        // Form submission
+        document.getElementById('registerForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            if (!document.getElementById('agreeTerms').checked) {
+                showAlert('يجب الموافقة على الشروط والأحكام', 'danger');
+                return;
+            }
+            
+            const formData = {
+                firstName: document.getElementById('firstName').value,
+                lastName: document.getElementById('lastName').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                company: document.getElementById('company').value,
+                username: document.getElementById('username').value,
+                password: document.getElementById('password').value,
+                services: Array.from(document.querySelectorAll('.service-checkbox input:checked')).map(cb => cb.value),
+                newsletter: document.getElementById('newsletter').checked,
+                agreeTerms: document.getElementById('agreeTerms').checked,
+                createdAt: new Date().toISOString()
+            };
+            
+            const button = this.querySelector('button[type="submit"]');
+            const buttonText = button.querySelector('.button-text');
+            const spinner = button.querySelector('.loading-spinner');
+            
+            buttonText.textContent = 'جاري إنشاء الحساب...';
+            spinner.style.display = 'inline-block';
+            button.disabled = true;
+            
+            try {
+                // Create Firebase user
+                const userCredential = await firebase.auth().createUserWithEmailAndPassword(formData.email, formData.password);
+                
+                // Update user profile
+                await userCredential.user.updateProfile({
+                    displayName: `${formData.firstName} ${formData.lastName}`
+                });
+                
+                // Save additional data to Firestore
+                await firebase.firestore().collection('users').doc(userCredential.user.uid).set({
+                    ...formData,
+                    uid: userCredential.user.uid,
+                    status: 'active',
+                    role: 'user'
+                });
+                
+                showAlert('تم إنشاء الحساب بنجاح! يرجى تأكيد بريدك الإلكتروني', 'success');
+                
+                setTimeout(() => {
+                    window.location.href = 'login.html';
+                }, 2000);
+                
+            } catch (error) {
+                console.error('Registration error:', error);
+                
+                let errorMessage = 'حدث خطأ في إنشاء الحساب';
+                
+                switch(error.code) {
+                    case 'auth/email-already-in-use':
+                        errorMessage = 'البريد الإلكتروني مستخدم بالفعل';
+                        break;
+                    case 'auth/invalid-email':
+                        errorMessage = 'البريد الإلكتروني غير صالح';
+                        break;
+                    case 'auth/weak-password':
+                        errorMessage = 'كلمة المرور ضعيفة جداً';
+                        break;
+                    case 'auth/operation-not-allowed':
+                        errorMessage = 'إنشاء الحسابات غير متاح حالياً';
+                        break;
+                    default:
+                        errorMessage = error.message;
+                }
+                
+                showAlert(errorMessage, 'danger');
+                
+                buttonText.textContent = 'إنشاء الحساب';
+                spinner.style.display = 'none';
+                button.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>

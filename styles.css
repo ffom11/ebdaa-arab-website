@@ -48,9 +48,189 @@
 }
 
 .btn-success:hover {
-    background: linear-gradient(135deg, #0e8474 0%, #2dd667 100%);
+    background: linear-gradient(135deg, #0e8477 0%, #2dd666 100%);
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(17, 153, 142, 0.4);
+}
+
+/* Professional Service Icons */
+.service-icon {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-wrapper {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    font-size: 28px;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+}
+
+.icon-wrapper i {
+    transition: all 0.3s ease;
+}
+
+.icon-bg {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    opacity: 0.1;
+    z-index: 1;
+    animation: pulse 2s infinite;
+}
+
+/* Photography Icon */
+.photography-icon .icon-wrapper {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+    box-shadow: 0 10px 30px rgba(238, 90, 36, 0.3);
+}
+
+.photography-icon .icon-bg {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+}
+
+/* Video Icon */
+.video-icon .icon-wrapper {
+    background: linear-gradient(135deg, #4834d4 0%, #686de0 100%);
+    box-shadow: 0 10px 30px rgba(104, 109, 224, 0.3);
+}
+
+.video-icon .icon-bg {
+    background: linear-gradient(135deg, #4834d4 0%, #686de0 100%);
+}
+
+/* Social Media Icon */
+.social-icon .icon-wrapper {
+    background: linear-gradient(135deg, #00d2d3 0%, #54a0ff 100%);
+    box-shadow: 0 10px 30px rgba(84, 160, 255, 0.3);
+}
+
+.social-icon .icon-bg {
+    background: linear-gradient(135deg, #00d2d3 0%, #54a0ff 100%);
+}
+
+/* Advertising Icon */
+.advertising-icon .icon-wrapper {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    box-shadow: 0 10px 30px rgba(245, 87, 108, 0.3);
+}
+
+.advertising-icon .icon-bg {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+/* E-commerce Icon */
+.ecommerce-icon .icon-wrapper {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    box-shadow: 0 10px 30px rgba(79, 172, 254, 0.3);
+}
+
+.ecommerce-icon .icon-bg {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+/* Design Icon */
+.design-icon .icon-wrapper {
+    background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+    box-shadow: 0 10px 30px rgba(250, 112, 154, 0.3);
+}
+
+.design-icon .icon-bg {
+    background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+}
+
+/* Service Card Hover Effects */
+.service-card:hover .icon-wrapper {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.service-card:hover .icon-wrapper i {
+    transform: scale(1.2);
+}
+
+.service-card:hover .icon-bg {
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.1;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.2;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 0.1;
+    }
+}
+
+/* Enhanced Service Cards */
+.service-card {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.service-card:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #667eea, #764ba2, #667eea);
+    background-size: 200% 100%;
+    animation: gradient 3s ease infinite;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    border-color: #667eea;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Enhanced Check Icons */
+.fas.fa-circle-check {
+    font-size: 14px;
+    margin-left: 8px;
 }
 
 .btn-outline-light {
