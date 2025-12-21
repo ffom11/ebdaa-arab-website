@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة التحكم - مؤسسة إبداع العرب</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <style>
+        .sidebar {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .sidebar .nav-link {
+            color: rgba(255, 255, 255, 0.8);
+            padding: 12px 20px;
+            margin: 5px 0;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .sidebar .nav-link:hover,
+        .sidebar .nav-link.active {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+        
+        .main-content {
+            background: #f8f9fa;
+            min-height: 100vh;
+        }
+        
+        .stat-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .user-info {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-md-3 col-lg-2 sidebar p-0">
+                <div class="p-3">
+                    <h4 class="text-center mb-4">
+                        <i class="fas fa-camera"></i> إبداع
+                    </h4>
+                    
+                    <div class="user-info text-center">
+                        <i class="fas fa-user-circle fa-3x mb-2"></i>
+                        <div id="userName">مدير النظام</div>
+                        <small id="userEmail">admin@ebdaa.com</small>
+                    </div>
+                    
+                    <nav class="nav flex-column">
+                        <a href="#" class="nav-link active" data-page="dashboard">
+                            <i class="fas fa-tachometer-alt me-2"></i> لوحة التحكم
+                        </a>
+                        <a href="#" class="nav-link" data-page="projects">
+                            <i class="fas fa-folder me-2"></i> المشاريع
+                        </a>
+                        <a href="#" class="nav-link" data-page="services">
+                            <i class="fas fa-cogs me-2"></i> الخدمات
+                        </a>
+                        <a href="#" class="nav-link" data-page="contacts">
+                            <i class="fas fa-envelope me-2"></i> الرسائل
+                        </a>
+                        <a href="#" class="nav-link" data-page="analytics">
+                            <i class="fas fa-chart-line me-2"></i> التحليلات
+                        </a>
+                        <a href="#" class="nav-link" data-page="settings">
+                            <i class="fas fa-cog me-2"></i> الإعدادات
+                        </a>
+                        <hr class="my-3">
+                        <a href="#" class="nav-link text-danger" id="logoutBtn">
+                            <i class="fas fa-sign-out-alt me-2"></i> تسجيل الخروج
+                        </a>
+                    </nav>
+                </div>
+            </div>
+            
+            <!-- Main Content -->
+            <div class="col-md-9 col-lg-10 main-content">
+                <!-- Header -->
+                <div class="bg-white shadow-sm p-3 mb-4">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h2 id="pageTitle">لوحة التحكم</h2>
+                        <div class="d-flex align-items-center">
+                            <span class="me-3" id="currentTime"></span>
+                            <button class="btn btn-outline-secondary btn-sm" id="refreshBtn">
+                                <i class="fas fa-sync-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Dashboard Content -->
+                <div id="dashboardContent" class="page-content">
+                    <div class="row mb-4">
+                        <div class="col-md-3 mb-3">
+                            <div class="stat-card text-center">
+                                <i class="fas fa-users fa-2x text-primary mb-3"></i>
+                                <h3 id="totalUsers">25</h3>
+                                <p class="text-muted">إجمالي المستخدمين</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <div class="stat-card text-center">
+                                <i class="fas fa-folder fa-2x text-success mb-3"></i>
+                                <h3 id="totalProjects">142</h3>
+                                <p class="text-muted">المشاريع المكتملة</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <div class="stat-card text-center">
+                                <i class="fas fa-envelope fa-2x text-warning mb-3"></i>
+                                <h3 id="totalMessages">8</h3>
+                                <p class="text-muted">رسائل جديدة</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <div class="stat-card text-center">
+                                <i class="fas fa-chart-line fa-2x text-info mb-3"></i>
+                                <h3>98%</h3>
+                                <p class="text-muted">رضا العملاء</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Recent Activity -->
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="bg-white rounded shadow-sm p-4">
+                                <h5 class="mb-3">النشاط الأخير</h5>
+                                <div class="list-group">
+                                    <div class="list-group-item d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <i class="fas fa-user-plus text-success me-2"></i>
+                                            مستخدم جديد: test@ebdaa.com
+                                        </div>
+                                        <small class="text-muted">منذ 5 دقائق</small>
+                                    </div>
+                                    <div class="list-group-item d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <i class="fas fa-folder-plus text-primary me-2"></i>
+                                            مشروع جديد: تصوير منتجات تجارية
+                                        </div>
+                                        <small class="text-muted">منذ 15 دقيقة</small>
+                                    </div>
+                                    <div class="list-group-item d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <i class="fas fa-envelope text-warning me-2"></i>
+                                            رسالة جديدة من عميل
+                                        </div>
+                                        <small class="text-muted">منذ 30 دقيقة</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="bg-white rounded shadow-sm p-4">
+                                <h5 class="mb-3">الخدمات الأكثر طلباً</h5>
+                                <div class="mb-2">
+                                    <div class="d-flex justify-content-between mb-1">
+                                        <span>التصوير الفوتوغرافي</span>
+                                        <span>45%</span>
+                                    </div>
+                                    <div class="progress" style="height: 8px;">
+                                        <div class="progress-bar bg-primary" style="width: 45%"></div>
+                                    </div>
+                                </div>
+                                <div class="mb-2">
+                                    <div class="d-flex justify-content-between mb-1">
+                                        <span>المونتاج الاحترافي</span>
+                                        <span>30%</span>
+                                    </div>
+                                    <div class="progress" style="height: 8px;">
+                                        <div class="progress-bar bg-success" style="width: 30%"></div>
+                                    </div>
+                                </div>
+                                <div class="mb-2">
+                                    <div class="d-flex justify-content-between mb-1">
+                                        <span>التصاميم الإبداعية</span>
+                                        <span>25%</span>
+                                    </div>
+                                    <div class="progress" style="height: 8px;">
+                                        <div class="progress-bar bg-warning" style="width: 25%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Other Pages Content (Hidden by default) -->
+                <div id="projectsContent" class="page-content" style="display: none;">
+                    <div class="bg-white rounded shadow-sm p-4">
+                        <h5 class="mb-3">إدارة المشاريع</h5>
+                        <p>محتوى إدارة المشاريع سيتم إضافته لاحقاً...</p>
+                    </div>
+                </div>
+                
+                <div id="servicesContent" class="page-content" style="display: none;">
+                    <div class="bg-white rounded shadow-sm p-4">
+                        <h5 class="mb-3">إدارة الخدمات</h5>
+                        <p>محتوى إدارة الخدمات سيتم إضافته لاحقاً...</p>
+                    </div>
+                </div>
+                
+                <div id="contactsContent" class="page-content" style="display: none;">
+                    <div class="bg-white rounded shadow-sm p-4">
+                        <h5 class="mb-3">الرسائل الواردة</h5>
+                        <p>محتوى الرسائل سيتم إضافته لاحقاً...</p>
+                    </div>
+                </div>
+                
+                <div id="analyticsContent" class="page-content" style="display: none;">
+                    <div class="bg-white rounded shadow-sm p-4">
+                        <h5 class="mb-3">التحليلات والإحصائيات</h5>
+                        <p>محتوى التحليلات سيتم إضافته لاحقاً...</p>
+                    </div>
+                </div>
+                
+                <div id="settingsContent" class="page-content" style="display: none;">
+                    <div class="bg-white rounded shadow-sm p-4">
+                        <h5 class="mb-3">الإعدادات</h5>
+                        <p>محتوى الإعدادات سيتم إضافته لاحقاً...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <!-- Firebase Config -->
+    <script src="firebase-config.js"></script>
+    
+    <script>
+        // Initialize dashboard
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if user is logged in
+            const currentUser = localStorage.getItem('ebdaa_current_user');
+            if (!currentUser) {
+                window.location.href = 'login.html';
+                return;
+            }
+            
+            const user = JSON.parse(currentUser);
+            document.getElementById('userName').textContent = user.displayName || user.email;
+            document.getElementById('userEmail').textContent = user.email;
+            
+            // Update current time
+            function updateTime() {
+                const now = new Date();
+                document.getElementById('currentTime').textContent = now.toLocaleString('ar-SA');
+            }
+            updateTime();
+            setInterval(updateTime, 1000);
+            
+            // Navigation
+            document.querySelectorAll('.nav-link[data-page]').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Remove active class from all links
+                    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                    
+                    // Add active class to clicked link
+                    this.classList.add('active');
+                    
+                    // Hide all content
+                    document.querySelectorAll('.page-content').forEach(content => {
+                        content.style.display = 'none';
+                    });
+                    
+                    // Show selected content
+                    const page = this.dataset.page;
+                    const content = document.getElementById(page + 'Content');
+                    if (content) {
+                        content.style.display = 'block';
+                        document.getElementById('pageTitle').textContent = this.textContent.trim();
+                    }
+                });
+            });
+            
+            // Logout
+            document.getElementById('logoutBtn').addEventListener('click', async function(e) {
+                e.preventDefault();
+                
+                if (confirm('هل أنت متأكد من تسجيل الخروج؟')) {
+                    try {
+                        await auth.signOut();
+                        localStorage.removeItem('ebdaa_current_user');
+                        window.location.href = 'login.html';
+                    } catch (error) {
+                        console.error('Logout error:', error);
+                        localStorage.removeItem('ebdaa_current_user');
+                        window.location.href = 'login.html';
+                    }
+                }
+            });
+            
+            // Refresh button
+            document.getElementById('refreshBtn').addEventListener('click', function() {
+                this.querySelector('i').classList.add('fa-spin');
+                setTimeout(() => {
+                    this.querySelector('i').classList.remove('fa-spin');
+                }, 1000);
+            });
+            
+            // Simulate real-time updates
+            setInterval(() => {
+                const users = document.getElementById('totalUsers');
+                const currentUsers = parseInt(users.textContent);
+                if (Math.random() > 0.8) {
+                    users.textContent = currentUsers + 1;
+                }
+            }, 10000);
+        });
+    </script>
+</body>
+</html>
