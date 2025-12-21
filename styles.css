@@ -319,3 +319,20 @@
         text-align: center;
     }
 }
+
+/* Admin Dashboard Styles */
+.progress-bar-small {
+    height: 8px !important;
+}
+
+.progress-bar-45 {
+    width: 45% !important;
+}
+
+.progress-bar-30 {
+    width: 30% !important;
+}
+
+.progress-bar-25 {
+    width: 25% !important;
+}
