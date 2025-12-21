@@ -15,8 +15,8 @@
         
         .sidebar {
             background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
             min-height: 100vh;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
         }
@@ -27,8 +27,8 @@
         
         .stat-card {
             background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
             border-radius: 15px;
             padding: 1.5rem;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -101,6 +101,10 @@
         .btn-request:hover {
             transform: translateY(-2px);
             box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+        
+        .section-hidden {
+            display: none;
         }
     </style>
 </head>
@@ -267,7 +271,7 @@
                         </div>
                         
                         <!-- Projects Section -->
-                        <div id="projectsSection" class="section-content" style="display: none;">
+                        <div id="projectsSection" class="section-content section-hidden">
                             <h2 class="text-white mb-4">مشاريعي</h2>
                             <div class="stat-card">
                                 <h5 class="mb-3">جميع المشاريع</h5>
@@ -305,7 +309,7 @@
                         </div>
                         
                         <!-- Request Service Section -->
-                        <div id="requestsSection" class="section-content" style="display: none;">
+                        <div id="requestsSection" class="section-content section-hidden">
                             <h2 class="text-white mb-4">طلب خدمة جديدة</h2>
                             <div class="stat-card">
                                 <form id="serviceRequestForm">
@@ -345,7 +349,7 @@
                         </div>
                         
                         <!-- Messages Section -->
-                        <div id="messagesSection" class="section-content" style="display: none;">
+                        <div id="messagesSection" class="section-content section-hidden">
                             <h2 class="text-white mb-4">الرسائل</h2>
                             <div class="stat-card">
                                 <h5 class="mb-3">الرسائل الواردة</h5>
@@ -377,7 +381,7 @@
                         </div>
                         
                         <!-- Profile Section -->
-                        <div id="profileSection" class="section-content" style="display: none;">
+                        <div id="profileSection" class="section-content section-hidden">
                             <h2 class="text-white mb-4">الملف الشخصي</h2>
                             <div class="stat-card">
                                 <form id="profileForm">
@@ -437,11 +441,11 @@
         function showSection(sectionName) {
             // Hide all sections
             document.querySelectorAll('.section-content').forEach(section => {
-                section.style.display = 'none';
+                section.classList.add('section-hidden');
             });
             
             // Show selected section
-            document.getElementById(sectionName + 'Section').style.display = 'block';
+            document.getElementById(sectionName + 'Section').classList.remove('section-hidden');
             
             // Update active nav
             document.querySelectorAll('.nav-link').forEach(link => {
