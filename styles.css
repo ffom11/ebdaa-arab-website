@@ -1,15 +1,13 @@
-/* Service Image Styles */
-.service-image {
-    width: 60px;
-    height: 60px;
-    object-fit: contain;
-    filter: brightness(0) invert(1);
+/* Font Awesome Icon Styles with Color Theme */
+.service-icon i {
+    font-size: 2rem;
+    color: white;
     transition: all 0.3s ease;
 }
 
-.service-card:hover .service-image {
+.service-card:hover .service-icon i {
     transform: scale(1.1);
-    filter: brightness(0) invert(1) drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
 }
 
 /* Color theme from service images */
