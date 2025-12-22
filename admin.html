@@ -266,14 +266,19 @@
         // Initialize dashboard
         document.addEventListener('DOMContentLoaded', function() {
             // Check if user is logged in
-            const currentUser = localStorage.getItem('ebdaa_current_user');
+            const currentUser = localStorage.getItem('currentUser');
             if (!currentUser) {
                 window.location.href = 'login.html';
                 return;
             }
             
             const user = JSON.parse(currentUser);
-            document.getElementById('userName').textContent = user.displayName || user.email;
+            // Check if user is admin
+            if (user.role !== 'admin') {
+                window.location.href = 'customer-dashboard.html';
+                return;
+            }
+            document.getElementById('userName').textContent = user.name || user.email;
             document.getElementById('userEmail').textContent = user.email;
             
             // Update current time
@@ -317,11 +322,11 @@
                 if (confirm('هل أنت متأكد من تسجيل الخروج؟')) {
                     try {
                         await auth.signOut();
-                        localStorage.removeItem('ebdaa_current_user');
+                        localStorage.removeItem('currentUser');
                         window.location.href = 'login.html';
                     } catch (error) {
                         console.error('Logout error:', error);
-                        localStorage.removeItem('ebdaa_current_user');
+                        localStorage.removeItem('currentUser');
                         window.location.href = 'login.html';
                     }
                 }
