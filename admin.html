@@ -72,6 +72,62 @@
         .progress-bar-25 {
             width: 25%;
         }
+        
+        .notification-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #dc3545;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        .notification-item {
+            background: #f8f9fa;
+            border-left: 4px solid #007bff;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            animation: slideIn 0.3s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from { 
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .notification-item.new {
+            background: #e7f3ff;
+            border-left-color: #0056b3;
+        }
+        
+        .notification-time {
+            font-size: 12px;
+            color: #6c757d;
+        }
+        
+        .nav-link {
+            position: relative;
+        }
     </style>
 </head>
 <body>
@@ -102,6 +158,7 @@
                         </a>
                         <a href="#" class="nav-link" data-page="contacts">
                             <i class="fas fa-envelope me-2"></i> الرسائل
+                            <span class="notification-badge" id="messagesBadge" style="display: none;">0</span>
                         </a>
                         <a href="#" class="nav-link" data-page="analytics">
                             <i class="fas fa-chart-line me-2"></i> التحليلات
@@ -302,25 +359,36 @@
                 
                 <div id="contactsContent" class="page-content section-hidden">
                     <div class="bg-white rounded shadow-sm p-4">
-                        <h5 class="mb-3">الرسائل الواردة</h5>
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h5 class="mb-0">الرسائل الواردة</h5>
+                            <button class="btn btn-sm btn-outline-secondary" id="refreshMessages">
+                                <i class="fas fa-sync-alt"></i> تحديث
+                            </button>
+                        </div>
                         
-                        <div class="table-responsive">
+                        <div id="notificationsList">
+                            <!-- Notifications will be added here dynamically -->
+                        </div>
+                        
+                        <div class="table-responsive mt-4">
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
                                         <th>التاريخ</th>
                                         <th>الاسم</th>
                                         <th>البريد الإلكتروني</th>
+                                        <th>الخدمة</th>
                                         <th>الرسالة</th>
                                         <th>الحالة</th>
                                         <th>إجراءات</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody id="messagesTableBody">
                                     <tr>
                                         <td>22/12/2025</td>
                                         <td>أحمد محمد</td>
                                         <td>ahmed@email.com</td>
+                                        <td>التصوير الفوتوغرافي</td>
                                         <td>أريد الاستفسار عن خدمات التصوير</td>
                                         <td><span class="badge bg-warning">جديد</span></td>
                                         <td>
@@ -332,6 +400,7 @@
                                         <td>21/12/2025</td>
                                         <td>سارة أحمد</td>
                                         <td>sara@email.com</td>
+                                        <td>المونتاج الاحترافي</td>
                                         <td>ما هي أسعار المونتاج؟</td>
                                         <td><span class="badge bg-info">قيد المراجعة</span></td>
                                         <td>
@@ -585,6 +654,9 @@
             updateTime();
             setInterval(updateTime, 1000);
             
+            // Initialize notification system
+            initializeNotifications();
+            
             // Navigation
             document.querySelectorAll('.nav-link[data-page]').forEach(link => {
                 link.addEventListener('click', function(e) {
@@ -645,6 +717,215 @@
                 }
             }, 10000);
         });
+        
+        // Notification System
+        function initializeNotifications() {
+            // Check for new requests
+            checkNewRequests();
+            
+            // Set up periodic checking
+            setInterval(checkNewRequests, 5000);
+            
+            // Listen for storage changes (cross-tab)
+            window.addEventListener('storage', function(e) {
+                if (e.key === 'new_request') {
+                    handleNewRequest(JSON.parse(e.newValue));
+                }
+                if (e.key === 'new_user') {
+                    handleNewUser(JSON.parse(e.newValue));
+                }
+            });
+            
+            // Refresh messages button
+            const refreshBtn = document.getElementById('refreshMessages');
+            if (refreshBtn) {
+                refreshBtn.addEventListener('click', checkNewRequests);
+            }
+        }
+        
+        function checkNewRequests() {
+            const newRequest = localStorage.getItem('new_request');
+            if (newRequest) {
+                const requestData = JSON.parse(newRequest);
+                handleNewRequest(requestData);
+                // Clear after processing
+                localStorage.removeItem('new_request');
+            }
+            
+            // Check for new users
+            const newUser = localStorage.getItem('new_user');
+            if (newUser) {
+                const userData = JSON.parse(newUser);
+                handleNewUser(userData);
+                // Clear after processing
+                localStorage.removeItem('new_user');
+            }
+            
+            // Check for new users
+            checkNewUsers();
+        }
+        
+        function handleNewRequest(requestData) {
+            // Update messages count
+            const badge = document.getElementById('messagesBadge');
+            const currentCount = parseInt(badge.textContent) || 0;
+            badge.textContent = currentCount + 1;
+            badge.style.display = 'flex';
+            
+            // Add notification to list
+            addNotificationToList(requestData);
+            
+            // Add to messages table
+            addMessageToTable(requestData);
+            
+            // Update statistics
+            updateStatistics();
+            
+            // Show browser notification
+            showBrowserNotification(requestData);
+        }
+        
+        function addNotificationToList(requestData) {
+            const notificationsList = document.getElementById('notificationsList');
+            const notificationItem = document.createElement('div');
+            notificationItem.className = 'notification-item new';
+            notificationItem.innerHTML = `
+                <div class="d-flex justify-content-between align-items-start">
+                    <div>
+                        <h6 class="mb-1">طلب خدمة جديد</h6>
+                        <p class="mb-1">من: ${requestData.name}</p>
+                        <p class="mb-0">الخدمة: ${getServiceName(requestData.service)}</p>
+                    </div>
+                    <small class="notification-time">${new Date().toLocaleTimeString('ar-SA')}</small>
+                </div>
+            `;
+            
+            notificationsList.insertBefore(notificationItem, notificationsList.firstChild);
+            
+            // Remove 'new' class after 5 seconds
+            setTimeout(() => {
+                notificationItem.classList.remove('new');
+            }, 5000);
+        }
+        
+        function addMessageToTable(requestData) {
+            const tableBody = document.getElementById('messagesTableBody');
+            const newRow = document.createElement('tr');
+            newRow.innerHTML = `
+                <td>${new Date().toLocaleDateString('ar-SA')}</td>
+                <td>${requestData.name}</td>
+                <td>${requestData.email}</td>
+                <td>${getServiceName(requestData.service)}</td>
+                <td>${requestData.message.substring(0, 50)}...</td>
+                <td><span class="badge bg-warning">جديد</span></td>
+                <td>
+                    <button class="btn btn-sm btn-outline-primary" onclick="viewMessage('${requestData.email}')">عرض</button>
+                    <button class="btn btn-sm btn-outline-success" onclick="replyMessage('${requestData.email}')">رد</button>
+                </td>
+            `;
+            
+            tableBody.insertBefore(newRow, tableBody.firstChild);
+        }
+        
+        function getServiceName(service) {
+            const services = {
+                'photography': 'التصوير الفوتوغرافي',
+                'video': 'المونتاج الاحترافي',
+                'social': 'إدارة التواصل الاجتماعي',
+                'advertising': 'الحملات الإعلانية',
+                'ecommerce': 'المتاجر الإلكترونية',
+                'design': 'التصاميم الإبداعية'
+            };
+            return services[service] || service;
+        }
+        
+        function updateStatistics() {
+            // Update messages count
+            const messagesElement = document.getElementById('newMessages');
+            if (messagesElement) {
+                const currentCount = parseInt(messagesElement.textContent) || 0;
+                messagesElement.textContent = currentCount + 1;
+            }
+        }
+        
+        function showBrowserNotification(requestData) {
+            if ('Notification' in window && Notification.permission === 'granted') {
+                new Notification('طلب خدمة جديد', {
+                    body: `${requestData.name} طلب ${getServiceName(requestData.service)}`,
+                    icon: 'https://ebdaa.shop/images/logo.png'
+                });
+            }
+        }
+        
+        function checkNewUsers() {
+            const users = JSON.parse(localStorage.getItem('users') || '[]');
+            const totalUsersElement = document.getElementById('totalUsers');
+            if (totalUsersElement) {
+                totalUsersElement.textContent = users.length;
+            }
+        }
+        
+        // Request notification permission
+        if ('Notification' in window && Notification.permission === 'default') {
+            Notification.requestPermission();
+        }
+        
+        // Message action functions
+        function viewMessage(email) {
+            alert(`عرض رسالة من: ${email}`);
+        }
+        
+        function replyMessage(email) {
+            window.open(`https://wa.me/966566166251?text=رد على رسالة من: ${email}`, '_blank');
+        }
+        
+        function handleNewUser(userData) {
+            // Update total users count
+            const totalUsersElement = document.getElementById('totalUsers');
+            if (totalUsersElement) {
+                const currentCount = parseInt(totalUsersElement.textContent) || 0;
+                totalUsersElement.textContent = currentCount + 1;
+            }
+            
+            // Add user notification to list
+            addUserNotificationToList(userData);
+            
+            // Show browser notification
+            showUserBrowserNotification(userData);
+        }
+        
+        function addUserNotificationToList(userData) {
+            const notificationsList = document.getElementById('notificationsList');
+            const notificationItem = document.createElement('div');
+            notificationItem.className = 'notification-item new';
+            notificationItem.innerHTML = `
+                <div class="d-flex justify-content-between align-items-start">
+                    <div>
+                        <h6 class="mb-1">مستخدم جديد</h6>
+                        <p class="mb-1">الاسم: ${userData.name}</p>
+                        <p class="mb-1">البريد: ${userData.email}</p>
+                        <p class="mb-0">الشركة: ${userData.company || 'غير محدد'}</p>
+                    </div>
+                    <small class="notification-time">${new Date().toLocaleTimeString('ar-SA')}</small>
+                </div>
+            `;
+            
+            notificationsList.insertBefore(notificationItem, notificationsList.firstChild);
+            
+            // Remove 'new' class after 5 seconds
+            setTimeout(() => {
+                notificationItem.classList.remove('new');
+            }, 5000);
+        }
+        
+        function showUserBrowserNotification(userData) {
+            if ('Notification' in window && Notification.permission === 'granted') {
+                new Notification('مستخدم جديد', {
+                    body: `${userData.name} سجل في الموقع`,
+                    icon: 'https://ebdaa.shop/images/logo.png'
+                });
+            }
+        }
     </script>
 </body>
 </html>

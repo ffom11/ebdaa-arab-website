@@ -777,11 +777,39 @@
                 
                 // Save additional data to Firestore
                 await firebase.firestore().collection('users').doc(userCredential.user.uid).set({
-                    ...formData,
-                    uid: userCredential.user.uid,
-                    status: 'active',
-                    role: 'user'
+                    firstName: formData.firstName,
+                    lastName: formData.lastName,
+                    email: formData.email,
+                    phone: formData.phone,
+                    company: formData.company,
+                    services: formData.services,
+                    role: 'customer',
+                    createdAt: new Date().toISOString()
                 });
+                
+                // Save to localStorage for admin notifications
+                const users = JSON.parse(localStorage.getItem('users') || '[]');
+                users.push({
+                    uid: userCredential.user.uid,
+                    email: formData.email,
+                    name: `${formData.firstName} ${formData.lastName}`,
+                    role: 'customer',
+                    phone: formData.phone,
+                    company: formData.company,
+                    services: formData.services,
+                    createdAt: new Date().toISOString()
+                });
+                localStorage.setItem('users', JSON.stringify(users));
+                
+                // Trigger new user notification
+                localStorage.setItem('new_user', JSON.stringify({
+                    name: `${formData.firstName} ${formData.lastName}`,
+                    email: formData.email,
+                    phone: formData.phone,
+                    company: formData.company,
+                    services: formData.services,
+                    timestamp: new Date().toISOString()
+                }));
                 
                 showAlert('تم إنشاء الحساب بنجاح! يرجى تأكيد بريدك الإلكتروني', 'success');
                 

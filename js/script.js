@@ -194,6 +194,16 @@ function handleContactForm(e) {
     // Save request to admin panel
     localStorage.setItem('new_request', JSON.stringify(formData));
     
+    // Also save to messages array for persistence
+    const messages = JSON.parse(localStorage.getItem('admin_messages') || '[]');
+    messages.push({
+        ...formData,
+        timestamp: new Date().toISOString(),
+        status: 'new',
+        id: Date.now()
+    });
+    localStorage.setItem('admin_messages', JSON.stringify(messages));
+    
     // Show loading state
     const submitBtn = e.target.querySelector('button[type="submit"]');
     const originalText = submitBtn.textContent;
