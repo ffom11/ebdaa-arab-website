@@ -294,8 +294,149 @@
                 <!-- Other Pages Content (Hidden by default) -->
                 <div id="projectsContent" class="page-content section-hidden">
                     <div class="bg-white rounded shadow-sm p-4">
-                        <h5 class="mb-3">إدارة المشاريع</h5>
-                        <p>محتوى إدارة المشاريع سيتم إضافته لاحقاً...</p>
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <h5 class="mb-0">إدارة المشاريع</h5>
+                            <button class="btn btn-primary">
+                                <i class="fas fa-plus me-2"></i>مشروع جديد
+                            </button>
+                        </div>
+                        
+                        <!-- Project Statistics -->
+                        <div class="row mb-4">
+                            <div class="col-md-3">
+                                <div class="card bg-primary text-white">
+                                    <div class="card-body">
+                                        <h6 class="card-title">المشاريع النشطة</h6>
+                                        <h3 class="mb-0">12</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card bg-success text-white">
+                                    <div class="card-body">
+                                        <h6 class="card-title">المشاريع المكتملة</h6>
+                                        <h3 class="mb-0">142</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card bg-warning text-white">
+                                    <div class="card-body">
+                                        <h6 class="card-title">قيد التنفيذ</h6>
+                                        <h3 class="mb-0">8</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card bg-info text-white">
+                                    <div class="card-body">
+                                        <h6 class="card-title">قيد المراجعة</h6>
+                                        <h3 class="mb-0">5</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Projects Table -->
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>رقم المشروع</th>
+                                        <th>اسم العميل</th>
+                                        <th>نوع المشروع</th>
+                                        <th>تاريخ البدء</th>
+                                        <th>تاريخ التسليم</th>
+                                        <th>الحالة</th>
+                                        <th>التقدم</th>
+                                        <th>إجراءات</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>#PRJ-001</td>
+                                        <td>أحمد محمد</td>
+                                        <td>تصوير منتجات</td>
+                                        <td>15/12/2025</td>
+                                        <td>25/12/2025</td>
+                                        <td><span class="badge bg-warning">قيد التنفيذ</span></td>
+                                        <td>
+                                            <div class="progress" style="height: 20px;">
+                                                <div class="progress-bar bg-warning" style="width: 65%">65%</div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-primary">تفاصيل</button>
+                                            <button class="btn btn-sm btn-outline-secondary">تعديل</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#PRJ-002</td>
+                                        <td>سارة أحمد</td>
+                                        <td>مونتاج فيديو</td>
+                                        <td>10/12/2025</td>
+                                        <td>20/12/2025</td>
+                                        <td><span class="badge bg-success">مكتمل</span></td>
+                                        <td>
+                                            <div class="progress" style="height: 20px;">
+                                                <div class="progress-bar bg-success" style="width: 100%">100%</div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-primary">تفاصيل</button>
+                                            <button class="btn btn-sm btn-outline-success">تحميل</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#PRJ-003</td>
+                                        <td>خالد علي</td>
+                                        <td>هوية بصرية</td>
+                                        <td>18/12/2025</td>
+                                        <td>28/12/2025</td>
+                                        <td><span class="badge bg-primary">نشط</span></td>
+                                        <td>
+                                            <div class="progress" style="height: 20px;">
+                                                <div class="progress-bar bg-primary" style="width: 30%">30%</div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-primary">تفاصيل</button>
+                                            <button class="btn btn-sm btn-outline-secondary">تعديل</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#PRJ-004</td>
+                                        <td>نورة سعيد</td>
+                                        <td>حملة إعلانية</td>
+                                        <td>20/12/2025</td>
+                                        <td>30/12/2025</td>
+                                        <td><span class="badge bg-info">قيد المراجعة</span></td>
+                                        <td>
+                                            <div class="progress" style="height: 20px;">
+                                                <div class="progress-bar bg-info" style="width: 90%">90%</div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-primary">تفاصيل</button>
+                                            <button class="btn btn-sm btn-outline-warning">مراجعة</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <!-- Pagination -->
+                        <div class="mt-3">
+                            <nav aria-label="Page navigation">
+                                <ul class="pagination justify-content-center">
+                                    <li class="page-item"><a class="page-link" href="#">السابق</a></li>
+                                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">التالي</a></li>
+                                </ul>
+                            </nav>
+                        </div>
                     </div>
                 </div>
                 
