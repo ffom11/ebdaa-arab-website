@@ -80,17 +80,39 @@ function initializeLocalAuth() {
                 localStorage.setItem('currentUser', JSON.stringify({
                     email: user.email,
                     role: user.role || 'customer',
-                    name: user.name || 'عميل'
+                    name: user.name || 'عميل',
+                    uid: user.uid || email.replace(/[^a-zA-Z0-9]/g, '_')
                 }));
                 
                 return { 
                     user: {
                         email: user.email,
-                        uid: user.email.replace(/[^a-zA-Z0-9]/g, '_'),
-                        role: user.role || 'customer'
+                        uid: user.uid || email.replace(/[^a-zA-Z0-9]/g, '_'),
+                        role: user.role || 'customer',
+                        displayName: user.name || 'عميل'
                     }
                 };
             } else {
+                // Check if user exists in users array for admin
+                const existingUser = users.find(u => u.email === email);
+                if (existingUser && existingUser.role === 'admin') {
+                    // Store admin user
+                    localStorage.setItem('currentUser', JSON.stringify({
+                        email: existingUser.email,
+                        role: existingUser.role,
+                        name: existingUser.name || 'Admin User',
+                        uid: existingUser.uid || existingUser.email.replace(/[^a-zA-Z0-9]/g, '_')
+                    }));
+                    
+                    return { 
+                        user: {
+                            email: existingUser.email,
+                            uid: existingUser.uid || existingUser.email.replace(/[^a-zA-Z0-9]/g, '_'),
+                            role: existingUser.role,
+                            displayName: existingUser.name || 'Admin User'
+                        }
+                    };
+                }
                 throw new Error('Invalid email or password');
             }
         },
