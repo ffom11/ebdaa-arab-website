@@ -63,6 +63,10 @@
     border: 0;
 }
 
+.partner-image {
+    max-height: 200px;
+}
+
 /* Enhanced Button Styles */
 .btn {
     border-radius: 50px;

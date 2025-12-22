@@ -25,12 +25,18 @@
         
         .register-card {
             background: rgba(255, 255, 255, 0.95);
+            -webkit-backdrop-filter: blur(10px);
             backdrop-filter: blur(10px);
             border-radius: 20px;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
             overflow: hidden;
             max-width: 1200px;
             width: 100%;
+        }
+        
+        .terms-card-body {
+            max-height: 200px;
+            overflow-y: auto;
         }
         
         .register-left {
@@ -503,7 +509,7 @@
                                 
                                 <div class="mb-4">
                                     <div class="card">
-                                        <div class="card-body" style="max-height: 200px; overflow-y: auto;">
+                                        <div class="card-body terms-card-body">
                                             <h6>شروط استخدام الخدمات:</h6>
                                             <ul class="small">
                                                 <li>أوافق على استخدام بياناتي لأغراض تحسين الخدمات</li>

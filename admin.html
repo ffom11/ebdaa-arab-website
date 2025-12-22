@@ -89,6 +89,10 @@
             animation: pulse 2s infinite;
         }
         
+        .notification-badge.hidden {
+            display: none;
+        }
+        
         @keyframes pulse {
             0% { transform: scale(1); }
             50% { transform: scale(1.1); }
@@ -158,7 +162,7 @@
                         </a>
                         <a href="#" class="nav-link" data-page="contacts">
                             <i class="fas fa-envelope me-2"></i> الرسائل
-                            <span class="notification-badge" id="messagesBadge" style="display: none;">0</span>
+                            <span class="notification-badge hidden" id="messagesBadge">0</span>
                         </a>
                         <a href="#" class="nav-link" data-page="analytics">
                             <i class="fas fa-chart-line me-2"></i> التحليلات
@@ -770,7 +774,7 @@
             const badge = document.getElementById('messagesBadge');
             const currentCount = parseInt(badge.textContent) || 0;
             badge.textContent = currentCount + 1;
-            badge.style.display = 'flex';
+            badge.classList.remove('hidden');
             
             // Add notification to list
             addNotificationToList(requestData);
