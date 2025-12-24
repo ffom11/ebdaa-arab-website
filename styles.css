@@ -609,7 +609,10 @@ h3 {
     margin: 0 5px;
     border-radius: 25px;
 }
-    height: 200px;
+
+.portfolio-image {
+    height: 250px;
+    overflow: hidden;
 }
 
 .portfolio-image img {
