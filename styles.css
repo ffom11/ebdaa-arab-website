@@ -812,6 +812,14 @@ h2 {
     justify-content: center;
 }
 
+.ecommerce-icon ~ ul li {
+    display: block !important;
+    width: 100% !important;
+    text-align: center !important;
+    white-space: normal !important;
+    overflow-wrap: break-word !important;
+}
+
 .design-icon { 
     background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
     border: 3px solid rgba(48, 207, 208, 0.3);
