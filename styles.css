@@ -1,6 +1,6 @@
-/* Enhanced UX/UI Design Styles */
+/* Advanced UX/UI Design Styles */
 
-/* Advanced Typography */
+/* Enhanced Typography & Variables */
 :root {
     --primary-font: 'Cairo', 'Tajawal', sans-serif;
     --secondary-font: 'Tajawal', 'Cairo', sans-serif;
@@ -19,8 +19,20 @@
     --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
     --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
     --shadow-xl: 0 20px 25px rgba(0,0,0,0.1);
+    --shadow-2xl: 0 25px 50px rgba(0,0,0,0.15);
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --transition-elastic: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    --border-radius-sm: 8px;
+    --border-radius-md: 12px;
+    --border-radius-lg: 20px;
+    --border-radius-xl: 30px;
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    --spacing-2xl: 5rem;
 }
 
 body {
@@ -30,6 +42,36 @@ body {
     color: var(--dark-color);
     background: var(--light-color);
     scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+/* Advanced Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--gradient-primary);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-color);
+}
+
+/* Selection Style */
+::selection {
+    background: var(--primary-color);
+    color: white;
+}
+
+::-moz-selection {
+    background: var(--primary-color);
+    color: white;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -57,21 +99,60 @@ h3 {
     font-weight: 700;
 }
 
-/* Enhanced Navigation */
+/* Advanced Navigation */
 .navbar {
     background: rgba(255, 255, 255, 0.98) !important;
     -webkit-backdrop-filter: blur(20px);
     backdrop-filter: blur(20px);
     box-shadow: var(--shadow-lg);
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-    padding: 0.8rem 0;
+    padding: var(--spacing-sm) 0;
     transition: var(--transition-smooth);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
 }
 
 .navbar.scrolled {
-    padding: 0.5rem 0;
+    padding: var(--spacing-xs) 0;
     background: rgba(255, 255, 255, 1) !important;
     box-shadow: var(--shadow-xl);
+}
+
+/* Mobile Menu Enhancement */
+.navbar-toggler {
+    border: none;
+    padding: 0.25rem 0.5rem;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    transition: var(--transition-smooth);
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
+    outline: none;
+}
+
+.navbar-toggler:hover {
+    transform: rotate(90deg);
+}
+
+.navbar-collapse {
+    transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .navbar-nav {
+        padding: var(--spacing-md) 0;
+        text-align: center;
+    }
+    
+    .navbar-nav .nav-link {
+        margin: var(--spacing-xs) 0;
+        display: inline-block;
+    }
 }
 
 .navbar-brand {
@@ -138,7 +219,7 @@ h3 {
     box-shadow: var(--shadow-lg);
 }
 
-/* Enhanced Hero Section */
+/* Advanced Hero Section */
 .hero {
     background: var(--gradient-primary),
                 linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
@@ -147,6 +228,7 @@ h3 {
     align-items: center;
     position: relative;
     overflow: hidden;
+    padding-top: 80px;
 }
 
 .hero::before {
@@ -161,9 +243,25 @@ h3 {
     animation: float 20s ease-in-out infinite;
 }
 
+.hero::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    animation: rotate 30s linear infinite;
+}
+
 @keyframes float {
     0%, 100% { transform: translateY(0px); }
     50% { transform: translateY(-20px); }
+}
+
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 .hero-content {
@@ -172,8 +270,9 @@ h3 {
 }
 
 .hero h1 {
-    margin-bottom: 1.5rem;
+    margin-bottom: var(--spacing-md);
     animation: fadeInUp 1s ease;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
 }
 
 .hero p {
@@ -181,8 +280,14 @@ h3 {
     font-size: 1.3rem;
     font-weight: 500;
     color: rgba(255, 255, 255, 0.9);
-    margin-bottom: 2rem;
+    margin-bottom: var(--spacing-lg);
     animation: fadeInUp 1s ease 0.2s;
+    animation-fill-mode: both;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.hero-buttons {
+    animation: fadeInUp 1s ease 0.4s;
     animation-fill-mode: both;
 }
 
