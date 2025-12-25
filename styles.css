@@ -812,9 +812,10 @@ h2 {
     justify-content: center;
 }
 
-.ecommerce-icon ~ ul li {
-    display: block !important;
-    width: 100% !important;
+.ecommerce-icon ~ ul li,
+.design-icon ~ ul li {
+    display: list-item !important;
+    width: auto !important;
     text-align: center !important;
     white-space: normal !important;
     overflow-wrap: break-word !important;
