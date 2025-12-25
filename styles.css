@@ -1,5 +1,54 @@
 /* Advanced UX/UI Design Styles */
 
+/* Image Strip Styles */
+.image-strip-section {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 2rem 0;
+    overflow: hidden;
+}
+
+.image-strip {
+    display: flex;
+    gap: 1rem;
+    animation: scrollStrip 20s linear infinite;
+    width: fit-content;
+}
+
+.image-strip img {
+    height: 80px;
+    width: 120px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.image-strip img:hover {
+    transform: scale(1.05);
+}
+
+@keyframes scrollStrip {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .image-strip img {
+        height: 60px;
+        width: 90px;
+    }
+    
+    .image-strip-section {
+        padding: 1rem 0;
+    }
+}
+
 /* Hero Slider Styles */
 .hero-slider {
     position: relative;
