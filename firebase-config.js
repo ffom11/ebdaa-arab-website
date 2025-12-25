@@ -44,8 +44,11 @@ try {
 function initializeLocalAuth() {
     console.log("Initializing local authentication system");
     
-    // Local user storage
-    const users = JSON.parse(localStorage.getItem('ebdaa_users') || '[]');
+    // Local user storage - Check both possible keys
+    let users = JSON.parse(localStorage.getItem('ebdaa_users') || '[]');
+    if (users.length === 0) {
+        users = JSON.parse(localStorage.getItem('users') || '[]');
+    }
     
     // Add default users if empty
     if (users.length === 0) {
@@ -66,7 +69,9 @@ function initializeLocalAuth() {
                 name: 'مستخدم تجريبي'
             }
         ];
-        localStorage.setItem('users', JSON.stringify(defaultUsers));
+        // Save to both keys for compatibility
+                localStorage.setItem('users', JSON.stringify(defaultUsers));
+                localStorage.setItem('ebdaa_users', JSON.stringify(defaultUsers));
     }
     
     auth = {
@@ -74,45 +79,38 @@ function initializeLocalAuth() {
             console.log("Local: Attempting sign in", email);
             await new Promise(resolve => setTimeout(resolve, 500));
             
-            const user = users.find(u => u.email === email && u.password === password);
+            // Refresh users array from localStorage
+            const currentUsers = JSON.parse(localStorage.getItem('users') || '[]');
+            const ebdaaUsers = JSON.parse(localStorage.getItem('ebdaa_users') || '[]');
+            const allUsers = [...currentUsers, ...ebdaaUsers];
+            
+            console.log("Available users:", allUsers.map(u => ({ email: u.email, role: u.role })));
+            
+            const user = allUsers.find(u => u.email === email && u.password === password);
             if (user) {
-                // Store current user in localStorage
-                localStorage.setItem('currentUser', JSON.stringify({
+                // Store current user in both locations
+                const userData = {
                     email: user.email,
                     role: user.role || 'customer',
-                    name: user.name || 'عميل',
+                    name: user.name || user.displayName || 'عميل',
                     uid: user.uid || email.replace(/[^a-zA-Z0-9]/g, '_')
-                }));
+                };
+                
+                localStorage.setItem('currentUser', JSON.stringify(userData));
+                localStorage.setItem('ebdaa_current_user', JSON.stringify(userData));
+                
+                console.log("Login successful for:", userData);
                 
                 return { 
                     user: {
                         email: user.email,
                         uid: user.uid || email.replace(/[^a-zA-Z0-9]/g, '_'),
                         role: user.role || 'customer',
-                        displayName: user.name || 'عميل'
+                        displayName: user.name || user.displayName || 'عميل'
                     }
                 };
             } else {
-                // Check if user exists in users array for admin
-                const existingUser = users.find(u => u.email === email);
-                if (existingUser && existingUser.role === 'admin') {
-                    // Store admin user
-                    localStorage.setItem('currentUser', JSON.stringify({
-                        email: existingUser.email,
-                        role: existingUser.role,
-                        name: existingUser.name || 'Admin User',
-                        uid: existingUser.uid || existingUser.email.replace(/[^a-zA-Z0-9]/g, '_')
-                    }));
-                    
-                    return { 
-                        user: {
-                            email: existingUser.email,
-                            uid: existingUser.uid || existingUser.email.replace(/[^a-zA-Z0-9]/g, '_'),
-                            role: existingUser.role,
-                            displayName: existingUser.name || 'Admin User'
-                        }
-                    };
-                }
+                console.log("Login failed - user not found or password incorrect");
                 throw new Error('Invalid email or password');
             }
         },
@@ -121,20 +119,32 @@ function initializeLocalAuth() {
             console.log("Local: Attempting user creation", email);
             await new Promise(resolve => setTimeout(resolve, 500));
             
-            if (users.find(u => u.email === email)) {
+            // Check both user arrays
+            const currentUsers = JSON.parse(localStorage.getItem('users') || '[]');
+            const ebdaaUsers = JSON.parse(localStorage.getItem('ebdaa_users') || '[]');
+            const allUsers = [...currentUsers, ...ebdaaUsers];
+            
+            if (allUsers.find(u => u.email === email)) {
                 throw new Error('User already exists');
             }
             
             const newUser = {
+                uid: email.replace(/[^a-zA-Z0-9]/g, '_'),
                 email: email,
                 password: password, // In production, hash this
                 displayName: email.split('@')[0],
+                name: email.split('@')[0],
                 role: 'user',
                 createdAt: new Date().toISOString()
             };
             
-            users.push(newUser);
-            localStorage.setItem('ebdaa_users', JSON.stringify(users));
+            // Add to both storage locations
+            currentUsers.push(newUser);
+            ebdaaUsers.push(newUser);
+            localStorage.setItem('users', JSON.stringify(currentUsers));
+            localStorage.setItem('ebdaa_users', JSON.stringify(ebdaaUsers));
+            
+            console.log("User created successfully:", newUser);
             
             return {
                 user: {
@@ -149,12 +159,13 @@ function initializeLocalAuth() {
         signOut: async () => {
             await new Promise(resolve => setTimeout(resolve, 300));
             localStorage.removeItem('ebdaa_current_user');
+            localStorage.removeItem('currentUser');
             return true;
         },
         
         onAuthStateChanged: (callback) => {
-            // Check current user
-            const currentUser = localStorage.getItem('ebdaa_current_user');
+            // Check current user in both locations
+            const currentUser = localStorage.getItem('ebdaa_current_user') || localStorage.getItem('currentUser');
             if (currentUser) {
                 callback(JSON.parse(currentUser));
             } else {
