@@ -26,12 +26,12 @@
 .image-strip-container {
     position: relative;
     overflow: hidden;
-    mask-image: linear-gradient(90deg, 
+    -webkit-mask-image: linear-gradient(90deg, 
         transparent 0%, 
         black 10%, 
         black 90%, 
         transparent 100%);
-    -webkit-mask-image: linear-gradient(90deg, 
+    mask-image: linear-gradient(90deg, 
         transparent 0%, 
         black 10%, 
         black 90%, 
@@ -123,6 +123,34 @@
 @keyframes floatParticles {
     0%, 100% { transform: translateY(0) scale(1); }
     50% { transform: translateY(-10px) scale(1.05); }
+}
+
+/* Secondary Image Strip Styles */
+.image-strip-section-secondary {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    padding: 3rem 0;
+    overflow: hidden;
+    position: relative;
+}
+
+.image-strip-section-secondary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, 
+        rgba(240, 147, 251, 0.1) 0%, 
+        transparent 20%, 
+        transparent 80%, 
+        rgba(245, 87, 108, 0.1) 100%);
+    pointer-events: none;
+}
+
+/* Reverse animation */
+.image-strip-reverse {
+    animation-direction: reverse;
 }
 
 /* Responsive adjustments */
