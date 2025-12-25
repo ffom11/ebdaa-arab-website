@@ -695,6 +695,14 @@ h3 {
     text-align: center !important;
 }
 
+.service-card ul {
+    text-align: center !important;
+}
+
+.service-card li {
+    text-align: center !important;
+}
+
 .service-icon {
     width: 90px;
     height: 90px;
@@ -967,7 +975,7 @@ h3 {
     font-weight: 800;
     color: var(--primary-color);
     margin-bottom: 1.5rem;
-    text-align: center;
+    text-align: center !important;
     position: relative;
     padding-bottom: 1rem;
 }
@@ -988,7 +996,7 @@ h3 {
     font-family: var(--secondary-font);
     color: #6c757d;
     margin-bottom: 1.5rem;
-    text-align: center;
+    text-align: center !important;
     font-size: 1.1rem;
     line-height: 1.7;
 }
