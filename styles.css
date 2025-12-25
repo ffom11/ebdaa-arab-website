@@ -674,6 +674,18 @@ h3 {
     justify-content: center !important;
 }
 
+.service-card * {
+    text-align: center !important;
+}
+
+.service-card ul {
+    text-align: center !important;
+}
+
+.service-card li {
+    text-align: center !important;
+}
+
 .service-card::before {
     content: '';
     position: absolute;
