@@ -773,16 +773,17 @@
             button.disabled = true;
             
             try {
-                // Create Firebase user
-                const userCredential = await firebase.auth().createUserWithEmailAndPassword(formData.email, formData.password);
+                // Use local authentication system
+                const userCredential = await auth.createUserWithEmailAndPassword(formData.email, formData.password);
                 
                 // Update user profile
-                await userCredential.user.updateProfile({
-                    displayName: `${formData.firstName} ${formData.lastName}`
+                await auth.updateProfile({
+                    displayName: `${formData.firstName} ${formData.lastName}`,
+                    name: `${formData.firstName} ${formData.lastName}`
                 });
                 
-                // Save additional data to Firestore
-                await firebase.firestore().collection('users').doc(userCredential.user.uid).set({
+                // Save additional data to local database
+                await db.collection('users').doc(userCredential.user.uid).set({
                     firstName: formData.firstName,
                     lastName: formData.lastName,
                     email: formData.email,
@@ -828,21 +829,18 @@
                 
                 let errorMessage = 'حدث خطأ في إنشاء الحساب';
                 
-                switch(error.code) {
-                    case 'auth/email-already-in-use':
-                        errorMessage = 'البريد الإلكتروني مستخدم بالفعل';
-                        break;
-                    case 'auth/invalid-email':
-                        errorMessage = 'البريد الإلكتروني غير صالح';
-                        break;
-                    case 'auth/weak-password':
-                        errorMessage = 'كلمة المرور ضعيفة جداً';
-                        break;
-                    case 'auth/operation-not-allowed':
-                        errorMessage = 'إنشاء الحسابات غير متاح حالياً';
-                        break;
-                    default:
-                        errorMessage = error.message;
+                if (error.message === 'User already exists') {
+                    errorMessage = 'البريد الإلكتروني مستخدم بالفعل';
+                } else if (error.code === 'auth/email-already-in-use') {
+                    errorMessage = 'البريد الإلكتروني مستخدم بالفعل';
+                } else if (error.code === 'auth/invalid-email') {
+                    errorMessage = 'البريد الإلكتروني غير صالح';
+                } else if (error.code === 'auth/weak-password') {
+                    errorMessage = 'كلمة المرور ضعيفة جداً';
+                } else if (error.code === 'auth/configuration-not-found') {
+                    errorMessage = 'نظام المصادقة غير متاح حالياً. يرجى المحاولة لاحقاً';
+                } else {
+                    errorMessage = error.message || 'حدث خطأ غير متوقع';
                 }
                 
                 showAlert(errorMessage, 'danger');
