@@ -386,28 +386,99 @@ h3 {
 }
 
 .service-icon {
-    width: 80px;
-    height: 80px;
-    border-radius: 20px;
+    width: 90px;
+    height: 90px;
+    border-radius: 25px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2rem;
+    font-size: 2.2rem;
     color: white;
     margin-bottom: 1.5rem;
-    transition: var(--transition-bounce);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.service-icon::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transform: rotate(45deg);
+    transition: all 0.6s;
+    opacity: 0;
+}
+
+.service-card:hover .service-icon::before {
+    animation: shine 0.6s ease-in-out;
+}
+
+@keyframes shine {
+    0% {
+        top: -50%;
+        left: -50%;
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        top: 150%;
+        left: 150%;
+        opacity: 0;
+    }
 }
 
 .service-card:hover .service-icon {
-    transform: scale(1.1) rotate(5deg);
+    transform: scale(1.1) translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
 }
 
-.video-icon { background: var(--gradient-primary); }
-.social-icon { background: var(--gradient-social); }
-.advertising-icon { background: var(--gradient-accent); }
-.ecommerce-icon { background: var(--gradient-success); }
-.design-icon { background: var(--gradient-warning); }
-.photo-icon { background: var(--gradient-info); }
+.service-icon i {
+    position: relative;
+    z-index: 2;
+    transition: all 0.3s ease;
+}
+
+.service-card:hover .service-icon i {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+}
+
+.photography-icon { 
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: 3px solid rgba(102, 126, 234, 0.3);
+}
+
+.video-icon { 
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    border: 3px solid rgba(240, 147, 251, 0.3);
+}
+
+.social-icon { 
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    border: 3px solid rgba(79, 172, 254, 0.3);
+}
+
+.advertising-icon { 
+    background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+    border: 3px solid rgba(67, 233, 123, 0.3);
+}
+
+.ecommerce-icon { 
+    background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+    border: 3px solid rgba(250, 112, 154, 0.3);
+}
+
+.design-icon { 
+    background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
+    border: 3px solid rgba(48, 207, 208, 0.3);
+}
 
 /* Enhanced Portfolio Section */
 .portfolio-section {

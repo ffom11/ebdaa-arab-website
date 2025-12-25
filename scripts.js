@@ -111,6 +111,21 @@ if (contactForm) {
         let submissions = JSON.parse(localStorage.getItem('contact_submissions') || '[]');
         submissions.push(formData);
         localStorage.setItem('contact_submissions', JSON.stringify(submissions));
+        
+        // Also store in ebdaa_contact_submissions for admin dashboard
+        let ebdaaSubmissions = JSON.parse(localStorage.getItem('ebdaa_contact_submissions') || '[]');
+        ebdaaSubmissions.push(formData);
+        localStorage.setItem('ebdaa_contact_submissions', JSON.stringify(ebdaaSubmissions));
+        
+        // Trigger notification for admin dashboard
+        localStorage.setItem('new_message', JSON.stringify({
+            name: name,
+            email: email,
+            phone: phone,
+            service: service,
+            message: message,
+            timestamp: new Date().toISOString()
+        }));
     });
 }
 
