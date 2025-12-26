@@ -482,6 +482,9 @@ p {
     transition: all var(--transition-normal);
     position: relative;
     overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .service-card::before {
@@ -516,6 +519,7 @@ p {
     justify-content: center;
     margin-bottom: var(--space-6);
     transition: all var(--transition-normal);
+    flex-shrink: 0;
 }
 
 .service-card:hover .service-icon {
@@ -540,6 +544,7 @@ p {
     color: var(--gray-600);
     line-height: 1.7;
     margin-bottom: var(--space-6);
+    flex-grow: 1;
 }
 
 .service-features {
