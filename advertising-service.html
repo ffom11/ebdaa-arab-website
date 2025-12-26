@@ -5,49 +5,433 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>الحملات الإعلانية - إبداع العرب</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles-premium.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="index.html">
-                <img src="images/logo.png" alt="إبداع" width="40" height="40" class="me-2">
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loader-content">
+            <div class="loader-logo">
+                <i data-lucide="sparkles"></i>
+            </div>
+            <div class="loader-text">إبداع</div>
+            <div class="loader-bar">
+                <div class="loader-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Premium Navigation -->
+    <nav class="premium-nav" id="premiumNav">
+        <div class="nav-container">
+            <a href="index-premium.html" class="nav-brand">
+                <div class="nav-logo">إ</div>
                 إبداع
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="فتح القائمة">
-                <span class="navbar-toggler-icon"></span>
+            
+            <ul class="nav-menu">
+                <li><a href="index-premium.html" class="nav-link">الرئيسية</a></li>
+                <li><a href="#services" class="nav-link">الخدمات</a></li>
+                <li><a href="#portfolio" class="nav-link">معرض الأعمال</a></li>
+                <li><a href="#about" class="nav-link">من نحن</a></li>
+                <li><a href="#contact" class="nav-link">تواصل معنا</a></li>
+                <li><a href="#contact" class="nav-cta">ابدأ مشروعك</a></li>
+            </ul>
+            
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">الرئيسية</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="photography-service.html">التصوير الفوتوغرافي</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="video-editing-service.html">المونتاج الاحترافي</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="designs-service.html">التصاميم الإبداعية</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="ecommerce-service.html">المتاجر الإلكترونية</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="advertising-service.html">الحملات الإعلانية</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="social-media-service.html">إدارة التواصل</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact">تواصل معنا</a>
-                    </li>
+        </div>
+    </nav>
+
+    <!-- Service Hero Section -->
+    <section class="premium-hero service-hero">
+        <div class="hero-particles"></div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <i data-lucide="megaphone"></i>
+                الحملات الإعلانية
+            </div>
+            <h1 class="hero-title">
+                حملات إعلانية <br>فعالة وموجهة
+            </h1>
+            <p class="hero-subtitle">
+                نصمم وندير حملات إعلانية احترافية على جميع المنصات الرقمية لزيادة الوعي والوصول لجمهورك المستهدف
+            </p>
+            <div class="hero-actions">
+                <a href="#contact" class="btn btn-primary">
+                    <i data-lucide="phone" class="btn-icon"></i>
+                    اطلب خدمة
+                </a>
+                <a href="#portfolio" class="btn btn-secondary">
+                    <i data-lucide="eye" class="btn-icon"></i>
+                    شاهد أعمالنا
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Details Section -->
+    <section class="services-section" id="services">
+        <div class="section-header" data-aos="fade-up">
+            <div class="section-badge">
+                <i data-lucide="star"></i>
+                مميزات خدمتنا
+            </div>
+            <h2 class="section-title">حملات إعلانية متكاملة</h2>
+            <p class="section-description">
+                نقدم حلول إعلانية شاملة مع استهداف دقيق وتحليل أداء لضمان أفضل النتائج
+            </p>
+        </div>
+
+        <div class="services-grid">
+            <!-- Google Ads -->
+            <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="service-icon">
+                    <i data-lucide="search"></i>
+                </div>
+                <h3 class="service-title">إعلانات جوجل</h3>
+                <p class="service-description">
+                    حملات إعلانية على جوجل للوصول للعملاء عند البحث عن خدمات ومنتجات مشابهة
+                </p>
+                <ul class="service-features">
+                    <li><i data-lucide="check-circle"></i> إعلانات البحث</li>
+                    <li><i data-lucide="check-circle"></i> إعلانات الشبكة</li>
+                    <li><i data-lucide="check-circle"></i> إعلانات التسوق</li>
+                    <li><i data-lucide="check-circle"></i> إعلانات الفيديو</li>
                 </ul>
+            </div>
+
+            <!-- Social Media Ads -->
+            <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="service-icon">
+                    <i data-lucide="share-2"></i>
+                </div>
+                <h3 class="service-title">إعلانات التواصل الاجتماعي</h3>
+                <p class="service-description">
+                    حملات موجهة على فيسبوك، انستغرام، تويتر، لينكدإن للوصول لجمهورك المستهدف
+                </p>
+                <ul class="service-features">
+                    <li><i data-lucide="check-circle"></i> فيسبوك و انستغرام</li>
+                    <li><i data-lucide="check-circle"></i> تويتر</li>
+                    <li><i data-lucide="check-circle"></i> لينكدإن</li>
+                    <li><i data-lucide="check-circle"></i> سناب شات</li>
+                </ul>
+            </div>
+
+            <!-- Targeting Strategy -->
+            <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="service-icon">
+                    <i data-lucide="target"></i>
+                </div>
+                <h3 class="service-title">استهداف دقيق</h3>
+                <p class="service-description">
+                    استراتيجيات استهداف متقدمة بناءً على الديموغرافيا، الاهتمامات، والسلوك
+                </p>
+                <ul class="service-features">
+                    <li><i data-lucide="check-circle"></i> استهداف ديموغرافي</li>
+                    <li><i data-lucide="check-circle"></i> استهداف بالاهتمامات</li>
+                    <li><i data-lucide="check-circle"></i> استهداف جغرافي</li>
+                    <li><i data-lucide="check-circle"></i> استعادة الجمهور</li>
+                </ul>
+            </div>
+
+            <!-- Creative Design -->
+            <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="service-icon">
+                    <i data-lucide="palette"></i>
+                </div>
+                <h3 class="service-title">تصميم إبداعي</h3>
+                <p class="service-description">
+                    تصميمات إعلانية جذابة ومؤثرة تجذب الانتباه وتزيد من نسبة النقر
+                </p>
+                <ul class="service-features">
+                    <li><i data-lucide="check-circle"></i> تصميم بانرات</li>
+                    <li><i data-lucide="check-circle"></i> فيديوهات إعلانية</li>
+                    <li><i data-lucide="check-circle"></i> صور منتجات</li>
+                    <li><i data-lucide="check-circle"></i> نسخة إعلانية</li>
+                </ul>
+            </div>
+
+            <!-- Analytics & Optimization -->
+            <div class="service-card" data-aos="fade-up" data-aos-delay="500">
+                <div class="service-icon">
+                    <i data-lucide="bar-chart"></i>
+                </div>
+                <h3 class="service-title">تحليل وتحسين</h3>
+                <p class="service-description">
+                    مراقبة مستمرة لأداء الحملات وتحسينها لتحقيق أفضل عائد على الاستثمار
+                </p>
+                <ul class="service-features">
+                    <li><i data-lucide="check-circle"></i> تقارير أداء</li>
+                    <li><i data-lucide="check-circle"></i> تحسين التكلفة</li>
+                    <li><i data-lucide="check-circle"></i> اختبار A/B</li>
+                    <li><i data-lucide="check-circle"></i> تحليل التحويلات</li>
+                </ul>
+            </div>
+
+            <!-- Budget Management -->
+            <div class="service-card" data-aos="fade-up" data-aos-delay="600">
+                <div class="service-icon">
+                    <i data-lucide="wallet"></i>
+                </div>
+                <h3 class="service-title">إدارة الميزانية</h3>
+                <p class="service-description">
+                    توزيع ذكي للميزانية على القنوات المختلفة لتحقيق أقصى استفادة من الإنفاق
+                </p>
+                <ul class="service-features">
+                    <li><i data-lucide="check-circle"></i> تخطيط الميزانية</li>
+                    <li><i data-lucide="check-circle"></i> مراقبة الإنفاق</li>
+                    <li><i data-lucide="check-circle"></i> تحسين التكلفة</li>
+                    <li><i data-lucide="check-circle"></i> عائد الاستثمار</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="services-section services-section-alt">
+        <div class="section-header" data-aos="fade-up">
+            <div class="section-badge">
+                <i data-lucide="zap"></i>
+                خطوات العمل
+            </div>
+            <h2 class="section-title">كيف نعمل معاً</h2>
+            <p class="section-description">
+                نتبع منهجية عمل منظمة لضمان نجاح حملاتك الإعلانية
+            </p>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-card" data-aos="fade-up">
+                <div class="service-icon">
+                    <i data-lucide="message-circle"></i>
+                </div>
+                <h3 class="service-title">الاستشارة والتخطيط</h3>
+                <p class="service-description">
+                    نبدأ بفهم أهدافك وتحليل جمهورك المستهدف لوضع استراتيجية إعلانية فعالة
+                </p>
+            </div>
+
+            <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="service-icon">
+                    <i data-lucide="target"></i>
+                </div>
+                <h3 class="service-title">تحديد الجمهور المستهدف</h3>
+                <p class="service-description">
+                    نحدد بدقة الجمهور المستهدف بناءً على الديموغرافيا والاهتمامات والسلوك
+                </p>
+            </div>
+
+            <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="service-icon">
+                    <i data-lucide="pen-tool"></i>
+                </div>
+                <h3 class="service-title">التصميم والإنتاج</h3>
+                <p class="service-description">
+                    نصمم وننتج المحتوى الإعلاني الجذاب من صور وفيديوهات ونسخ إعلانية مؤثرة
+                </p>
+            </div>
+
+            <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="service-icon">
+                    <i data-lucide="rocket"></i>
+                </div>
+                <h3 class="service-title">الإطلاق والمراقبة</h3>
+                <p class="service-description">
+                    نطلق الحملات ونراقب أداءها باستمرار مع تحسين مستمر لتحقيق أفضل النتائج
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="section-header" data-aos="fade-up">
+            <div class="section-badge">
+                <i data-lucide="mail"></i>
+                تواصل معنا
+            </div>
+            <h2 class="section-title">ابدأ حملتك الإعلانية اليوم</h2>
+            <p class="section-description">
+                تواصل معنا الآن لبدء حملتك الإعلانية الاحترافية
+            </p>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <form class="contact-form">
+                        <div class="mb-4">
+                            <label for="fullName" class="form-label">الاسم الكامل</label>
+                            <input type="text" class="form-control" id="fullName" placeholder="أدخل اسمك الكامل" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="email" class="form-label">البريد الإلكتروني</label>
+                            <input type="email" class="form-control" id="email" placeholder="أدخل بريدك الإلكتروني" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="phone" class="form-label">رقم الهاتف</label>
+                            <input type="tel" class="form-control" id="phone" placeholder="أدخل رقم هاتفك">
+                        </div>
+                        <div class="mb-4">
+                            <label for="budget" class="form-label">الميزانية التقريبية</label>
+                            <select class="form-select" id="budget">
+                                <option value="">اختر الميزانية</option>
+                                <option value="small">أقل من 5,000 ريال</option>
+                                <option value="medium">5,000 - 20,000 ريال</option>
+                                <option value="large">20,000 - 50,000 ريال</option>
+                                <option value="enterprise">أكثر من 50,000 ريال</option>
+                            </select>
+                        </div>
+                        <div class="mb-4">
+                            <label for="message" class="form-label">رسالتك</label>
+                            <textarea class="form-control" id="message" rows="5" placeholder="أخبرنا عن حملتك الإعلانية المطلوبة" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">
+                            <i data-lucide="send" class="btn-icon"></i>
+                            إرسال الرسالة
+                        </button>
+                    </form>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i data-lucide="map-pin"></i>
+                            </div>
+                            <div>
+                                <h4>العنوان</h4>
+                                <p>المملكة العربية السعودية، الرياض</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i data-lucide="phone"></i>
+                            </div>
+                            <div>
+                                <h4>الهاتف</h4>
+                                <p>+966 50 123 4567</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i data-lucide="mail"></i>
+                            </div>
+                            <div>
+                                <h4>البريد الإلكتروني</h4>
+                                <p>info@ebdaa.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-social">
+                            <h4>تابعنا على</h4>
+                            <div class="social-links">
+                                <a href="#" class="social-link" aria-label="فيسبوك">
+                                    <i data-lucide="facebook"></i>
+                                </a>
+                                <a href="#" class="social-link" aria-label="تويتر">
+                                    <i data-lucide="twitter"></i>
+                                </a>
+                                <a href="#" class="social-link" aria-label="انستغرام">
+                                    <i data-lucide="instagram"></i>
+                                </a>
+                                <a href="#" class="social-link" aria-label="لينكدإن">
+                                    <i data-lucide="linkedin"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-5">
+                    <div class="footer-brand">
+                        <div class="brand-logo">
+                            <i data-lucide="sparkles"></i>
+                        </div>
+                        <div class="brand-text">
+                            <h3>إبداع</h3>
+                        </div>
+                    </div>
+                    <p>
+                        وكالة إبداعية رقمية رائدة متخصصة في تحويل الأفكار إلى واقع رقمي مذهل من خلال حلول مبتكرة واحترافية
+                    </p>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-5">
+                    <h4>روابط سريعة</h4>
+                    <ul>
+                        <li><a href="index-premium.html">الرئيسية</a></li>
+                        <li><a href="#services">الخدمات</a></li>
+                        <li><a href="#portfolio">معرض الأعمال</a></li>
+                        <li><a href="#about">من نحن</a></li>
+                        <li><a href="#contact">تواصل معنا</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-5">
+                    <h4>خدماتنا</h4>
+                    <ul>
+                        <li><a href="#">التصوير الفوتوغرافي</a></li>
+                        <li><a href="#">المونتاج الاحترافي</a></li>
+                        <li><a href="#">إدارة التواصل الاجتماعي</a></li>
+                        <li><a href="#">الحملات الإعلانية</a></li>
+                        <li><a href="#">المتاجر الإلكترونية</a></li>
+                        <li><a href="#">التصميم المبتكر</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-5">
+                    <h4>تواصل معنا</h4>
+                    <div class="contact-info-item">
+                        <p><i data-lucide="map-pin"></i> الرياض، المملكة العربية السعودية</p>
+                    </div>
+                    <div class="contact-info-item">
+                        <p><i data-lucide="phone"></i> +966 50 123 4567</p>
+                    </div>
+                    <div class="contact-info-item">
+                        <p><i data-lucide="mail"></i> info@ebdaa.com</p>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="فيسبوك">
+                            <i data-lucide="facebook"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="تويتر">
+                            <i data-lucide="twitter"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="انستغرام">
+                            <i data-lucide="instagram"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="لينكدإن">
+                            <i data-lucide="linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-top">
+                <p>&copy; 2024 إبداع. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="scripts-premium.js"></script>
+</body>
+</html>
             </div>
         </div>
     </nav>

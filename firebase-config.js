@@ -1,14 +1,21 @@
-// Firebase Configuration - Real Project Settings
-const firebaseConfig = {
-    apiKey: "AIzaSyAZstjL3mmMmDDR4N-rQRu9EVG-Q6GP2nw",
-    authDomain: "ebdaa-shop.firebaseapp.com",
-    databaseURL: "https://ebdaa-shop-default-rtdb.firebaseio.com",
-    projectId: "ebdaa-shop",
-    storageBucket: "ebdaa-shop.firebasestorage.app",
-    messagingSenderId: "576023563750",
-    appId: "1:576023563750:web:9c9e00737632a68d37da27",
-    measurementId: "G-PGZ1MP4JPR"
-};
+// Supabase Configuration - Real Project Settings
+const SUPABASE_URL = 'https://vfewmbirxkobxsifuyck.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZmZXdtYmlyeGtvYnhzaWZ1eWNrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjY3NTk0NTMsImV4cCI6MjA4MjMzNTQ1M30.e7T7om_4G3R08tRJemx8LyLTsmfsP3oiC0uea3yN-5k';
+
+// Initialize Supabase with fallback to local authentication
+let supabase;
+let isSupabaseAvailable = false;
+
+try {
+    // Initialize Supabase
+    const { createClient } = window.supabase;
+    supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    isSupabaseAvailable = true;
+    console.log("Supabase initialized successfully");
+} catch (error) {
+    console.error("Supabase initialization failed:", error);
+    isSupabaseAvailable = false;
+}
 
 // Initialize Firebase with fallback to local authentication
 let auth, db, storage;
@@ -248,6 +255,9 @@ window.firebase = firebase;
 window.auth = auth;
 window.db = db;
 window.storage = storage;
+window.supabase = supabase;
 window.isFirebaseAuthAvailable = isFirebaseAuthAvailable;
+window.isSupabaseAvailable = isSupabaseAvailable;
 
 console.log(`Authentication system ready (${isFirebaseAuthAvailable ? 'Firebase' : 'Local'} mode)`);
+console.log(`Supabase integration ready (${isSupabaseAvailable ? 'Connected' : 'Fallback'} mode)`);

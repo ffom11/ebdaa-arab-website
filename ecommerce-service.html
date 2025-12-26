@@ -5,49 +5,434 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>المتاجر الإلكترونية - إبداع العرب</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles-premium.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="index.html">
-                <img src="images/logo.png" alt="إبداع" width="40" height="40" class="me-2">
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loader-content">
+            <div class="loader-logo">
+                <i data-lucide="sparkles"></i>
+            </div>
+            <div class="loader-text">إبداع</div>
+            <div class="loader-bar">
+                <div class="loader-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Premium Navigation -->
+    <nav class="premium-nav" id="premiumNav">
+        <div class="nav-container">
+            <a href="index-premium.html" class="nav-brand">
+                <div class="nav-logo">إ</div>
                 إبداع
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="فتح القائمة">
-                <span class="navbar-toggler-icon"></span>
+            
+            <ul class="nav-menu">
+                <li><a href="index-premium.html" class="nav-link">الرئيسية</a></li>
+                <li><a href="#services" class="nav-link">الخدمات</a></li>
+                <li><a href="#portfolio" class="nav-link">معرض الأعمال</a></li>
+                <li><a href="#about" class="nav-link">من نحن</a></li>
+                <li><a href="#contact" class="nav-link">تواصل معنا</a></li>
+                <li><a href="#contact" class="nav-cta">ابدأ مشروعك</a></li>
+            </ul>
+            
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">الرئيسية</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="photography-service.html">التصوير الفوتوغرافي</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="video-editing-service.html">المونتاج الاحترافي</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="designs-service.html">التصاميم الإبداعية</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="ecommerce-service.html">المتاجر الإلكترونية</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="advertising-service.html">الحملات الإعلانية</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="social-media-service.html">إدارة التواصل</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact">تواصل معنا</a>
-                    </li>
+        </div>
+    </nav>
+
+    <!-- Service Hero Section -->
+    <section class="premium-hero service-hero">
+        <div class="hero-particles"></div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <i data-lucide="shopping-cart"></i>
+                المتاجر الإلكترونية
+            </div>
+            <h1 class="hero-title">
+                نبني متجرك <br>الإلكتروني الاحترافي
+            </h1>
+            <p class="hero-subtitle">
+                ننشئ وندير متاجر إلكترونية احترافية بجميع الميزات المتقدمة، مع واجهات سهلة الاستخدام وتجربة تسوق ممتازة للعملاء
+            </p>
+            <div class="hero-actions">
+                <a href="#contact" class="btn btn-primary">
+                    <i data-lucide="phone" class="btn-icon"></i>
+                    اطلب خدمة
+                </a>
+                <a href="#portfolio" class="btn btn-secondary">
+                    <i data-lucide="eye" class="btn-icon"></i>
+                    شاهد أعمالنا
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Details Section -->
+    <section class="services-section" id="services">
+        <div class="section-header" data-aos="fade-up">
+            <div class="section-badge">
+                <i data-lucide="star"></i>
+                مميزات خدمتنا
+            </div>
+            <h2 class="section-title">متجر إلكتروني متكامل</h2>
+            <p class="section-description">
+                نقدم حلول متاجر إلكترونية شاملة مع جميع الميزات التي تحتاجها لنجاح عملك عبر الإنترنت
+            </p>
+        </div>
+
+        <div class="services-grid">
+            <!-- Platform Selection -->
+            <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="service-icon">
+                    <i data-lucide="layers"></i>
+                </div>
+                <h3 class="service-title">اختر منصتك المفضلة</h3>
+                <p class="service-description">
+                    نعمل على جميع المنصات المعروفة مثل Shopify, WooCommerce, Magento, وغيرها
+                </p>
+                <ul class="service-features">
+                    <li><i data-lucide="check-circle"></i> Shopify</li>
+                    <li><i data-lucide="check-circle"></i> WooCommerce</li>
+                    <li><i data-lucide="check-circle"></i> Magento</li>
+                    <li><i data-lucide="check-circle"></i> منصات مخصصة</li>
                 </ul>
+            </div>
+
+            <!-- Custom Design -->
+            <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="service-icon">
+                    <i data-lucide="palette"></i>
+                </div>
+                <h3 class="service-title">تصميم مخصص وجذاب</h3>
+                <p class="service-description">
+                    تصميم واجهة متجر فريدة تعكس هوية علامتك التجارية وتجذب العملاء
+                </p>
+                <ul class="service-features">
+                    <li><i data-lucide="check-circle"></i> تصميم متجاوب</li>
+                    <li><i data-lucide="check-circle"></i> هوية بصرية متميزة</li>
+                    <li><i data-lucide="check-circle"></i> تجربة مستخدم سلسة</li>
+                    <li><i data-lucide="check-circle"></i> تحسين محركات البحث</li>
+                </ul>
+            </div>
+
+            <!-- Payment Integration -->
+            <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="service-icon">
+                    <i data-lucide="credit-card"></i>
+                </div>
+                <h3 class="service-title">تكامل بوابات الدفع</h3>
+                <p class="service-description">
+                    ربط متجرك مع جميع بوابات الدفع المحلية والعالمية لتسهيل عملية الشراء
+                </p>
+                <ul class="service-features">
+                    <li><i data-lucide="check-circle"></i> مدى</li>
+                    <li><i data-lucide="check-circle"></i> STC Pay</li>
+                    <li><i data-lucide="check-circle"></i> PayPal</li>
+                    <li><i data-lucide="check-circle"></i> بطاقات الائتمان</li>
+                </ul>
+            </div>
+
+            <!-- Shipping Management -->
+            <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="service-icon">
+                    <i data-lucide="truck"></i>
+                </div>
+                <h3 class="service-title">إدارة الشحن والتوصيل</h3>
+                <p class="service-description">
+                    نظام متكامل لإدارة الشحن والتتبع مع شركات الشحن المحلية والعالمية
+                </p>
+                <ul class="service-features">
+                    <li><i data-lucide="check-circle"></i> حساب الشحن التلقائي</li>
+                    <li><i data-lucide="check-circle"></i> تتبع الطلبات</li>
+                    <li><i data-lucide="check-circle"></i> تكامل شركات الشحن</li>
+                    <li><i data-lucide="check-circle"></i> خيارات التوصيل</li>
+                </ul>
+            </div>
+
+            <!-- Inventory Management -->
+            <div class="service-card" data-aos="fade-up" data-aos-delay="500">
+                <div class="service-icon">
+                    <i data-lucide="package"></i>
+                </div>
+                <h3 class="service-title">إدارة المخزون</h3>
+                <p class="service-description">
+                    نظام متقدم لإدارة المخزون والمنتجات مع تنبيهات تلقائية عند نفاد المخزون
+                </p>
+                <ul class="service-features">
+                    <li><i data-lucide="check-circle"></i> تتبع المخزون</li>
+                    <li><i data-lucide="check-circle"></i> تنبيهات نفاد المخزون</li>
+                    <li><i data-lucide="check-circle"></i> إدارة المتغيرات</li>
+                    <li><i data-lucide="check-circle"></i> تقارير المخزون</li>
+                </ul>
+            </div>
+
+            <!-- Analytics & Reports -->
+            <div class="service-card" data-aos="fade-up" data-aos-delay="600">
+                <div class="service-icon">
+                    <i data-lucide="bar-chart"></i>
+                </div>
+                <h3 class="service-title">تحليلات وتقارير</h3>
+                <p class="service-description">
+                    لوحة تحكم متقدمة لمراقبة أداء المتجر وتحليل سلوك العملاء والمبيعات
+                </p>
+                <ul class="service-features">
+                    <li><i data-lucide="check-circle"></i> تقارير المبيعات</li>
+                    <li><i data-lucide="check-circle"></i> تحليل العملاء</li>
+                    <li><i data-lucide="check-circle"></i> تتبع التحويلات</li>
+                    <li><i data-lucide="check-circle"></i> رؤى الأداء</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="services-section services-section-alt">
+        <div class="section-header" data-aos="fade-up">
+            <div class="section-badge">
+                <i data-lucide="zap"></i>
+                خطوات العمل
+            </div>
+            <h2 class="section-title">كيف نعمل معاً</h2>
+            <p class="section-description">
+                نتبع منهجية عمل منظمة لضمان تحقيق أفضل النتائج لمتجرك الإلكتروني
+            </p>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-card" data-aos="fade-up">
+                <div class="service-icon">
+                    <i data-lucide="message-circle"></i>
+                </div>
+                <h3 class="service-title">الاستشارة والتخطيط</h3>
+                <p class="service-description">
+                    نبدأ بفهم احتياجاتك وتحليل متطلبات السوق لوضع خطة متكاملة لمتجرك
+                </p>
+            </div>
+
+            <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="service-icon">
+                    <i data-lucide="pen-tool"></i>
+                </div>
+                <h3 class="service-title">التصميم والتطوير</h3>
+                <p class="service-description">
+                    نقوم بتصميم وتطوير واجهة المتجر مع التركيز على تجربة المستخدم وسهولة الاستخدام
+                </p>
+            </div>
+
+            <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="service-icon">
+                    <i data-lucide="settings"></i>
+                </div>
+                <h3 class="service-title">الإعداد والتكامل</h3>
+                <p class="service-description">
+                    نربط المتجر مع بوابات الدفع وشركات الشحن ونضمن جميع الميزات الفنية تعمل بشكل مثالي
+                </p>
+            </div>
+
+            <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="service-icon">
+                    <i data-lucide="rocket"></i>
+                </div>
+                <h3 class="service-title">الإطلاق والدعم</h3>
+                <p class="service-description">
+                    نطلق المتجر ونقدم الدعم الفني المستمر لضمان استمرارية عمله بنجاح
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="section-header" data-aos="fade-up">
+            <div class="section-badge">
+                <i data-lucide="mail"></i>
+                تواصل معنا
+            </div>
+            <h2 class="section-title">ابدأ متجرك الإلكتروني اليوم</h2>
+            <p class="section-description">
+                تواصل معنا الآن لبدء مشروع متجرك الإلكتروني الاحترافي
+            </p>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <form class="contact-form">
+                        <div class="mb-4">
+                            <label for="fullName" class="form-label">الاسم الكامل</label>
+                            <input type="text" class="form-control" id="fullName" placeholder="أدخل اسمك الكامل" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="email" class="form-label">البريد الإلكتروني</label>
+                            <input type="email" class="form-control" id="email" placeholder="أدخل بريدك الإلكتروني" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="phone" class="form-label">رقم الهاتف</label>
+                            <input type="tel" class="form-control" id="phone" placeholder="أدخل رقم هاتفك">
+                        </div>
+                        <div class="mb-4">
+                            <label for="business" class="form-label">نوع النشاط التجاري</label>
+                            <select class="form-select" id="business">
+                                <option value="">اختر نوع النشاط</option>
+                                <option value="fashion">ملابس وأزياء</option>
+                                <option value="electronics">إلكترونيات</option>
+                                <option value="food">أطعمة ومشروبات</option>
+                                <option value="health">صحة وجمال</option>
+                                <option value="other">أخرى</option>
+                            </select>
+                        </div>
+                        <div class="mb-4">
+                            <label for="message" class="form-label">رسالتك</label>
+                            <textarea class="form-control" id="message" rows="5" placeholder="أخبرنا عن متجرك المطلوب" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">
+                            <i data-lucide="send" class="btn-icon"></i>
+                            إرسال الرسالة
+                        </button>
+                    </form>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i data-lucide="map-pin"></i>
+                            </div>
+                            <div>
+                                <h4>العنوان</h4>
+                                <p>المملكة العربية السعودية، الرياض</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i data-lucide="phone"></i>
+                            </div>
+                            <div>
+                                <h4>الهاتف</h4>
+                                <p>+966 50 123 4567</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i data-lucide="mail"></i>
+                            </div>
+                            <div>
+                                <h4>البريد الإلكتروني</h4>
+                                <p>info@ebdaa.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-social">
+                            <h4>تابعنا على</h4>
+                            <div class="social-links">
+                                <a href="#" class="social-link" aria-label="فيسبوك">
+                                    <i data-lucide="facebook"></i>
+                                </a>
+                                <a href="#" class="social-link" aria-label="تويتر">
+                                    <i data-lucide="twitter"></i>
+                                </a>
+                                <a href="#" class="social-link" aria-label="انستغرام">
+                                    <i data-lucide="instagram"></i>
+                                </a>
+                                <a href="#" class="social-link" aria-label="لينكدإن">
+                                    <i data-lucide="linkedin"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-5">
+                    <div class="footer-brand">
+                        <div class="brand-logo">
+                            <i data-lucide="sparkles"></i>
+                        </div>
+                        <div class="brand-text">
+                            <h3>إبداع</h3>
+                        </div>
+                    </div>
+                    <p>
+                        وكالة إبداعية رقمية رائدة متخصصة في تحويل الأفكار إلى واقع رقمي مذهل من خلال حلول مبتكرة واحترافية
+                    </p>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-5">
+                    <h4>روابط سريعة</h4>
+                    <ul>
+                        <li><a href="index-premium.html">الرئيسية</a></li>
+                        <li><a href="#services">الخدمات</a></li>
+                        <li><a href="#portfolio">معرض الأعمال</a></li>
+                        <li><a href="#about">من نحن</a></li>
+                        <li><a href="#contact">تواصل معنا</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-5">
+                    <h4>خدماتنا</h4>
+                    <ul>
+                        <li><a href="#">التصوير الفوتوغرافي</a></li>
+                        <li><a href="#">المونتاج الاحترافي</a></li>
+                        <li><a href="#">إدارة التواصل الاجتماعي</a></li>
+                        <li><a href="#">الحملات الإعلانية</a></li>
+                        <li><a href="#">المتاجر الإلكترونية</a></li>
+                        <li><a href="#">التصميم المبتكر</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-5">
+                    <h4>تواصل معنا</h4>
+                    <div class="contact-info-item">
+                        <p><i data-lucide="map-pin"></i> الرياض، المملكة العربية السعودية</p>
+                    </div>
+                    <div class="contact-info-item">
+                        <p><i data-lucide="phone"></i> +966 50 123 4567</p>
+                    </div>
+                    <div class="contact-info-item">
+                        <p><i data-lucide="mail"></i> info@ebdaa.com</p>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="فيسبوك">
+                            <i data-lucide="facebook"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="تويتر">
+                            <i data-lucide="twitter"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="انستغرام">
+                            <i data-lucide="instagram"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="لينكدإن">
+                            <i data-lucide="linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-top">
+                <p>&copy; 2024 إبداع. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="scripts-premium.js"></script>
+</body>
+</html>
             </div>
         </div>
     </nav>

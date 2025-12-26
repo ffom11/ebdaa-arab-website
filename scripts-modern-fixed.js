@@ -1,5 +1,21 @@
 // Modern JavaScript for إبداع العرب Website
 
+// Initialize Lucide Icons
+document.addEventListener('DOMContentLoaded', function() {
+    if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+    }
+    
+    // Initialize AOS
+    if (typeof AOS !== 'undefined') {
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+    }
+});
+
 // ===== Loading Screen =====
 window.addEventListener('load', function() {
     setTimeout(function() {
@@ -259,10 +275,10 @@ if (filterBtns.length > 0) {
     });
 }
 
-// ===== Form Validation =====
+// ===== Form Submission with Supabase =====
 const contactForm = document.querySelector('.modern-form');
 if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
+    contactForm.addEventListener('submit', async function(e) {
         e.preventDefault();
         
         // Basic form validation
@@ -279,9 +295,44 @@ if (contactForm) {
         });
         
         if (isValid) {
-            // Show success message
-            showNotification('تم إرسال رسالتك بنجاح! سنتواصل معك قريباً.', 'success');
-            this.reset();
+            try {
+                // Get form data
+                const formData = {
+                    name: this.querySelector('input[type="text"]').value,
+                    email: this.querySelector('input[type="email"]').value,
+                    phone: this.querySelector('input[type="tel"]').value,
+                    service: this.querySelector('select').value,
+                    message: this.querySelector('textarea').value,
+                    created_at: new Date().toISOString()
+                };
+                
+                // Check if Supabase is available
+                if (window.supabase && window.isSupabaseAvailable) {
+                    // Submit to Supabase
+                    const { data, error } = await window.supabase
+                        .from('contacts')
+                        .insert([formData]);
+                    
+                    if (error) throw error;
+                    
+                    // Show success message
+                    showNotification('تم إرسال رسالتك بنجاح! سنتواصل معك قريباً.', 'success');
+                    this.reset();
+                } else {
+                    // Fallback to local storage
+                    console.log('Supabase not available, using local storage fallback');
+                    const contacts = JSON.parse(localStorage.getItem('contacts') || '[]');
+                    contacts.push({ ...formData, id: Date.now().toString() });
+                    localStorage.setItem('contacts', JSON.stringify(contacts));
+                    
+                    showNotification('تم حفظ رسالتك محلياً. سنتواصل معك قريباً.', 'success');
+                    this.reset();
+                }
+                
+            } catch (error) {
+                console.error('Error submitting form:', error);
+                showNotification('حدث خطأ أثناء إرسال الرسالة. يرجى المحاولة مرة أخرى.', 'error');
+            }
         } else {
             showNotification('يرجى ملء جميع الحقول المطلوبة.', 'error');
         }
