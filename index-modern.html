@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إبداع - خدمات التصوير والمونتاج والإعلان</title>
+    <meta name="description" content="متخصصون في التصوير الفوتوغرافي، المونتاج الاحترافي، إدارة مواقع التواصل الاجتماعي، الحملات الإعلانية، المتاجر الإلكترونية، والتصاميم المبتكرة">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+    <!-- Google Fonts - Modern Arabic Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles-modern.css">
+</head>
+<body class="modern-design">
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loader-content">
+            <div class="logo-loader">
+                <img src="images/logo.jpg" alt="إبداع">
+            </div>
+            <div class="loader-text">
+                <span class="letter">إ</span>
+                <span class="letter">ب</span>
+                <span class="letter">د</span>
+                <span class="letter">ا</span>
+                <span class="letter">ع</span>
+            </div>
+            <div class="loader-bar">
+                <div class="progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modern Navigation -->
+    <nav class="modern-navbar" id="modernNav">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="#home" class="brand-link">
+                    <div class="brand-logo">
+                        <img src="images/logo.jpg" alt="إبداع">
+                        <div class="brand-text">
+                            <span class="brand-name">إبداع</span>
+                            <span class="brand-tagline">Creative Excellence</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="nav-menu">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="#home" class="nav-link active">
+                            <span class="nav-text">الرئيسية</span>
+                            <span class="nav-indicator"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#services" class="nav-link">
+                            <span class="nav-text">الخدمات</span>
+                            <span class="nav-indicator"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#portfolio" class="nav-link">
+                            <span class="nav-text">معرض الأعمال</span>
+                            <span class="nav-indicator"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#about" class="nav-link">
+                            <span class="nav-text">من نحن</span>
+                            <span class="nav-indicator"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#contact" class="nav-link">
+                            <span class="nav-text">تواصل معنا</span>
+                            <span class="nav-indicator"></span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="nav-actions">
+                <button class="nav-toggle" id="navToggle">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Modern Hero Section -->
+    <section class="modern-hero" id="home">
+        <div class="hero-background">
+            <div class="gradient-overlay"></div>
+            <div class="particle-container" id="particles"></div>
+            <div class="floating-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+                <div class="shape shape-4"></div>
+            </div>
+        </div>
+        
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge" data-aos="fade-down" data-aos-delay="200">
+                    <span class="badge-icon">
+                        <i class="fas fa-star"></i>
+                    </span>
+                    <span class="badge-text">خدمات إبداعية متكاملة</span>
+                </div>
+                
+                <h1 class="hero-title" data-aos="fade-up" data-aos-delay="300">
+                    <span class="title-line">
+                        <span class="word">نحول</span>
+                        <span class="word">أفكارك</span>
+                    </span>
+                    <span class="title-line">
+                        <span class="word">إلى</span>
+                        <span class="word highlight">واقع</span>
+                        <span class="word">إبداعي</span>
+                    </span>
+                </h1>
+                
+                <p class="hero-description" data-aos="fade-up" data-aos-delay="400">
+                    متخصصون في تقديم حلول رقمية متكاملة من التصوير الفوتوغرافي، المونتاج الاحترافي،
+                    إدارة التواصل الاجتماعي، الحملات الإعلانية، المتاجر الإلكترونية، والتصاميم المبتكرة
+                </p>
+                
+                <div class="hero-actions" data-aos="fade-up" data-aos-delay="500">
+                    <a href="#services" class="btn-modern btn-primary">
+                        <span class="btn-content">
+                            <span class="btn-text">اكتشف خدماتنا</span>
+                            <i class="fas fa-arrow-left"></i>
+                        </span>
+                        <div class="btn-bg"></div>
+                    </a>
+                    <a href="#contact" class="btn-modern btn-outline">
+                        <span class="btn-content">
+                            <span class="btn-text">تواصل معنا</span>
+                            <i class="fas fa-phone"></i>
+                        </span>
+                        <div class="btn-bg"></div>
+                    </a>
+                </div>
+                
+                <div class="hero-stats" data-aos="fade-up" data-aos-delay="600">
+                    <div class="stat-item">
+                        <div class="stat-number">
+                            <span class="counter" data-target="500">0</span>+
+                        </div>
+                        <div class="stat-label">مشروع مكتمل</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">
+                            <span class="counter" data-target="10">0</span>+
+                        </div>
+                        <div class="stat-label">سنوات خبرة</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">
+                            <span class="counter" data-target="98">0</span>%
+                        </div>
+                        <div class="stat-label">رضا العملاء</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero-visual" data-aos="fade-left" data-aos-delay="400">
+                <div class="hero-showcase">
+                    <div class="showcase-container">
+                        <div class="swiper heroSwiper">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="showcase-item">
+                                        <div class="showcase-icon">
+                                            <i class="fas fa-camera"></i>
+                                        </div>
+                                        <h4>التصوير الفوتوغرافي</h4>
+                                        <p>تصوير احترافي بأحدث التقنيات</p>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="showcase-item">
+                                        <div class="showcase-icon">
+                                            <i class="fas fa-video"></i>
+                                        </div>
+                                        <h4>المونتاج الاحترافي</h4>
+                                        <p>تحرير ومونتاج فيديوهات مذهلة</p>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="showcase-item">
+                                        <div class="showcase-icon">
+                                            <i class="fas fa-palette"></i>
+                                        </div>
+                                        <h4>التصاميم الإبداعية</h4>
+                                        <p>تصاميم جرافيكية مبتكرة</p>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="showcase-item">
+                                        <div class="showcase-icon">
+                                            <i class="fas fa-store"></i>
+                                        </div>
+                                        <h4>المتاجر الإلكترونية</h4>
+                                        <p>متاجر احترافية متكاملة</p>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="showcase-item">
+                                        <div class="showcase-icon">
+                                            <i class="fas fa-bullhorn"></i>
+                                        </div>
+                                        <h4>الحملات الإعلانية</h4>
+                                        <p>حملات إعلانية فعالة</p>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="showcase-item">
+                                        <div class="showcase-icon">
+                                            <i class="fas fa-users"></i>
+                                        </div>
+                                        <h4>إدارة التواصل</h4>
+                                        <p>إدارة حسابات التواصل الاجتماعي</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-pagination"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="scroll-indicator">
+            <div class="scroll-text">
+                <span>اسحب للاستكشاف</span>
+            </div>
+            <div class="scroll-arrow">
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modern Services Section -->
+    <section class="modern-services" id="services">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-badge" data-aos="fade-up">
+                    <span class="badge-icon">
+                        <i class="fas fa-rocket"></i>
+                    </span>
+                    <span class="badge-text">خدماتنا</span>
+                </div>
+                
+                <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">
+                    <span class="title-line">خدماتنا</span>
+                    <span class="title-line">المتخصصة</span>
+                </h2>
+                
+                <p class="section-description" data-aos="fade-up" data-aos-delay="200">
+                    نقدم مجموعة متكاملة من الخدمات الإبداعية لتلبية جميع احتياجاتك الرقمية
+                </p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card-background">
+                        <div class="card-gradient"></div>
+                        <div class="card-pattern"></div>
+                    </div>
+                    <div class="card-content">
+                        <div class="service-icon">
+                            <div class="icon-wrapper">
+                                <i class="fas fa-camera"></i>
+                            </div>
+                        </div>
+                        <h3 class="service-title">التصوير الفوتوغرافي</h3>
+                        <p class="service-description">تصوير احترافي للمنتجات، البورتريه، والفعاليات بأحدث التقنيات والمعدات</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> تصوير Studio احترافي</li>
+                            <li><i class="fas fa-check"></i> معالجة وتحرير الصور</li>
+                            <li><i class="fas fa-check"></i> خلفيات متعددة</li>
+                        </ul>
+                        <a href="photography-service.html" class="service-link">
+                            <span>تفاصيل الخدمة</span>
+                            <i class="fas fa-arrow-left"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card-background">
+                        <div class="card-gradient"></div>
+                        <div class="card-pattern"></div>
+                    </div>
+                    <div class="card-content">
+                        <div class="service-icon">
+                            <div class="icon-wrapper">
+                                <i class="fas fa-video"></i>
+                            </div>
+                        </div>
+                        <h3 class="service-title">المونتاج الاحترافي</h3>
+                        <p class="service-description">تحرير ومونتاج فيديوهات احترافية مع مؤثرات بصرية ومزج صوتي</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> قص ودمج احترافي</li>
+                            <li><i class="fas fa-check"></i> مؤثرات بصرية</li>
+                            <li><i class="fas fa-check"></i> مزج صوتي</li>
+                        </ul>
+                        <a href="video-editing-service.html" class="service-link">
+                            <span>تفاصيل الخدمة</span>
+                            <i class="fas fa-arrow-left"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card-background">
+                        <div class="card-gradient"></div>
+                        <div class="card-pattern"></div>
+                    </div>
+                    <div class="card-content">
+                        <div class="service-icon">
+                            <div class="icon-wrapper">
+                                <i class="fas fa-palette"></i>
+                            </div>
+                        </div>
+                        <h3 class="service-title">التصاميم الإبداعية</h3>
+                        <p class="service-description">تصاميم جرافيكية مبتكرة للهوية البصرية والإعلانات والمواد التسويقية</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> هوية بصرية متكاملة</li>
+                            <li><i class="fas fa-check"></i> تصميمات إعلانية</li>
+                            <li><i class="fas fa-check"></i> مواد تسويقية</li>
+                        </ul>
+                        <a href="designs-service.html" class="service-link">
+                            <span>تفاصيل الخدمة</span>
+                            <i class="fas fa-arrow-left"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="card-background">
+                        <div class="card-gradient"></div>
+                        <div class="card-pattern"></div>
+                    </div>
+                    <div class="card-content">
+                        <div class="service-icon">
+                            <div class="icon-wrapper">
+                                <i class="fas fa-store"></i>
+                            </div>
+                        </div>
+                        <h3 class="service-title">المتاجر الإلكترونية</h3>
+                        <p class="service-description">إنشاء وتطوير متاجر إلكترونية احترافية بجميع الميزات المتقدمة</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> تصميم متجاوب</li>
+                            <li><i class="fas fa-check"></i> بوابات دفع آمنة</li>
+                            <li><i class="fas fa-check"></i> تحليلات متقدمة</li>
+                        </ul>
+                        <a href="ecommerce-service.html" class="service-link">
+                            <span>تفاصيل الخدمة</span>
+                            <i class="fas fa-arrow-left"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="service-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="card-background">
+                        <div class="card-gradient"></div>
+                        <div class="card-pattern"></div>
+                    </div>
+                    <div class="card-content">
+                        <div class="service-icon">
+                            <div class="icon-wrapper">
+                                <i class="fas fa-bullhorn"></i>
+                            </div>
+                        </div>
+                        <h3 class="service-title">الحملات الإعلانية</h3>
+                        <p class="service-description">حملات إعلانية فعالة وموجهة لزيادة الوعي والمبيعات</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> إعلانات جوجل</li>
+                            <li><i class="fas fa-check"></i> إعلانات فيسبوك</li>
+                            <li><i class="fas fa-check"></i> استهداف دقيق</li>
+                        </ul>
+                        <a href="advertising-service.html" class="service-link">
+                            <span>تفاصيل الخدمة</span>
+                            <i class="fas fa-arrow-left"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="service-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="card-background">
+                        <div class="card-gradient"></div>
+                        <div class="card-pattern"></div>
+                    </div>
+                    <div class="card-content">
+                        <div class="service-icon">
+                            <div class="icon-wrapper">
+                                <i class="fas fa-users"></i>
+                            </div>
+                        </div>
+                        <h3 class="service-title">إدارة التواصل</h3>
+                        <p class="service-description">إدارة احترافية لحسابات التواصل الاجتماعي ومحتوى مبتكر</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> إدارة الحسابات</li>
+                            <li><i class="fas fa-check"></i> إنشاء محتوى</li>
+                            <li><i class="fas fa-check"></i> تحليل الأداء</li>
+                        </ul>
+                        <a href="social-media-service.html" class="service-link">
+                            <span>تفاصيل الخدمة</span>
+                            <i class="fas fa-arrow-left"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modern Portfolio Section -->
+    <section class="modern-portfolio" id="portfolio">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-badge" data-aos="fade-up">
+                    <span class="badge-icon">
+                        <i class="fas fa-images"></i>
+                    </span>
+                    <span class="badge-text">معرض أعمالنا</span>
+                </div>
+                
+                <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">
+                    <span class="title-line">أحدث</span>
+                    <span class="title-line">أعمالنا</span>
+                </h2>
+                
+                <p class="section-description" data-aos="fade-up" data-aos-delay="200">
+                    شاهد إبداعاتنا في مختلف المجالات والخدمات التي نقدمها
+                </p>
+            </div>
+            
+            <div class="portfolio-filter" data-aos="fade-up" data-aos-delay="300">
+                <button class="filter-btn active" data-filter="all">الكل</button>
+                <button class="filter-btn" data-filter="photography">تصوير</button>
+                <button class="filter-btn" data-filter="video">فيديو</button>
+                <button class="filter-btn" data-filter="design">تصميم</button>
+                <button class="filter-btn" data-filter="ecommerce">متاجر</button>
+            </div>
+            
+            <div class="portfolio-grid" data-aos="fade-up" data-aos-delay="400">
+                <div class="portfolio-item" data-category="photography">
+                    <div class="portfolio-image">
+                        <img src="images/portfolio-1.jpg" alt="تصوير فوتوغرافي">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-content">
+                                <h4>تصوير منتجات تجارية</h4>
+                                <p>تصوير احترافي لمنتجات متجر إلكتروني</p>
+                                <a href="#" class="portfolio-link">
+                                    <span>عرض المشروع</span>
+                                    <i class="fas fa-arrow-left"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-category="video">
+                    <div class="portfolio-image">
+                        <img src="images/portfolio-2.jpg" alt="مونتاج فيديو">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-content">
+                                <h4>فيديو إعلاني احترافي</h4>
+                                <p>إنتاج فيديو إعلاني للعلامات التجارية</p>
+                                <a href="#" class="portfolio-link">
+                                    <span>عرض المشروع</span>
+                                    <i class="fas fa-arrow-left"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-category="design">
+                    <div class="portfolio-image">
+                        <img src="images/portfolio-3.jpg" alt="تصميم جرافيك">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-content">
+                                <h4>هوية بصرية متكاملة ​​</h4>
+                                <p>تصميم هوية بصرية كاملةprinter للشركات الناشئة</p>
+                                <a href="#" class="portfolio-link">
+                                    <span>عرض المشروع</span>
+                                    <i class="fas fa-arrow-left"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-category="ecommerce">
+                    <div class="portfolio-image">
+                        <img src="images/portfolio-4.jpg" alt="متجر إلكتروني">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-content">
+                                <h4>متجر إلكتروني احترافي</h4>
+                                <p>إنشاء متجر إلكتروني متكامل</p>
+                                <a href="#" class="portfolio-link">
+                                    <span>عرض المشروع</span>
+                                    <i class="fas fa-arrow-left"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modern About Section -->
+    <section class="modern-about" id="about">
+        <div class="section-container">
+            <div class="about-content">
+                <div class="about-text" data-aos="fade-right">
+                    <div class="section-badge">
+                        <span class="badge-icon">
+                            <i class="fas fa-info-circle"></i>
+                        </span>
+                        <span class="badge-text">من نحن</span>
+                    </div>
+                    
+                    <h2 class="section-title">
+                        <span class="title-line">فريق من</span>
+                        <span class="title-line">المحترفين</span>
+                    </h2>
+                    
+                    <p class="section-description">
+                        نحن فريق من المبدعين والمحترفين المتخصصين في تقديم حلول رقمية متكاملة. 
+                        نعمل بجد لتحويل رؤية عملائنا إلى واقع ملموس من خلال الخدمات عالية الجودة 
+                        التي نقدمها في مختلف المجالات الرقمية.
+                    </p>
+                    
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <div class="stat-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="stat-content">
+                                <div class="stat-number">15+</div>
+                                <div class="stat-label">عضو في الفريق</div>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-item">
+                            <div class="stat-icon">
+                                <i class="fas fa-project-diagram"></i>
+                            </div>
+                            <div class="stat-content">
+                                <div class="stat-number">500+</div>
+                                <div class="stat-label">مشروع مكتمل</div>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-item">
+                            <div class="stat-icon">
+                                <i class="fas fa-award"></i>
+                            </div>
+                            <div class="stat-content">
+                                <div class="stat-number">25+</div>
+                                <div class="stat-label">جائزة وشهادة</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="about-cta">
+                        <a href="#contact" class="btn-modern btn-primary">
+                            <span class="btn-content">
+                                <span class="btn-text">تواصل معنا</span>
+                                <i class="fas fa-phone"></i>
+                            </span>
+                            <div class="btn-bg"></div>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="about-visual" data-aos="fade-left">
+                    <div class="about-image">
+                        <img src="images/about-image.jpg" alt="فريق إبداع">
+                        <div class="image-overlay"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modern Contact Section -->
+    <section class="modern-contact" id="contact">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-badge" data-aos="fade-up">
+                    <span class="badge-icon">
+                        <i class="fas fa-envelope"></i>
+                    </span>
+                    <span class="badge-text">تواصل معنا</span>
+                </div>
+                
+                <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">
+                    <span class="title-line">لنتواصل</span>
+                    <span class="title-line">معاً</span>
+                </h2>
+                
+                <p class="section-description" data-aos="fade-up" data-aos-delay="200">
+                    نحن هنا لمساعدتك في تحقيق أهدافك الرقمية
+                </p>
+            </div>
+            
+            <div class="contact-content">
+                <div class="contact-form" data-aos="fade-right" data-aos-delay="300">
+                    <form class="modern-form">
+                        <div class="form-group">
+                            <input type="text" class="form-input" placeholder="الاسم الكامل" required>
+                            <label class="form-label">الاسم الكامل</label>
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="email" class="form-input" placeholder="البريد الإلكتروني" required>
+                            <label class="form-label">البريد الإلكتروني</label>
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="tel" class="form-input" placeholder="رقم الهاتف" required>
+                            <label class="form-label">رقم الهاتف</label>
+                        </div>
+                        
+                        <div class="form-group">
+                            <select class="form-input" required>
+                                <option value="">اختر الخدمة</option>
+                                <option value="photography">التصوير الفوتوغرافي</option>
+                                <option value="video">المونتاج الاحترافي</option>
+                                <option value="design">التصاميم الإبداعية</option>
+                                <option value="ecommerce">المتاجر الإلكترونية</option>
+                                <option value="advertising">الحملات الإعلانية</option>
+                                <option value="social">إدارة التواصل</option>
+                            </select>
+                            <label class="form-label">الخدمة المطلوبة</label>
+                        </div>
+                        
+                        <div class="form-group">
+                            <textarea class="form-input" rows="5" placeholder="رسالتك" required></textarea>
+                            <label class="form-label">رسالتك</label>
+                        </div>
+                        
+                        <button type="submit" class="btn-modern btn-primary btn-full">
+                            <span class="btn-content">
+                                <span class="btn-text">إرسال الرسالة</span>
+                                <i class="fas fa-paper-plane"></i>
+                            </span>
+                            <div class="btn-bg"></div>
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="contact-info" data-aos="fade-left" data-aos-delay="400">
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="info-content">
+                            <h4>الهاتف</ invested>
+                            <p> Leap 056 616 6251</p>
+                        </divelib>
+                    </div>
+                    
+                    <div class="info-card">
+                        <div魔 <div class="info-icon">
+
+                            Arist <i/ext i class="fas fa-whatsapp shredder"></architect</i>
+                        </div>
+                        <div class="info-content">
+                            <h4>WhatsApp</h4>
+                            <öh <p>056 616 6251</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="info-content">
+                            <h4>البريد الإلكتروني</h4>
+                            <p>info@ebdaa.shop</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="info-content">
+                            <h4>ساعات العمل</h4>
+                            <p>الأحد - الخميس: 9:00 ص - 6:00 م</p>
+                            <p>الجمعة - السبت: 10:00 ص - 4:00 م</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modern Footer -->
+    <footer class="modern-footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="brand-logo">
+                        <img src="images/logo.jpg" alt="إبداع">
+                    </div>
+                    <h3>إبداع</h3>
+                    <p>متخصصون في تقديم الحلول الإبداعية والمتطورة لعملائنا</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>روابط سريعة</h4>
+                    <ul>
+                        <li><a href="#home">الرئيسية</a></li>
+                        <li><a href="#services">الخدمات</a></li>
+                        <li><a href="#portfolio">معرض الأعمال</a></li>
+                        <li><a href="#about">من نحن</a></li>
+                        <li><a href="#contact">تواصل معنا</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-services">
+                    <h4>خدماتنا</h4>
+                    <ul>
+                        <li><a href="photography-service.html">التصوير الفوتوغرافي</a></li>
+                        <li><a href="video-editing-service.html">المونتاج الاحترافي</a></li>
+                        <li><a href="designs-service.html">التصاميم الإبداعية</a></li>
+                        <li><a href="ecommerce-service.html">المتاجر الإلكترونية</a></li>
+                        <li><a href="advertising-service.html">الحملات الإعلانية</a></li>
+                        <li><a href="social-media-service.html">إدارة التواصل</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4>تواصل معنا</h4>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>056 616 6251</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <span>056 616 6251</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>info@ebdaa.shop</span>
+                    </div>
+                    
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 إبداع العرب. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script src="scripts-modern-fixed.js"></script>
+</body>
+</html>
