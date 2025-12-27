@@ -370,16 +370,18 @@ p {
     gap: var(--space-2);
     padding: var(--space-4) var(--space-8);
     font-family: var(--font-primary);
-    font-weight: 600;
+    font-weight: 700;
     font-size: 1rem;
     line-height: 1;
     border: none;
-    border-radius: var(--radius-xl);
+    border-radius: var(--radius-2xl);
     cursor: pointer;
     text-decoration: none;
     transition: all var(--transition-normal);
     position: relative;
     overflow: hidden;
+    backdrop-filter: blur(10px);
+    letter-spacing: 0.5px;
 }
 
 .btn::before {
@@ -389,7 +391,7 @@ p {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
     transition: left var(--transition-slow);
 }
 
@@ -400,25 +402,27 @@ p {
 .btn-primary {
     background: var(--gradient-primary);
     color: var(--white);
-    box-shadow: var(--shadow-lg);
+    box-shadow: 0 8px 32px rgba(37, 99, 235, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .btn-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-2xl), var(--shadow-glow-strong);
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 12px 40px rgba(37, 99, 235, 0.4), 0 0 0 1px rgba(37, 99, 235, 0.2);
 }
 
 .btn-secondary {
-    background: transparent;
+    background: rgba(255, 255, 255, 0.1);
     color: var(--white);
-    border: 2px solid var(--gray-400);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(20px);
 }
 
 .btn-secondary:hover {
-    background: var(--white);
-    color: var(--primary);
-    border-color: var(--white);
-    transform: translateY(-3px);
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.3);
 }
 
 .btn-icon {
@@ -587,26 +591,181 @@ p {
     transform: translateX(-4px);
 }
 
-/* ===== Animations ===== */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+/* ===== Enhanced Icon Styles ===== */
+.fas, .fab, .far {
+    transition: all var(--transition-normal);
 }
 
-@keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
+.fas:hover, .fab:hover, .far:hover {
+    transform: scale(1.1);
 }
 
-@keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.7; }
+/* Icon containers with enhanced effects */
+.icon-container {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    border-radius: var(--radius-2xl);
+    background: var(--gradient-primary);
+    color: var(--white);
+    transition: all var(--transition-normal);
+    position: relative;
+    overflow: hidden;
+}
+
+.icon-container::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transform: rotate(45deg);
+    transition: all 0.6s;
+    opacity: 0;
+}
+
+.icon-container:hover::before {
+    opacity: 1;
+    top: -100%;
+    left: -100%;
+}
+
+.icon-container:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 12px 40px rgba(37, 99, 235, 0.3);
+}
+
+.icon-container i {
+    font-size: 1.5rem;
+    z-index: 1;
+    position: relative;
+}
+
+/* Social icons with special effects */
+.social-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: var(--radius-full);
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--gray-600);
+    transition: all var(--transition-normal);
+    border: 2px solid transparent;
+    backdrop-filter: blur(10px);
+}
+
+.social-icon:hover {
+    transform: translateY(-4px) rotate(5deg);
+    border-color: var(--accent);
+    color: var(--accent);
+    box-shadow: 0 8px 32px rgba(37, 99, 235, 0.2);
+}
+
+.social-icon.instagram:hover {
+    background: linear-gradient(45deg, #F58529, #DD2A7B, #8134AF, #515BD4);
+    color: var(--white);
+}
+
+.social-icon.facebook:hover {
+    background: #1877F2;
+    color: var(--white);
+}
+
+.social-icon.twitter:hover {
+    background: #1DA1F2;
+    color: var(--white);
+}
+
+.social-icon.linkedin:hover {
+    background: #0077B5;
+    color: var(--white);
+}
+
+/* Service icons with glow effect */
+.service-icon-enhanced {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    border-radius: var(--radius-2xl);
+    background: var(--gradient-primary);
+    color: var(--white);
+    font-size: 1.8rem;
+    position: relative;
+    transition: all var(--transition-normal);
+    box-shadow: 0 4px 20px rgba(37, 99, 235, 0.2);
+}
+
+.service-icon-enhanced::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: var(--radius-2xl);
+    background: var(--gradient-primary);
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+    z-index: -1;
+}
+
+.service-icon-enhanced:hover {
+    transform: translateY(-6px) scale(1.1);
+    box-shadow: 0 12px 40px rgba(37, 99, 235, 0.4);
+}
+
+.service-icon-enhanced:hover::after {
+    opacity: 0.3;
+}
+
+/* Button icons with animation */
+.btn-icon-enhanced {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    transition: all var(--transition-normal);
+}
+
+.btn:hover .btn-icon-enhanced {
+    transform: translateX(-3px) rotate(-5deg);
+}
+
+/* Navigation icons */
+.nav-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    color: var(--gray-600);
+    transition: all var(--transition-fast);
+}
+
+.nav-link:hover .nav-icon {
+    color: var(--accent);
+    transform: scale(1.1);
+}
+
+/* Floating animation for icons */
+@keyframes iconFloat {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    25% { transform: translateY(-3px) rotate(2deg); }
+    50% { transform: translateY(-5px) rotate(0deg); }
+    75% { transform: translateY(-3px) rotate(-2deg); }
+}
+
+.icon-float {
+    animation: iconFloat 3s ease-in-out infinite;
 }
 
 /* ===== Responsive Design ===== */
