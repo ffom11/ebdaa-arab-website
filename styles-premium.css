@@ -380,6 +380,7 @@ p {
     transition: all var(--transition-normal);
     position: relative;
     overflow: hidden;
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     letter-spacing: 0.5px;
 }
@@ -657,6 +658,7 @@ p {
     color: var(--gray-600);
     transition: all var(--transition-normal);
     border: 2px solid transparent;
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
 }
 
