@@ -333,12 +333,13 @@ p {
     font-weight: 900;
     line-height: 1.1;
     margin-bottom: var(--space-6);
-    background: linear-gradient(135deg, #FFFFFF 0%, #E2E8F0 50%, #CBD5E1 100%);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%);
+    background-size: 200% 200%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
-    animation: fadeInUp 1s ease-out 0.2s both;
+    text-shadow: 0 0 40px rgba(102, 126, 234, 0.4), 0 0 60px rgba(245, 87, 108, 0.3);
+    animation: fadeInUp 1s ease-out 0.2s both, gradientShift 4s ease-in-out infinite;
 }
 
 .hero-subtitle {
@@ -467,8 +468,14 @@ p {
     font-family: var(--font-display);
     font-size: clamp(2.5rem, 4vw, 3.5rem);
     font-weight: 800;
-    color: var(--primary);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 30px rgba(102, 126, 234, 0.3);
     margin-bottom: var(--space-4);
+    animation: gradientShift 5s ease-in-out infinite;
 }
 
 .section-description {
@@ -549,8 +556,14 @@ p {
     font-family: var(--font-display);
     font-size: 1.5rem;
     font-weight: 700;
-    color: var(--primary);
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 50%, #4facfe 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 20px rgba(240, 147, 251, 0.3);
     margin-bottom: var(--space-4);
+    animation: gradientShift 6s ease-in-out infinite;
 }
 
 .service-description {
@@ -769,6 +782,13 @@ p {
 
 .icon-float {
     animation: iconFloat 3s ease-in-out infinite;
+}
+
+/* Gradient shift animation for hero title */
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 /* ===== Responsive Design ===== */
