@@ -3,8 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>إبداع - خدمات التصوير والمونتاج والإعلان</title>
-    <meta name="description" content="متخصصون في التصوير الفوتوغرافي، المونتاج الاحترافي، إدارة مواقع التواصل الاجتماعي، الحملات الإعلانية، المتاجر الإلكترونية، والتصاميم المبتكرة">
+    <title>إبداع العرب - خدمات التصوير والمونتاج والإعلان | شريك نجاحك الرقمي</title>
+    <meta name="description" content="مؤسسة إبداع العرب متخصصة في التصوير الفوتوغرافي، المونتاج الاحترافي، إدارة مواقع التواصل الاجتماعي، الحملات الإعلانية، المتاجر الإلكترونية، والتصاميم المبتكرة في السعودية">
+    <meta name="keywords" content="تصوير فوتوغرافي، مونتاج فيديو، تواصل اجتماعي، إعلانات، متاجر إلكترونية، تصميم جرافيك، تسويق رقمي، السعودية، إبداع العرب">
+    <meta name="author" content="مؤسسة إبداع العرب">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="Arabic">
+    <meta name="geo.region" content="SA">
+    <meta name="geo.placename" content="المملكة العربية السعودية">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ebdaa.shop/">
+    <meta property="og:title" content="إبداع العرب - خدمات التصوير والمونتاج والإعلان">
+    <meta property="og:description" content="مؤسسة إبداع العرب متخصصة في التصوير الفوتوغرافي، المونتاج الاحترافي، إدارة مواقع التواصل الاجتماعي، الحملات الإعلانية، المتاجر الإلكترونية، والتصاميم المبتكرة">
+    <meta property="og:image" content="https://ebdaa.shop/images/logo.png">
+    <meta property="og:locale" content="ar_AR">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://ebdaa.shop/">
+    <meta property="twitter:title" content="إبداع العرب - خدمات التصوير والمونتاج والإعلان">
+    <meta property="twitter:description" content="مؤسسة إبداع العرب متخصصة في التصوير الفوتوغرافي، المونتاج الاحترافي، إدارة مواقع التواصل الاجتماعي، الحملات الإعلانية، المتاجر الإلكترونية، والتصاميم المبتكرة">
+    <meta property="twitter:image" content="https://ebdaa.shop/images/logo.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://ebdaa.shop/">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <link rel="apple-touch-icon" href="images/logo.png">
     
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -17,7 +45,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="styles-premium.css">
+    <link rel="stylesheet" href="styles.css">
+    <!-- Utilities JS -->
+    <script src="js/utils.js"></script>
 </head>
 <body>
     <!-- Navigation -->
@@ -301,38 +331,935 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="contact-section" id="contact">
-                <i data-lucide="sparkles"></i>
-                نحول الأفكار إلى واقع رقمي
+    <!-- Professional Portfolio Section -->
+    <section id="portfolio" class="portfolio-section">
+        <div class="container">
+            <div class="portfolio-header" data-aos="fade-up">
+                <h2>أعمالنا</h2>
+                <p>نفتخر بمشاريعنا التي أثرت في علاماتنا التجارية وأحدثت فرقاً حقيقياً</p>
             </div>
-            <h1 class="hero-title" data-aos="fade-up" data-aos-delay="100">
-                فكرتك <span class="text-gradient">تستحق</span> <br>أفضل تنفيذ رقمي
-            </h1>
-            <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="200">
-                وكالة رقمية احترافية تضع بصمتك في العالم الرقمي. من الفكرة إلى التنفيذ، نحن شريك نجاحك في رحلة التحول الرقمي
-            </p>
-            <div class="hero-actions" data-aos="fade-up" data-aos-delay="300">
-                <a href="#contact" class="btn btn-primary">
-                    <i data-lucide="rocket" class="btn-icon"></i>
-                    ابدأ مشروعك الآن
-                </a>
-                <a href="#portfolio" class="btn btn-secondary">
-                    <i data-lucide="play" class="btn-icon"></i>
-                    شاهد أعمالنا
-                </a>
+
+            <div class="portfolio-filter" data-aos="fade-up" data-aos-delay="100">
+                <button class="filter-btn active" data-filter="all">الكل</button>
+                <button class="filter-btn" data-filter="photography">التصوير</button>
+                <button class="filter-btn" data-filter="video">الفيديو</button>
+                <button class="filter-btn" data-filter="social">التواصل</button>
+                <button class="filter-btn" data-filter="advertising">الإعلانات</button>
+                <button class="filter-btn" data-filter="design">التصاميم</button>
+                <button class="filter-btn" data-filter="ecommerce">المتاجر</button>
             </div>
-            <div class="hero-stats" data-aos="fade-up" data-aos-delay="400">
-                <div class="stat-item">
+
+            <div class="portfolio-grid">
+                <!-- Photography Project -->
+                <div class="portfolio-item" data-category="photography" data-aos="fade-up" data-aos-delay="100">
+                    <div class="portfolio-image">
+                        <img src="images/1.png" alt="مشروع تصوير منتجات">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-overlay-content">
+                                <h3>تصوير منتجات فاخرة</h3>
+                                <p>تصوير احترافي لمنتجات علامة تجارية فاخرة</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>تصوير منتجات فاخرة</h3>
+                        <p>تصوير احترافي لمنتجات علامة تجارية فاخرة مع إضاءة احترافية وتعديل دقيق</p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">تصوير منتجات</span>
+                            <span class="portfolio-tag">إضاءة احترافية</span>
+                            <span class="portfolio-tag">تعديل صور</span>
+                        </div>
+                    </div>
+                    <div class="portfolio-stats">
+                        <div class="portfolio-stat">
+                            <div class="portfolio-stat-value">150</div>
+                            <div class="portfolio-stat-label">صورة</div>
+                        </div>
+                        <div class="portfolio-stat">
+                            <div class="portfolio-stat-value">2</div>
+                            <div class="portfolio-stat-label">أيام</div>
+                        </div>
+                        <div class="portfolio-stat">
+                            <div class="portfolio-stat-value">98%</div>
+                            <div class="portfolio-stat-label">رضا</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Project -->
+                <div class="portfolio-item" data-category="video" data-aos="fade-up" data-aos-delay="200">
+                    <div class="portfolio-image">
+                        <img src="images/2.png" alt="مشروع مونتاج فيديو">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-overlay-content">
+                                <h3>فيديو ترويجي احترافي</h3>
+                                <p>إنتاج فيديو ترويجي لحملة إطلاق منتج جديد</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>فيديو ترويجي احترافي</h3>
+                        <p>إنتاج فيديو ترويجي عالي الجودة مع مونتاج احترافي ومؤثرات بصرية مبتكرة</p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">إنتاج فيديو</span>
+                            <span class="portfolio-tag">مونتاج</span>
+                            <span class="portfolio-tag">motion graphics</span>
+                        </div>
+                    </div>
+                    <div class="portfolio-stats">
+                        <div class="portfolio-stat">
+                            <div class="portfolio-stat-value">90</div>
+                            <div class="portfolio-stat-label">ثانية</div>
+                        </div>
+                        <div class="portfolio-stat">
+                            <div class="portfolio-stat-value">5</div>
+                            <div class="portfolio-stat-label">أيام</div>
+                        </div>
+                        <div class="portfolio-stat">
+                            <div class="portfolio-stat-value">100%</div>
+                            <div class="portfolio-stat-label">رضا</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Social Media Project -->
+                <div class="portfolio-item" data-category="social" data-aos="fade-up" data-aos-delay="300">
+                    <div class="portfolio-image">
+                        <img src="images/4.png" alt="مشروع تواصل اجتماعي">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-overlay-content">
+                                <h3>حملة تواصل اجتماعي</h3>
+                                <p>إدارة حملة تسويقية متكاملة على منصات التواصل</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>حملة تواصل اجتماعي</h3>
+                        <p>إدارة احترافية لحملة تسويقية شاملة على جميع منصات التواصل الاجتماعي</p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">تسويق رقمي</span>
+                            <span class="portfolio-tag">محتوى إبداعي</span>
+                            <span class="portfolio-tag">تحليلات</span>
+                        </div>
+                    </div>
+                    <div class="portfolio-stats">
+                        <div class="portfolio-stat">
+                            <div class="portfolio-stat-value">30</div>
+                            <div class="portfolio-stat-label">يوم</div>
+                        </div>
+                        <div class="portfolio-stat">
+                            <div class="portfolio-stat-value">5</div>
+                            <div class="portfolio-stat-label">منصات</div>
+                        </div>
+                        <div class="portfolio-stat">
+                            <div class="portfolio-stat-value">250%</div>
+                            <div class="portfolio-stat-label">نمو</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Advertising Project -->
+                <div class="portfolio-item" data-category="advertising" data-aos="fade-up" data-aos-delay="400">
+                    <div class="portfolio-image">
+                        <img src="images/3.png" alt="حملة إعلانية">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-overlay-content">
+                                <h3>حملة إعلانية متكاملة</h3>
+                                <p>حملة إعلانية رقمية بنتائج استثنائية</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>حملة إعلانية متكاملة</h3>
+                        <p>تصميم وتنفيذ حملة إعلانية رقمية شاملة مع تحليل الأداء والتحسين المستمر</p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">Google Ads</span>
+                            <span class="portfolio-tag">Facebook Ads</span>
+                            <span class="portfolio-tag">تحليل</span>
+                        </div>
+                    </div>
+                    <div class="portfolio-stats">
+                        <div class="portfolio-stat">
+                            <div class="portfolio-stat-value">45%</div>
+                            <div class="portfolio-stat-label">ROI</div>
+                        </div>
+                        <div class="portfolio-stat">
+                            <div class="portfolio-stat-value">60</div>
+                            <div class="portfolio-stat-label">يوم</div>
+                        </div>
+                        <div class="portfolio-stat">
+                            <div class="portfolio-stat-value">200%</div>
+                            <div class="portfolio-stat-label">عائد</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Design Project -->
+                <div class="portfolio-item" data-category="design" data-aos="fade-up" data-aos-delay="500">
+                    <div class="portfolio-image">
+                        <img src="images/5.png" alt="مشروع تصميم">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-overlay-content">
+                                <h3>هوية بصرية متكاملة</h3>
+                                <p>تصميم هوية بصرية احترافية لشركة ناشئة</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>هوية بصرية متكاملة</h3>
+                        <p>تصميم هوية بصرية احترافية شاملة تشمل الشعار والألوان والخطوط والتطبيقات</p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">هوية بصرية</span>
+                            <span class="portfolio-tag">شعار</span>
+                            <span class="portfolio-tag">Branding</span>
+                        </div>
+                    </div>
+                    <div class="portfolio-stats">
+                        <div class="portfolio-stat">
+                            <div class="portfolio-stat-value">50</div>
+                            <div class="portfolio-stat-label">تصميم</div>
+                        </div>
+                        <div class="portfolio-stat">
+                            <div class="portfolio-stat-value">14</div>
+                            <div class="portfolio-stat-label">يوم</div>
+                        </div>
+                        <div class="portfolio-stat">
+                            <div class="portfolio-stat-value">95%</div>
+                            <div class="portfolio-stat-label">رضا</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- E-commerce Project -->
+                <div class="portfolio-item" data-category="ecommerce" data-aos="fade-up" data-aos-delay="600">
+                    <div class="portfolio-image">
+                        <img src="images/6.png" alt="متجر إلكتروني">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-overlay-content">
+                                <h3>متجر إلكتروني احترافي</h3>
+                                <p>تطوير متجر إلكتروني متكامل مع نظام دفع آمن</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>متجر إلكتروني احترافي</h3>
+                        <p>تطوير متجر إلكتروني احترافي مع واجهة مستخدم سلسة ونظام دفع متكامل</p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">WooCommerce</span>
+                            <span class="portfolio-tag">UI/UX</span>
+                            <span class="portfolio-tag">دفع آمن</span>
+                        </div>
+                    </div>
+                    <div class="portfolio-stats">
+                        <div class="portfolio-stat">
+                            <div class="portfolio-stat-value">500+</div>
+                            <div class="portfolio-stat-label">منتج</div>
+                        </div>
+                        <div class="portfolio-stat">
+                            <div class="portfolio-stat-value">30</div>
+                            <div class="portfolio-stat-label">يوم</div>
+                        </div>
+                        <div class="portfolio-stat">
+                            <div class="portfolio-stat-value">85%</div>
+                            <div class="portfolio-stat-label">تحويل</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+                <!-- Professional Testimonials Section -->
+    <section id="testimonials" class="testimonials-section">
+        <div class="container">
+            <div class="testimonials-header" data-aos="fade-up">
+                <h2>شهادات عملائنا</h2>
+                <p>نفتخر بثقة عملائنا ونستمع إلى آرائهم القيمة</p>
+            </div>
+
+            <div class="testimonials-grid">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="testimonial-content">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star testimonial-star"></i>
+                            <i class="fas fa-star testimonial-star"></i>
+                            <i class="fas fa-star testimonial-star"></i>
+                            <i class="fas fa-star testimonial-star"></i>
+                            <i class="fas fa-star testimonial-star"></i>
+                            </div>
+                        </div>
+
+                        <!-- Testimonial 4 -->
+                        <div class="testimonial-card" data-aos="fade-up" data-aos-delay="400">
+                            <div class="testimonial-content">
+                                <div class="testimonial-rating">
+                                    <i class="fas fa-star testimonial-star"></i>
+                                    <i class="fas fa-star testimonial-star"></i>
+                                    <i class="fas fa-star testimonial-star"></i>
+                                    <i class="fas fa-star testimonial-star"></i>
+                                    <i class="fas fa-star-half-alt testimonial-star"></i>
+                                </div>
+                                <p class="testimonial-text">
+                                    "حملة إعلانية ناجحة جداً. حققت ROI يفوق 200% وزادت من عدد العملاء الجدد بشكل ملحوظ. فريق محترف ومبدع."
+                                </p>
+                                <div class="testimonial-author">
+                                    <img src="images/4.png" alt="نورا السعيد" class="testimonial-avatar">
+                                    <div class="testimonial-info">
+                                        <h4>نورة السعيد</h4>
+                                        <div class="testimonial-role">مديرة التسويق الرقمي</div>
+                                        <div class="testimonial-company">شركة السعيد للتطوير</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="testimonial-meta">
+                                <span class="testimonial-date">28 نوفمبر 2025</span>
+                                <div class="testimonial-verified">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>موثق</span>
+                                </div>
+                            </div>
+                            <div class="testimonial-stats">
+                                <div class="testimonial-stat">
+                                    <div class="testimonial-stat-value">200%</div>
+                                    <div class="testimonial-stat-label">عائد الاستثمار</div>
+                                </div>
+                                <div class="testimonial-stat">
+                                    <div class="testimonial-stat-value">60</div>
+                                    <div class="testimonial-stat-label">يوم إنجاز</div>
+                                </div>
+                                <div class="testimonial-stat">
+                                    <div class="testimonial-stat-value">A</div>
+                                    <div class="testimonial-stat-label">تقييم الجودة</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-meta">
+                        <span class="testimonial-date">28 نوفمبر 2025</span>
+                        <div class="testimonial-verified">
+                            <i class="fas fa-check-circle"></i>
+                            <span>موثق</span>
+                        </div>
+                    </div>
+                    <div class="testimonial-stats">
+                        <div class="testimonial-stat">
+                            <div class="testimonial-stat-value">200%</div>
+                            <div class="testimonial-stat-label">عائد الاستثمار</div>
+                        </div>
+                        <div class="testimonial-stat">
+                            <div class="testimonial-stat-value">60</div>
+                            <div class="testimonial-stat-label">يوم إنجاز</div>
+                        </div>
+                        <div class="testimonial-stat">
+                            <div class="testimonial-stat-value">A</div>
+                            <div class="testimonial-stat-label">تقييم الجودة</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 5 -->
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="testimonial-content">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star testimonial-star"></i>
+                            <i class="fas fa-star testimonial-star"></i>
+                            <i class="fas fa-star testimonial-star"></i>
+                            <i class="fas fa-star testimonial-star"></i>
+                            <i class="fas fa-star testimonial-star"></i>
+                        </div>
+                        <p class="testimonial-text">
+                            "إدارة احترافية لحسابات التواصل الاجتماعي. زاد متابعينا بنسبة 300% وتحسن تفاعل الجمهور بشكل كبير. محتوى إبداعي وجدولة احترافية."
+                        </p>
+                        <div class="testimonial-author">
+                            <img src="images/avatar5.jpg" alt="ياسر المحمود" class="testimonial-avatar">
+                            <div class="testimonial-info">
+                                <h4>ياسر المحمود</h4>
+                                <div class="testimonial-role">المدير العام</div>
+                                <div class="testimonial-company">مطاعم المحمود</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-meta">
+                        <span class="testimonial-date">20 نوفمبر 2025</span>
+                        <div class="testimonial-verified">
+                            <i class="fas fa-check-circle"></i>
+                            <span>موثق</span>
+                        </div>
+                    </div>
+                    <div class="testimonial-stats">
+                        <div class="testimonial-stat">
+                            <div class="testimonial-stat-value">300%</div>
+                            <div class="testimonial-stat-label">نمو المتابعين</div>
+                        </div>
+                        <div class="testimonial-stat">
+                            <div class="testimonial-stat-value">90</div>
+                            <div class="testimonial-stat-label">يوم إنجاز</div>
+                        </div>
+                        <div class="testimonial-stat">
+                            <div class="testimonial-stat-value">A+</div>
+                            <div class="testimonial-stat-label">تقييم الجودة</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 6 -->
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="testimonial-content">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star testimonial-star"></i>
+                            <i class="fas fa-star testimonial-star"></i>
+                            <i class="fas fa-star testimonial-star"></i>
+                            <i class="fas fa-star testimonial-star"></i>
+                            <i class="fas fa-star testimonial-star"></i>
+                        </div>
+                        <p class="testimonial-text">
+                            "تصميم هوية بصرية متكاملة. شعار وألوان وخطوط مميزة عكست شخصية علامتنا التجارية بشكل احترافي. تفاعل العملاء كان رائعاً."
+                        </p>
+                        <div class="testimonial-author">
+                            <img src="images/avatar6.jpg" alt="ليلى الحسن" class="testimonial-avatar">
+                            <div class="testimonial-info">
+                                <h4>ليلى الحسن</h4>
+                                <div class="testimonial-role">المؤسسة والمديرة</div>
+                                <div class="testimonial-company">استوديو الحسن للتصميم</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-meta">
+                        <span class="testimonial-date">15 نوفمبر 2025</span>
+                        <div class="testimonial-verified">
+                            <i class="fas fa-check-circle"></i>
+                            <span>موثق</span>
+                        </div>
+                    </div>
+                    <div class="testimonial-stats">
+                        <div class="testimonial-stat">
+                            <div class="testimonial-stat-value">150%</div>
+                            <div class="testimonial-stat-label">زيادة الوعي</div>
+                        </div>
+                        <div class="testimonial-stat">
+                            <div class="testimonial-stat-value">14</div>
+                            <div class="testimonial-stat-label">يوم إنجاز</div>
+                        </div>
+                        <div class="testimonial-stat">
+                            <div class="testimonial-stat-value">A+</div>
+                            <div class="testimonial-stat-label">تقييم الجودة</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+                <!-- Professional Why Choose Us Section -->
+    <section id="why-choose" class="why-choose-section">
+        <div class="container">
+            <div class="why-choose-header" data-aos="fade-up">
+                <h2>لماذا تختار إبداع العرب؟</h2>
+                <p>نحن لا نقدم خدمات فقط، بل نحن شريك نجاحك في رحلة التحول الرقمي</p>
+            </div>
+
+            <div class="stats-showcase">
+                <div class="stat-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="stat-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
                     <span class="stat-number" data-count="500">0</span>
-                    <span class="stat-label">مشروع مكتمل</span>
+                    <div class="stat-label">مشروع مكتمل</div>
+                    <div class="stat-description">مشاريع ناجحة لعملاء سعداء في مختلف القطاعات</div>
                 </div>
-                <div class="stat-item">
-                    <span class="stat-number" data-count="7">0</span>
-                    <span class="stat-label">سنوات خبرة</span>
-                </div>
-                <div class="stat-item">
+
+                <div class="stat-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
                     <span class="stat-number" data-count="98">0</span>
+                    <div class="stat-label">% رضا العملاء</div>
+                    <div class="stat-description">نسبة رضا عملاء تفوق المعايير الصناعية</div>
+                </div>
+
+                <div class="stat-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="stat-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <span class="stat-number" data-count="7">0</span>
+                    <div class="stat-label">سنوات خبرة</div>
+                    <div class="stat-description">خبرة عميقة في السوق الرقمي العربي</div>
+                </div>
+
+                <div class="stat-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="stat-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <span class="stat-number" data-count="24">0</span>
+                    <div class="stat-label">ساعة دعم</div>
+                    <div class="stat-description">دعم فني متاح على مدار الساعة</div>
+                </div>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3 class="feature-title">سرعة التنفيذ</h3>
+                    <p class="feature-description">
+                        نلتزم بمواعيد تسليم دقيقة ونتائج سريعة دون التضحية بالجودة
+                    </p>
+                    <ul class="feature-benefits">
+                        <li class="feature-benefit">
+                            <i class="fas fa-check"></i>
+                            <span>تسليم في الوقت المحدد</span>
+                        </li>
+                        <li class="feature-benefit">
+                            <i class="fas fa-check"></i>
+                            <span>تحديثات مستمرة</span>
+                        </li>
+                        <li class="feature-benefit">
+                            <i class="fas fa-check"></i>
+                            <span>متابعة سريعة</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="feature-title">جودة عالية</h3>
+                    <p class="feature-description">
+                        معايير جودة صارمة وضمان للنتائج تتجاوز توقعات العملاء
+                    </p>
+                    <ul class="feature-benefits">
+                        <li class="feature-benefit">
+                            <i class="fas fa-check"></i>
+                            <span>جودة احترافية</span>
+                        </li>
+                        <li class="feature-benefit">
+                            <i class="fas fa-check"></i>
+                            <span>ضمان الجودة</span>
+                        </li>
+                        <li class="feature-benefit">
+                            <i class="fas fa-check"></i>
+                            <span>اختبارات شاملة</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3 class="feature-title">دعم متكامل</h3>
+                    <p class="feature-description">
+                        فريق دعم فني متخصص متاح 24/7 لمساعدتك في أي وقت
+                    </p>
+                    <ul class="feature-benefits">
+                        <li class="feature-benefit">
+                            <i class="fas fa-check"></i>
+                            <span>دعم 24/7</span>
+                        </li>
+                        <li class="feature-benefit">
+                            <i class="fas fa-check"></i>
+                            <span>استجابة سريعة</span>
+                        </li>
+                        <li class="feature-benefit">
+                            <i class="fas fa-check"></i>
+                            <span>متخصصون مدربون</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="feature-title">نتائج مضمونة</h3>
+                    <p class="feature-description">
+                        نركز على تحقيق أهدافك التجارية وزيادة عائد استثمارك
+                    </p>
+                    <ul class="feature-benefits">
+                        <li class="feature-benefit">
+                            <i class="fas fa-check"></i>
+                            <span>تحليل الأداء</span>
+                        </li>
+                        <li class="feature-benefit">
+                            <i class="fas fa-check"></i>
+                            <span>تحسين مستمر</span>
+                        </li>
+                        <li class="feature-benefit">
+                            <i class="fas fa-check"></i>
+                            <span>تقارير مفصلة</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="feature-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3 class="feature-title">إبداع وابتكار</h3>
+                    <p class="feature-description">
+                        حلول مبتكرة وأفكار إبداعية تميزك عن المنافسين
+                    </p>
+                    <ul class="feature-benefits">
+                        <li class="feature-benefit">
+                            <i class="fas fa-check"></i>
+                            <span>تصاميم فريدة</span>
+                        </li>
+                        <li class="feature-benefit">
+                            <i class="fas fa-check"></i>
+                            <span>أفكار مبتكرة</span>
+                        </li>
+                        <li class="feature-benefit">
+                            <i class="fas fa-check"></i>
+                            <span>اتجاهات حديثة</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="feature-icon">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <h3 class="feature-title">أسعار تنافسية</h3>
+                    <p class="feature-description">
+                        جودة عالية بأسعار تنافسية تناسب جميع الميزانيات
+                    </p>
+                    <ul class="feature-benefits">
+                        <li class="feature-benefit">
+                            <i class="fas fa-check"></i>
+                            <span>أسعار معقولة</span>
+                        </li>
+                        <li class="feature-benefit">
+                            <i class="fas fa-check"></i>
+                            <span>باقات مرنة</span>
+                        </li>
+                        <li class="feature-benefit">
+                            <i class="fas fa-check"></i>
+                            <span>قيمة ممتازة</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="comparison-section" data-aos="fade-up" data-aos-delay="700">
+                <div class="comparison-header">
+                    <h3>مقارنة بين إبداع العرب والمنافسين</h3>
+                    <p>لماذا نحن الخيار الأفضل لعملك</p>
+                </div>
+
+                <div class="comparison-table">
+                    <div class="comparison-column our-column">
+                        <h4 class="comparison-title">إبداع العرب</h4>
+                        <div class="comparison-item">
+                            <i class="fas fa-check"></i>
+                            <span>جودة احترافية مضمونة</span>
+                        </div>
+                        <div class="comparison-item">
+                            <i class="fas fa-check"></i>
+                            <span>دعم 24/7 متاح</span>
+                        </div>
+                        <div class="comparison-item">
+                            <i class="fas fa-check"></i>
+                            <span>أسعار تنافسية</span>
+                        </div>
+                        <div class="comparison-item">
+                            <i class="fas fa-check"></i>
+                            <span>تسليم في الوقت</span>
+                        </div>
+                        <div class="comparison-item">
+                            <i class="fas fa-check"></i>
+                            <span>فريق محترف</span>
+                        </div>
+                        <div class="comparison-item">
+                            <i class="fas fa-check"></i>
+                            <span>تقارير مفصلة</span>
+                        </div>
+                    </div>
+
+                    <div class="comparison-column others-column">
+                        <h4 class="comparison-title">المنافسون</h4>
+                        <div class="comparison-item">
+                            <i class="fas fa-times"></i>
+                            <span>جودة متوسطة</span>
+                        </div>
+                        <div class="comparison-item">
+                            <i class="fas fa-times"></i>
+                            <span>دعم محدود</span>
+                        </div>
+                        <div class="comparison-item">
+                            <i class="fas fa-times"></i>
+                            <span>أسعار مرتفعة</span>
+                        </div>
+                        <div class="comparison-item">
+                            <i class="fas fa-times"></i>
+                            <span>تأخير في التسليم</span>
+                        </div>
+                        <div class="comparison-item">
+                            <i class="fas fa-times"></i>
+                            <span>فريق غير متخصص</span>
+                        </div>
+                        <div class="comparison-item">
+                            <i class="fas fa-times"></i>
+                            <span>لا توجد تقارير</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+                <!-- Professional Blog Section -->
+    <section id="blog" class="blog-section">
+        <div class="container">
+            <div class="blog-header" data-aos="fade-up">
+                <h2>المدونة</h2>
+                <p>نصائح وأفكار إبداعية في عالم التسويق الرقمي والتصميم</p>
+            </div>
+                <!-- Featured Blog Post -->
+                <div class="blog-card blog-featured" data-aos="fade-up" data-aos-delay="100">
+                    <div class="blog-image">
+                        <img src="images/3.png" alt="أهمية التسويق الرقمي" data-component-name="<img />">
+                        <div class="blog-category">تسويق رقمي</div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-date">
+                            <i class="fas fa-calendar"></i>
+                            <span>28 ديسمبر 2025</span>
+                        </div>
+                        <h3 class="blog-title">10 استراتيجيات تسويق رقمي ستغير لعبتك في 2025</h3>
+                        <p class="blog-excerpt">
+                            اكتشف أحدث الاتجاهات في عالم التسويق الرقمي وكيفية تطبيقها لتنمية أعمالك. من الذكاء الاصطناعي إلى التسويق المؤثر، تعرف على التقنيات التي ستحدد مستقبل التسويق.
+                        </p>
+                        <div class="blog-author">
+                            <img src="images/7.png" alt="أحمد خالد" class="blog-author-avatar">
+                            <div class="blog-author-info">
+                                <div class="blog-author-name">أحمد محمد</div>
+                                <div class="blog-author-role">خبير تسويق رقمي</div>
+                            </div>
+                            <div class="blog-stats">
+                                <div class="blog-stat">
+                                    <i class="fas fa-eye"></i>
+                                    <span>1.2k</span>
+                                </div>
+                                <div class="blog-stat">
+                                    <i class="fas fa-heart"></i>
+                                    <span>89</span>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#" class="blog-read-more">
+                            اقرأ المزيد
+                            <i class="fas fa-arrow-left"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Blog Post 2 -->
+                <div class="blog-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="blog-image">
+                        <img src="images/7.png" alt="تصميم الشعارات" data-component-name="<img />">
+                        <div class="blog-category">تصميم جرافيك</div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-date">
+                            <i class="fas fa-calendar"></i>
+                            <span>25 ديسمبر 2025</span>
+                        </div>
+                        <h3 class="blog-title">أسرار تصميم شعارات لا تُنسى</h3>
+                        <p class="blog-excerpt">
+                            تعلم المبادئ الأساسية لتصميم شعارات احترافية تبقى في ذهن العملاء. من الألوان إلى الخطوط، اكتشف العناصر التي تجعل شعارك مميزاً.
+                        </p>
+                        <div class="blog-author">
+                            <img src="images/7.png" alt="فاطمة العلي" class="blog-author-avatar">
+                            <div class="blog-author-info">
+                                <div class="blog-author-name">فاطمة العلي</div>
+                                <div class="blog-author-role">مصممة جرافيك</div>
+                            </div>
+                            <div class="blog-stats">
+                                <div class="blog-stat">
+                                    <i class="fas fa-eye"></i>
+                                    <span>856</span>
+                                </div>
+                                <div class="blog-stat">
+                                    <i class="fas fa-heart"></i>
+                                    <span>67</span>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#" class="blog-read-more">
+                            اقرأ المزيد
+                            <i class="fas fa-arrow-left"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Blog Post 3 -->
+                <div class="blog-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="blog-image">
+                        <img src="images/7.png" alt="التسويق عبر المؤثرين" data-component-name="<img />">
+                        <div class="blog-category">تصوير فوتوغرافي</div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-date">
+                            <i class="fas fa-calendar"></i>
+                            <span>22 ديسمبر 2025</span>
+                        </div>
+                        <h3 class="blog-title">دليلك الشامل للتصوير التجاري</h3>
+                        <p class="blog-excerpt">
+                            كل ما تحتاج معرفته عن التصوير التجاري الاحترافي. من الإضاءة إلى التكوين، تعلم كيفية التقاط صور تبيع تجذب العملاء وتزيد من مبيعاتك.
+                        </p>
+                        <div class="blog-author">
+                            <img src="images/5.png" alt="خالد الرشيد" class="blog-author-avatar">
+                            <div class="blog-author-info">
+                                <div class="blog-author-name">خالد الرشيد</div>
+                                <div class="blog-author-role">مصور فوتوغرافي</div>
+                            </div>
+                            <div class="blog-stats">
+                                <div class="blog-stat">
+                                    <i class="fas fa-eye"></i>
+                                    <span>623</span>
+                                </div>
+                                <div class="blog-stat">
+                                    <i class="fas fa-heart"></i>
+                                    <span>45</span>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#" class="blog-read-more">
+                            اقرأ المزيد
+                            <i class="fas fa-arrow-left"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Blog Post 4 -->
+                <div class="blog-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="blog-image">
+                        <img src="images/6.png" alt="المونتاج الاحترافي" data-component-name="<img />">
+                        <div class="blog-category">مونتاج فيديو</div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-date">
+                            <i class="fas fa-calendar"></i>
+                            <span>20 ديسمبر 2025</span>
+                        </div>
+                        <h3 class="blog-title">تقنيات المونتاج التي ستثير إعجاب جمهورك</h3>
+                        <p class="blog-excerpt">
+                            استكشف أحدث تقنيات المونتاج والمؤثرات البصرية التي ستجعل فيديوهاتك أكثر احترافية وجاذبية. من الانتقالات السلسة إلى المؤثرات ثلاثية الأبعاد.
+                        </p>
+                        <div class="blog-author">
+                            <img src="images/6.png" alt="نورة السعيد" class="blog-author-avatar">
+                            <div class="blog-author-info">
+                                <div class="blog-author-name">نورة السعيد</div>
+                                <div class="blog-author-role">مونتيرة فيديو</div>
+                            </div>
+                            <div class="blog-stats">
+                                <div class="blog-stat">
+                                    <i class="fas fa-eye"></i>
+                                    <span>445</span>
+                                </div>
+                                <div class="blog-stat">
+                                    <i class="fas fa-heart"></i>
+                                    <span>38</span>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#" class="blog-read-more">
+                            اقرأ المزيد
+                            <i class="fas fa-arrow-left"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Blog Post 5 -->
+                <div class="blog-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="blog-image">
+                        <img src="images/blog5.jpg" alt="التجارة الإلكترونية">
+                        <div class="blog-category">تجارة إلكترونية</div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-date">
+                            <i class="fas fa-calendar"></i>
+                            <span>18 ديسمبر 2025</span>
+                        </div>
+                        <h3 class="blog-title">كيف تبني متجراً إلكترونياً ناجحاً من الصفر</h3>
+                        <p class="blog-excerpt">
+                            دليل خطوة بخطوة لإنشاء متجر إلكتروني ناجح. من اختيار المنتجات إلى التسويق، تعلم الاستراتيجيات التي ستضمن نجاح متجرك الإلكتروني.
+                        </p>
+                        <div class="blog-author">
+                            <img src="images/author5.jpg" alt="ياسر المحمود" class="blog-author-avatar">
+                            <div class="blog-author-info">
+                                <div class="blog-author-name">ياسر المحمود</div>
+                                <div class="blog-author-role">خبير تجارة إلكترونية</div>
+                            </div>
+                            <div class="blog-stats">
+                                <div class="blog-stat">
+                                    <i class="fas fa-eye"></i>
+                                    <span>789</span>
+                                </div>
+                                <div class="blog-stat">
+                                    <i class="fas fa-heart"></i>
+                                    <span>92</span>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#" class="blog-read-more">
+                            اقرأ المزيد
+                            <i class="fas fa-arrow-left"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Blog Post 6 -->
+                <div class="blog-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="blog-image">
+                        <img src="images/blog6.jpg" alt="التواصل الاجتماعي">
+                        <div class="blog-category">تواصل اجتماعي</div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-date">
+                            <i class="fas fa-calendar"></i>
+                            <span>15 ديسمبر 2025</span>
+                        </div>
+                        <h3 class="blog-title">استراتيجيات محتوى تواصل اجتماعي تتفاعل مع الجمهور</h3>
+                        <p class="blog-excerpt">
+                            تعلم كيفية إنشاء محتوى تواصل اجتماعي يثير تفاعل الجمهور. من الأفكار الإبداعية إلى جدولة النشر، اكتشف الأسرار وراء نجاح الحسابات الاجتماعية.
+                        </p>
+                        <div class="blog-author">
+                            <img src="images/2.png" alt="ليلى الحسن" class="blog-author-avatar">
+                            <div class="blog-author-info">
+                                <div class="blog-author-name">ليلى الحسن</div>
+                                <div class="blog-author-role">مديرة تواصل اجتماعي</div>
+                            </div>
+                            <div class="blog-stats">
+                                <div class="blog-stat">
+                                    <i class="fas fa-eye"></i>
+                                    <span>567</span>
+                                </div>
+                                <div class="blog-stat">
+                                    <i class="fas fa-heart"></i>
+                                    <span>71</span>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#" class="blog-read-more">
+                            اقرأ المزيد
+                            <i class="fas fa-arrow-left"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Newsletter Section -->
+            <div class="blog-newsletter" data-aos="fade-up" data-aos-delay="700">
+                <h3>اشترك في نشرتنا الأسبوعية</h3>
+                <p>احصل على أحدث النصائح والأفكار الإبداعية مباشرة في بريدك الإلكتروني</p>
+                <form class="blog-newsletter-form">
+                    <input type="email" class="blog-newsletter-input" placeholder="بريدك الإلكتروني" required>
+                    <button type="submit" class="blog-newsletter-button">اشترك الآن</button>
+                </form>
+            </div>
+        </div>
+    </section>
                     <span class="stat-label">% رضا العملاء</span>
                 </div>
             </div>
@@ -499,7 +1426,7 @@
         <div class="portfolio-grid">
             <div class="portfolio-item" data-aos="fade-up">
                 <div class="portfolio-image">
-                    <img src="https://via.placeholder.com/400x300/4F46E5/FFFFFF?text=متجر+أزياء" alt="متجر أزياء">
+                    <img src="images/8.png" alt="متجر أزياء">
                     <div class="portfolio-overlay">
                         <div class="portfolio-content">
                             <h3>متجر أزياء عصري</h3>
@@ -515,7 +1442,7 @@
 
             <div class="portfolio-item" data-aos="fade-up" data-aos-delay="100">
                 <div class="portfolio-image">
-                    <img src="https://via.placeholder.com/400x300/10B981/FFFFFF?text=حملة+إعلانية" alt="حملة إعلانية">
+                    <img src="images/1.png" alt="حملة إعلانية">
                     <div class="portfolio-overlay">
                         <div class="portfolio-content">
                             <h3>حملة إعلانية ناجحة</h3>
@@ -531,7 +1458,7 @@
 
             <div class="portfolio-item" data-aos="fade-up" data-aos-delay="200">
                 <div class="portfolio-image">
-                    <img src="https://via.placeholder.com/400x300/F59E0B/FFFFFF?text=هوية+بصرية" alt="هوية بصرية">
+                    <img src="images/2.png" alt="هوية بصرية">
                     <div class="portfolio-overlay">
                         <div class="portfolio-content">
                             <h3>هوية بصرية مبتكرة</h3>
@@ -673,6 +1600,86 @@
         </div>
     </footer>
 
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="contact-header" data-aos="fade-up">
+                <h2>تواصل معنا</h2>
+                <p>نحن هنا لمساعدتك في تحقيق أهدافك الرقمية</p>
+            </div>
+
+            <div class="contact-content">
+                <div class="contact-info" data-aos="fade-up" data-aos-delay="100">
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div class="contact-details">
+                            <h3>الهاتف</h3>
+                            <p><a href="tel:+966566166251">056 616 6251</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <div class="contact-details">
+                            <h3>WhatsApp</h3>
+                            <p><a href="https://wa.me/966566166251">056 616 6251</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div class="contact-details">
+                            <h3>البريد الإلكتروني</h3>
+                            <p><a href="mailto:info@ebdaa.shop">info@ebdaa.shop</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div class="contact-details">
+                            <h3>الموقع</h3>
+                            <p>المملكة العربية السعودية</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form" data-aos="fade-up" data-aos-delay="200">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" required>
+                            <label for="name">الاسم</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" required>
+                            <label for="email">البريد الإلكتروني</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" id="phone" name="phone" required>
+                            <label for="phone">رقم الهاتف</label>
+                        </div>
+                        <div class="form-group">
+                            <select id="service" name="service" required>
+                                <option value="">اختر الخدمة</option>
+                                <option value="photography">التصوير الفوتوغرافي</option>
+                                <option value="video">المونتاج الاحترافي</option>
+                                <option value="social">إدارة التواصل الاجتماعي</option>
+                                <option value="advertising">الحملات الإعلانية</option>
+                                <option value="ecommerce">المتاجر الإلكترونية</option>
+                                <option value="design">التصاميم الإبداعية</option>
+                            </select>
+                            <label for="service">الخدمة المطلوبة</label>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                            <label for="message">الرسالة</label>
+                        </div>
+                        <button type="submit" class="submit-btn">
+                            <span>إرسال الرسالة</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- AOS Animation -->
@@ -686,6 +1693,29 @@
             duration: 1000,
             once: true
         });
+    </script>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
+    
+    <!-- Live Chat Widget -->
+    <div class="live-chat-widget">
+        <button class="chat-button" onclick="openChat()">
+            <i class="fab fa-whatsapp"></i>
+            <span>تواصل معنا</span>
+        </button>
+    </div>
+    
+    <script>
+        function openChat() {
+            window.open('https://wa.me/966566166251?text=مرحباً، أود الاستفسار عن خدماتكم', '_blank');
+        }
     </script>
 </body>
 </html>

@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إنشاء فاتورة - إبداع العرب</title>
+    <meta name="description" content="إنشاء فاتورة جديدة للعملاء">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <style>
+        .invoice-container {
+            min-height: 100vh;
+            background: #f8f9fa;
+            padding: 2rem;
+        }
+        
+        .invoice-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .invoice-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid #f0f0f0;
+            margin-bottom: 2rem;
+        }
+        
+        .invoice-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .invoice-logo img {
+            width: 60px;
+            height: 60px;
+        }
+        
+        .invoice-details {
+            text-align: left;
+        }
+        
+        .invoice-number {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #333;
+        }
+        
+        .invoice-date {
+            color: #666;
+        }
+        
+        .billing-section {
+            margin-bottom: 2rem;
+        }
+        
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        .items-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 2rem;
+        }
+        
+        .items-table th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem;
+            text-align: right;
+            font-weight: 600;
+        }
+        
+        .items-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .items-table input {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+        }
+        
+        .add-item-btn {
+            background: #10b981;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .add-item-btn:hover {
+            background: #059669;
+            transform: translateY(-2px);
+        }
+        
+        .remove-item-btn {
+            background: #ef4444;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        
+        .invoice-summary {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-top: 2rem;
+        }
+        
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .summary-row.total {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #333;
+            padding-top: 1rem;
+            border-top: 2px solid #e0e0e0;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .btn-primary-custom {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary-custom:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+        
+        .btn-secondary-custom {
+            background: #6b7280;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-secondary-custom:hover {
+            background: #4b5563;
+        }
+        
+        .service-prices {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .price-card {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 10px;
+            border: 2px solid #e0e0e0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .price-card:hover {
+            border-color: #667eea;
+            transform: translateY(-2px);
+        }
+        
+        .price-card.selected {
+            border-color: #667eea;
+            background: rgba(102, 126, 234, 0.1);
+        }
+        
+        .price-card h4 {
+            color: #333;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .price-card .price {
+            color: #667eea;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .invoice-container {
+                padding: 1rem;
+            }
+            
+            .invoice-header {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+            
+            .invoice-details {
+                text-align: center;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="invoice-container">
+        <div class="invoice-card">
+            <!-- Invoice Header -->
+            <div class="invoice-header">
+                <div class="invoice-logo">
+                    <img src="images/logo.png" alt="إبداع العرب">
+                    <div>
+                        <h3>مؤسسة إبداع العرب</h3>
+                        <p class="text-muted mb-0">فواتير الخدمات الإبداعية</p>
+                    </div>
+                </div>
+                <div class="invoice-details">
+                    <div class="invoice-number">فاتورة رقم: <span id="invoiceNumber">INV-2024-001</span></div>
+                    <div class="invoice-date">التاريخ: <span id="invoiceDate"></span></div>
+                </div>
+            </div>
+            
+            <!-- Client Information -->
+            <div class="billing-section">
+                <h4 class="section-title">معلومات العميل</h4>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>اسم العميل</label>
+                            <input type="text" id="clientName" placeholder="أدخل اسم العميل">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>البريد الإلكتروني</label>
+                            <input type="email" id="clientEmail" placeholder="أدخل البريد الإلكتروني">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>رقم الهاتف</label>
+                            <input type="tel" id="clientPhone" placeholder="أدخل رقم الهاتف">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>العنوان</label>
+                            <input type="text" id="clientAddress" placeholder="أدخل العنوان">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Service Selection -->
+            <div class="billing-section">
+                <h4 class="section-title">اختر الخدمات</h4>
+                <div class="service-prices">
+                    <div class="price-card" onclick="selectService(this, 'التصوير الفوتوغرافي', 500)">
+                        <h4>التصوير الفوتوغرافي</h4>
+                        <div class="price">500 ريال</div>
+                        <small>تصوير احترافي للمنتجات</small>
+                    </div>
+                    <div class="price-card" onclick="selectService(this, 'المونتاج الاحترافي', 300)">
+                        <h4>المونتاج الاحترافي</h4>
+                        <div class="price">300 ريال</div>
+                        <small>مونتاج فيديو عالي الجودة</small>
+                    </div>
+                    <div class="price-card" onclick="selectService(this, 'إدارة التواصل الاجتماعي', 800)">
+                        <h4>إدارة التواصل الاجتماعي</h4>
+                        <div class="price">800 ريال</div>
+                        <small>إدارة شاملة لجميع المنصات</small>
+                    </div>
+                    <div class="price-card" onclick="selectService(this, 'الحملات الإعلانية', 1000)">
+                        <h4>الحملات الإعلانية</h4>
+                        <div class="price">1000 ريال</div>
+                        <small>حملات إعلانية مدفوعة</small>
+                    </div>
+                    <div class="price-card" onclick="selectService(this, 'المتاجر الإلكترونية', 2000)">
+                        <h4>المتاجر الإلكترونية</h4>
+                        <div class="price">2000 ريال</div>
+                        <small>تصميم وتطوير متجر إلكتروني</small>
+                    </div>
+                    <div class="price-card" onclick="selectService(this, 'التصاميم الإبداعية', 400)">
+                        <h4>التصاميم الإبداعية</h4>
+                        <div class="price">400 ريال</div>
+                        <small>تصميم جرافيك وشعارات</small>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Invoice Items -->
+            <div class="billing-section">
+                <h4 class="section-title">بنود الفاتورة</h4>
+                <table class="items-table">
+                    <thead>
+                        <tr>
+                            <th>الخدمة</th>
+                            <th>الوصف</th>
+                            <th>الكمية</th>
+                            <th>السعر</th>
+                            <th>الإجمالي</th>
+                            <th>إجراء</th>
+                        </tr>
+                    </thead>
+                    <tbody id="itemsTableBody">
+                        <tr>
+                            <td><input type="text" value="التصوير الفوتوغرافي" readonly aria-label="الخدمة"></td>
+                            <td><input type="text" value="تصوير منتجات احترافي" aria-label="الوصف"></td>
+                            <td><input type="number" value="1" min="1" onchange="calculateTotal()" aria-label="الكمية"></td>
+                            <td><input type="number" value="500" min="0" onchange="calculateTotal()" aria-label="السعر"></td>
+                            <td><input type="number" value="500" readonly aria-label="الإجمالي"></td>
+                            <td><button class="remove-item-btn" onclick="removeItem(this)">حذف</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button class="add-item-btn" onclick="addNewItem()">
+                    <i class="fas fa-plus"></i> إضافة بند جديد
+                </button>
+            </div>
+            
+            <!-- Invoice Summary -->
+            <div class="invoice-summary">
+                <div class="summary-row">
+                    <span>الإجمالي الفرعي:</span>
+                    <span id="subtotal">500 ريال</span>
+                </div>
+                <div class="summary-row">
+                    <span>ضريبة القيمة المضافة (15%):</span>
+                    <span id="tax">75 ريال</span>
+                </div>
+                <div class="summary-row">
+                    <span>الخصم:</span>
+                    <input type="number" id="discount" value="0" min="0" onchange="calculateTotal()" class="discount-input" aria-label="الخصم">
+                </div>
+                <div class="summary-row total">
+                    <span>الإجمالي:</span>
+                    <span id="total">575 ريال</span>
+                </div>
+            </div>
+            
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <button class="btn-primary-custom" onclick="saveInvoice()">
+                    <i class="fas fa-save"></i> حفظ الفاتورة
+                </button>
+                <button class="btn-primary-custom" onclick="sendInvoice()">
+                    <i class="fas fa-envelope"></i> إرسال الفاتورة
+                </button>
+                <button class="btn-secondary-custom" onclick="printInvoice()">
+                    <i class="fas fa-print"></i> طباعة
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Set current date
+        document.getElementById('invoiceDate').textContent = new Date().toLocaleDateString('ar-SA');
+        
+        // Generate invoice number
+        function generateInvoiceNumber() {
+            const date = new Date();
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const random = Math.floor(Math.random() * 1000);
+            return `INV-${year}-${month}-${String(random).padStart(3, '0')}`;
+        }
+        
+        document.getElementById('invoiceNumber').textContent = generateInvoiceNumber();
+        
+        // Select service
+        function selectService(element, serviceName, price) {
+            // Remove previous selection
+            document.querySelectorAll('.price-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            
+            // Add selection to clicked card
+            element.classList.add('selected');
+            
+            // Add to items table
+            const tbody = document.getElementById('itemsTableBody');
+            const newRow = tbody.insertRow();
+            newRow.innerHTML = `
+                <td><input type="text" value="${serviceName}" readonly></td>
+                <td><input type="text" value="وصف الخدمة"></td>
+                <td><input type="number" value="1" min="1" onchange="calculateTotal()"></td>
+                <td><input type="number" value="${price}" min="0" onchange="calculateTotal()"></td>
+                <td><input type="number" value="${price}" readonly></td>
+                <td><button class="remove-item-btn" onclick="removeItem(this)">حذف</button></td>
+            `;
+            
+            calculateTotal();
+        }
+        
+        // Add new item
+        function addNewItem() {
+            const tbody = document.getElementById('itemsTableBody');
+            const newRow = tbody.insertRow();
+            newRow.innerHTML = `
+                <td><input type="text" placeholder="اسم الخدمة"></td>
+                <td><input type="text" placeholder="الوصف"></td>
+                <td><input type="number" value="1" min="1" onchange="calculateTotal()"></td>
+                <td><input type="number" value="0" min="0" onchange="calculateTotal()"></td>
+                <td><input type="number" value="0" readonly></td>
+                <td><button class="remove-item-btn" onclick="removeItem(this)">حذف</button></td>
+            `;
+        }
+        
+        // Remove item
+        function removeItem(button) {
+            const row = button.closest('tr');
+            row.remove();
+            calculateTotal();
+        }
+        
+        // Calculate total
+        function calculateTotal() {
+            const rows = document.querySelectorAll('#itemsTableBody tr');
+            let subtotal = 0;
+            
+            rows.forEach(row => {
+                const quantity = parseFloat(row.cells[2].querySelector('input').value) || 0;
+                const price = parseFloat(row.cells[3].querySelector('input').value) || 0;
+                const total = quantity * price;
+                row.cells[4].querySelector('input').value = total;
+                subtotal += total;
+            });
+            
+            const tax = subtotal * 0.15;
+            const discount = parseFloat(document.getElementById('discount').value) || 0;
+            const total = subtotal + tax - discount;
+            
+            document.getElementById('subtotal').textContent = `${subtotal.toFixed(2)} ريال`;
+            document.getElementById('tax').textContent = `${tax.toFixed(2)} ريال`;
+            document.getElementById('total').textContent = `${total.toFixed(2)} ريال`;
+        }
+        
+        // Save invoice
+        function saveInvoice() {
+            const invoiceData = {
+                number: document.getElementById('invoiceNumber').textContent,
+                date: document.getElementById('invoiceDate').textContent,
+                client: {
+                    name: document.getElementById('clientName').value,
+                    email: document.getElementById('clientEmail').value,
+                    phone: document.getElementById('clientPhone').value,
+                    address: document.getElementById('clientAddress').value
+                },
+                items: [],
+                subtotal: document.getElementById('subtotal').textContent,
+                tax: document.getElementById('tax').textContent,
+                discount: document.getElementById('discount').value,
+                total: document.getElementById('total').textContent
+            };
+            
+            // Get items
+            const rows = document.querySelectorAll('#itemsTableBody tr');
+            rows.forEach(row => {
+                invoiceData.items.push({
+                    service: row.cells[0].querySelector('input').value,
+                    description: row.cells[1].querySelector('input').value,
+                    quantity: row.cells[2].querySelector('input').value,
+                    price: row.cells[3].querySelector('input').value,
+                    total: row.cells[4].querySelector('input').value
+                });
+            });
+            
+            // Save to localStorage
+            const invoices = JSON.parse(localStorage.getItem('invoices') || '[]');
+            invoices.push(invoiceData);
+            localStorage.setItem('invoices', JSON.stringify(invoices));
+            
+            alert('تم حفظ الفاتورة بنجاح!');
+        }
+        
+        // Send invoice
+        function sendInvoice() {
+            alert('سيتم إرسال الفاتورة إلى البريد الإلكتروني للعميل');
+        }
+        
+        // Print invoice
+        function printInvoice() {
+            window.print();
+        }
+        
+        // Initialize
+        calculateTotal();
+    </script>
+</body>
+</html>
