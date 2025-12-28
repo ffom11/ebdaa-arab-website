@@ -143,7 +143,6 @@ class EbdaaUtils {
     static init() {
         this.animateNumbers();
         this.initPortfolioFilter();
-        this.initRevealAnimation();
         
         console.log('EBDAA Utilities initialized successfully');
     }
@@ -152,7 +151,6 @@ class EbdaaUtils {
 // Make functions globally available
 window.initPortfolioFilter = () => EbdaaUtils.initPortfolioFilter();
 window.animateNumbers = () => EbdaaUtils.animateNumbers();
-window.initRevealAnimation = () => EbdaaUtils.initRevealAnimation();
 
 // Initialize common functions
 window.showAlert = EbdaaUtils.showAlert.bind(EbdaaUtils);
