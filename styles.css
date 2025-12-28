@@ -1660,9 +1660,31 @@ h2 {
 
 .portfolio-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 2rem;
-    margin-bottom: 3rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 1rem 0;
+}
+
+.portfolio-grid::-webkit-scrollbar {
+    height: 8px;
+}
+
+.portfolio-grid::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.portfolio-grid::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 10px;
+    animation: scrollPulse 2s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 1; }
 }
 
 .portfolio-item {
@@ -1673,6 +1695,7 @@ h2 {
     transition: all 0.4s ease;
     cursor: pointer;
     background: #ffffff;
+    scroll-snap-align: start;
 }
 
 .portfolio-item:hover {
@@ -1682,8 +1705,14 @@ h2 {
 
 .portfolio-image {
     position: relative;
-    height: 250px;
+    height: 200px;
     overflow: hidden;
+    animation: imageFloat 4s ease-in-out infinite;
+}
+
+@keyframes imageFloat {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-5px); }
 }
 
 .portfolio-image img {
