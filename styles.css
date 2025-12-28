@@ -1,4 +1,10 @@
 /* Hero Section Styles - Altaqany Inspired */
+
+/* Smooth scrolling for entire page */
+html {
+    scroll-behavior: smooth;
+}
+
 .hero-section {
     min-height: 100vh;
     position: relative;
@@ -838,17 +844,25 @@ body {
     width: 100%;
 }
 
+/* Enhanced scrollbar styling */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
 ::-webkit-scrollbar-track {
     background: #f1f1f1;
+    border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--gradient-primary);
-    border-radius: 5px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 10px;
+    transition: all 0.3s ease;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--secondary-color);
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+    transform: scale(1.1);
 }
 
 /* Selection Style */
