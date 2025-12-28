@@ -5,6 +5,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Dark Mode Toggle
     const darkModeToggle = document.getElementById('dark-mode-toggle');
+    if (!darkModeToggle) return;
+    
     const body = document.body;
     const icon = darkModeToggle.querySelector('i');
     

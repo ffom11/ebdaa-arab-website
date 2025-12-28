@@ -143,7 +143,6 @@ class EbdaaUtils {
     static init() {
         this.animateNumbers();
         this.initPortfolioFilter();
-        this.initParallax();
         this.initLazyLoading();
         this.initRevealAnimation();
         
@@ -154,7 +153,6 @@ class EbdaaUtils {
 // Make functions globally available
 window.initPortfolioFilter = () => EbdaaUtils.initPortfolioFilter();
 window.animateNumbers = () => EbdaaUtils.animateNumbers();
-window.initParallax = () => EbdaaUtils.initParallax();
 window.initLazyLoading = () => EbdaaUtils.initLazyLoading();
 window.initRevealAnimation = () => EbdaaUtils.initRevealAnimation();
 
