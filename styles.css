@@ -1221,7 +1221,13 @@ h2 {
     border-color: white;
 }
 
-/* Enhanced Service Cards - White Background */
+/* Services Grid Layout */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
 .service-card {
     background: rgba(255, 255, 255, 0.95);
     border-radius: 25px;
