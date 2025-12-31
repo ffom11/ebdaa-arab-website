@@ -4,6 +4,16 @@
 .portfolio-download {
     text-align: center;
     margin: 40px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.portfolio-download-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
 }
 
 .portfolio-download-btn {
@@ -13,15 +23,26 @@
     padding: 16px 32px;
     font-size: 18px;
     font-weight: 600;
-    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
-    color: white;
     border: none;
     border-radius: 12px;
     text-decoration: none;
     transition: all 0.3s ease;
-    box-shadow: 0 8px 24px rgba(37, 99, 235, 0.3);
     position: relative;
     overflow: hidden;
+    min-width: 250px;
+    justify-content: center;
+}
+
+.portfolio-download-btn.btn-primary {
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+    color: white;
+    box-shadow: 0 8px 24px rgba(37, 99, 235, 0.3);
+}
+
+.portfolio-download-btn.btn-secondary {
+    background: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-light) 100%);
+    color: white;
+    box-shadow: 0 8px 24px rgba(236, 72, 153, 0.3);
 }
 
 .portfolio-download-btn::before {
@@ -39,15 +60,25 @@
     left: 100%;
 }
 
-.portfolio-download-btn:hover {
+.portfolio-download-btn.btn-primary:hover {
     transform: translateY(-3px);
     box-shadow: 0 12px 32px rgba(37, 99, 235, 0.4);
     background: linear-gradient(135deg, var(--accent-light) 0%, var(--accent) 100%);
 }
 
+.portfolio-download-btn.btn-secondary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(236, 72, 153, 0.4);
+    background: linear-gradient(135deg, var(--secondary-light) 0%, var(--secondary) 100%);
+}
+
 .portfolio-download-btn i {
     font-size: 20px;
     animation: bounce 2s infinite;
+}
+
+.portfolio-download-btn.btn-secondary i {
+    animation-delay: 1s;
 }
 
 @keyframes bounce {
@@ -68,6 +99,20 @@
     color: var(--text-secondary);
     font-style: italic;
     opacity: 0.8;
+    text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .portfolio-download-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .portfolio-download-btn {
+        width: 100%;
+        max-width: 300px;
+    }
 }
 
 /* ===== Premium CSS Variables ===== */
