@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إبداع العرب 2.0 - المستقبل الرقمي</title>
+    <meta name="description" content="منصة إبداع العرب 2.0 - الحلول الرقمية المتكاملة بالذكاء الاصطناعي والواقع الافتراضي">
+    <meta name="keywords" content="تصوير, مونتاج, تصميم, ذكاء اصطناعي, واقع افتراضي, سعودية">
+    
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#667eea">
+    <meta name="msapplication-TileColor" content="#667eea">
+    <meta name="msapplication-navbutton-color" content="#667eea">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Modern Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Three.js for 3D Effects -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <!-- GSAP for Advanced Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <!-- Main Styles -->
+    <link rel="stylesheet" href="styles-v2.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
+</head>
+<body class="dark-mode">
+    
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loader-container">
+            <div class="logo-loader">
+                <div class="cube-loader">
+                    <div class="face front">إبداع</div>
+                    <div class="face back">العرب</div>
+                    <div class="face right">2.0</div>
+                    <div class="face left">🚀</div>
+                </div>
+            </div>
+            <div class="loading-text">
+                <h2>جاري تحميل المستقبل...</h2>
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- AI Assistant -->
+    <div id="ai-assistant" class="ai-assistant">
+        <div class="ai-avatar">
+            <div class="ai-pulse"></div>
+            <i class="fas fa-robot"></i>
+        </div>
+        <div class="ai-chat">
+            <div class="ai-messages"></div>
+            <div class="ai-input">
+                <input type="text" placeholder="كيف يمكنني مساعدتك؟">
+                <button class="ai-send" title="إرسال رسالة للمساعد الذكي" aria-label="إرسال رسالة للمساعد الذكي"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <div class="logo-3d">
+                    <div class="logo-cube">
+                        <div class="logo-face logo-front">إبداع</div>
+                        <div class="logo-face logo-back">العرب</div>
+                        <div class="logo-face logo-top">2.0</div>
+                        <div class="logo-face logo-bottom">🚀</div>
+                    </div>
+                </div>
+                <span class="brand-text">إبداع العرب 2.0</span>
+            </div>
+            
+            <div class="nav-menu">
+                <div class="nav-links">
+                    <a href="#home" class="nav-link active">الرئيسية</a>
+                    <a href="#services" class="nav-link">خدماتنا</a>
+                    <a href="#gallery" class="nav-link">معرض الأعمال</a>
+                    <a href="#pricing" class="nav-link">الأسعار</a>
+                    <a href="#dashboard" class="nav-link">لوحة التحكم</a>
+                    <a href="#contact" class="nav-link">تواصل معنا</a>
+                </div>
+                
+                <div class="nav-actions">
+                    <button class="ai-toggle" id="ai-toggle" title="تفعيل المساعد الذكي" aria-label="تفعيل المساعد الذكي">
+                        <i class="fas fa-robot"></i>
+                        <span>المساعد الذكي</span>
+                    </button>
+                    <button class="vr-toggle" id="vr-toggle" title="تفعيل الواقع الافتراضي" aria-label="تفعيل الواقع الافتراضي">
+                        <i class="fas fa-vr-cardboard"></i>
+                        <span>الواقع الافتراضي</span>
+                    </button>
+                    <button class="theme-toggle" id="theme-toggle" title="تبديل الوضع الليلي" aria-label="تبديل الوضع الليلي">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with AI Integration -->
+    <section id="home" class="hero-section">
+        <div class="hero-background">
+            <div class="particles-container" id="particles"></div>
+            <div class="gradient-orb"></div>
+            <div class="floating-elements">
+                <div class="floating-card card-1">
+                    <i class="fas fa-camera"></i>
+                </div>
+                <div class="floating-card card-2">
+                    <i class="fas fa-video"></i>
+                </div>
+                <div class="floating-card card-3">
+                    <i class="fas fa-palette"></i>
+                </div>
+                <div class="floating-card card-4">
+                    <i class="fas fa-robot"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="hero-content">
+            <div class="hero-text" data-aos="fade-up">
+                <h1 class="hero-title">
+                    <span class="title-gradient">إبداع العرب 2.0</span>
+                    <br>
+                    <span class="title-sub">المستقبل الرقمي يبدأ من هنا</span>
+                </h1>
+                <p class="hero-description">
+                    منصة متكاملة بالذكاء الاصطناعي والواقع الافتراضي لتحويل أفكارك إلى واقع رقمي مذهل
+                </p>
+                
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="1000">0</span>
+                        <span class="stat-label">مشروع مكتمل</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="500">0</span>
+                        <span class="stat-label">عميل سعيد</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="50">0</span>
+                        <span class="stat-label">جائزة عالمية</span>
+                    </div>
+                </div>
+                
+                <div class="hero-actions">
+                    <button class="btn-primary btn-3d" id="start-project">
+                        <span>ابدأ مشروعك الآن</span>
+                        <i class="fas fa-rocket"></i>
+                    </button>
+                    <button class="btn-secondary btn-glass" id="watch-demo">
+                        <span>شاهد العرض التوضيحي</span>
+                        <i class="fas fa-play"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="hero-interactive" data-aos="fade-left">
+                <div class="ai-interface">
+                    <div class="ai-screen">
+                        <div class="ai-avatar-large">
+                            <div class="ai-glow"></div>
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div class="ai-conversation">
+                            <div class="ai-message">
+                                <p>مرحباً! أنا مساعدك الذكي. كيف يمكنني مساعدتك في مشروعك اليوم؟</p>
+                            </div>
+                            <div class="user-options">
+                                <button class="option-btn">تصوير فوتوغرافي</button>
+                                <button class="option-btn">مونتاج فيديو</button>
+                                <button class="option-btn">تصميم جرافيك</button>
+                                <button class="option-btn">استشارة مجانية</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ai-controls">
+                        <button class="control-btn active" title="تسجيل صوتي" aria-label="تسجيل صوتي"><i class="fas fa-microphone"></i></button>
+                        <button class="control-btn" title="مكالمة فيديو" aria-label="مكالمة فيديو"><i class="fas fa-video"></i></button>
+                        <button class="control-btn" title="مشاركة الشاشة" aria-label="مشاركة الشاشة"><i class="fas fa-share"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="scroll-indicator">
+            <div class="scroll-text">اكتشف المزيد</div>
+            <div class="scroll-arrow">
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Smart Services Section -->
+    <section id="services" class="services-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">
+                    <span class="title-gradient">خدماتنا الذكية</span>
+                </h2>
+                <p class="section-subtitle">حلول متكاملة بالذكاء الاصطناعي والواقع الافتراضي</p>
+            </div>
+            
+            <div class="services-grid" id="services-grid">
+                <!-- Services will be dynamically loaded -->
+            </div>
+            
+            <div class="service-calculator" data-aos="fade-up">
+                <h3>حاسبة الأسعار الذكية</h3>
+                <div class="calculator-interface">
+                    <div class="calc-steps">
+                        <div class="step active" data-step="1">
+                            <span class="step-number">1</span>
+                            <span class="step-title">اختر الخدمة</span>
+                        </div>
+                        <div class="step" data-step="2">
+                            <span class="step-number">2</span>
+                            <span class="step-title">حدد المتطلبات</span>
+                        </div>
+                        <div class="step" data-step="3">
+                            <span class="step-number">3</span>
+                            <span class="step-title">احصل على السعر</span>
+                        </div>
+                    </div>
+                    <div class="calc-content">
+                        <div class="calc-step-content" id="calc-step-1">
+                            <!-- Service selection -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Virtual Gallery Section -->
+    <section id="gallery" class="gallery-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">
+                    <span class="title-gradient">معرض الأعمال الافتراضي</span>
+                </h2>
+                <p class="section-subtitle">استكشف أعمالنا بتقنية الواقع الافتراضي</p>
+            </div>
+            
+            <div class="gallery-controls" data-aos="fade-up">
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">الكل</button>
+                    <button class="filter-btn" data-filter="photography">تصوير</button>
+                    <button class="filter-btn" data-filter="video">فيديو</button>
+                    <button class="filter-btn" data-filter="design">تصميم</button>
+                    <button class="filter-btn" data-filter="vr">واقع افتراضي</button>
+                </div>
+                <div class="view-controls">
+                    <button class="view-btn active" data-view="grid" title="عرض شبكي" aria-label="عرض شبكي">
+                        <i class="fas fa-th"></i>
+                    </button>
+                    <button class="view-btn" data-view="list" title="عرض قائمة" aria-label="عرض قائمة">
+                        <i class="fas fa-list"></i>
+                    </button>
+                    <button class="view-btn" data-view="vr" title="عرض الواقع الافتراضي" aria-label="عرض الواقع الافتراضي">
+                        <i class="fas fa-vr-cardboard"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="virtual-gallery" id="virtual-gallery">
+                <!-- Gallery items will be dynamically loaded -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Dashboard Section -->
+    <section id="dashboard" class="dashboard-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">
+                    <span class="title-gradient">لوحة التحكم الذكية</span>
+                </h2>
+                <p class="section-subtitle">تتبع مشاريعك وإدارة أعمالك بسهولة</p>
+            </div>
+            
+            <div class="dashboard-preview" data-aos="fade-up">
+                <div class="dashboard-interface">
+                    <div class="dashboard-sidebar">
+                        <div class="user-profile">
+                            <div class="user-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="user-info">
+                                <h4>أحمد محمد</h4>
+                                <p>عميل مميز</p>
+                            </div>
+                        </div>
+                        <nav class="dashboard-nav">
+                            <a href="#" class="nav-item active">
+                                <i class="fas fa-home"></i>
+                                <span>الرئيسية</span>
+                            </a>
+                            <a href="#" class="nav-item">
+                                <i class="fas fa-project-diagram"></i>
+                                <span>مشاريعي</span>
+                            </a>
+                            <a href="#" class="nav-item">
+                                <i class="fas fa-folder"></i>
+                                <span>الملفات</span>
+                            </a>
+                            <a href="#" class="nav-item">
+                                <i class="fas fa-comments"></i>
+                                <span>المحادثات</span>
+                            </a>
+                            <a href="#" class="nav-item">
+                                <i class="fas fa-cog"></i>
+                                <span>الإعدادات</span>
+                            </a>
+                        </nav>
+                    </div>
+                    
+                    <div class="dashboard-content">
+                        <div class="dashboard-header">
+                            <h3>مرحباً بك في لوحة التحكم</h3>
+                            <div class="header-actions">
+                                <button class="btn-primary">
+                                    <i class="fas fa-plus"></i>
+                                    مشروع جديد
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="dashboard-stats">
+                            <div class="stat-card">
+                                <div class="stat-icon">
+                                    <i class="fas fa-project-diagram"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <h4>12</h4>
+                                    <p>مشروع نشط</p>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <h4>3</h4>
+                                    <p>قيد التنفيذ</p>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <h4>9</h4>
+                                    <p>مكتمل</p>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <h4>4.9</h4>
+                                    <p>تقييم</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="recent-projects">
+                            <h4>المشاريع الأخيرة</h4>
+                            <div class="project-list">
+                                <div class="project-item">
+                                    <div class="project-icon">
+                                        <i class="fas fa-camera"></i>
+                                    </div>
+                                    <div class="project-info">
+                                        <h5>تصوير منتجات فاخرة</h5>
+                                        <p>تم بنجاح - 2 يوم ago</p>
+                                    </div>
+                                    <div class="project-status completed">
+                                        <i class="fas fa-check"></i>
+                                    </div>
+                                </div>
+                                <div class="project-item">
+                                    <div class="project-icon">
+                                        <i class="fas fa-video"></i>
+                                    </div>
+                                    <div class="project-info">
+                                        <h5>مونتاج فيديو تسويقي</h5>
+                                        <p>قيد التنفيذ - 80%</p>
+                                    </div>
+                                    <div class="project-status in-progress">
+                                        <div class="progress-bar">
+                                            <div class="progress-fill progress-80"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">
+                    <span class="title-gradient">تواصل معنا</span>
+                </h2>
+                <p class="section-subtitle">نحن هنا لمساعدتك في تحقيق أهدافك الرقمية</p>
+            </div>
+            
+            <div class="contact-content" data-aos="fade-up">
+                <div class="contact-info">
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="info-content">
+                            <h4>الهاتف</h4>
+                            <p>056 616 6251</p>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="info-content">
+                            <h4>البريد الإلكتروني</h4>
+                            <p>info@ebdaa.shop</p>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="info-content">
+                            <h4>الموقع</h4>
+                            <p>المملكة العربية السعودية</p>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="info-content">
+                            <h4>ساعات العمل</h4>
+                            <p>24/7 دعماً فورياً</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <form id="contact-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="text" id="name" name="name" placeholder="الاسم الكامل" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" id="email" name="email" placeholder="البريد الإلكتروني" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="tel" id="phone" name="phone" placeholder="رقم الهاتف">
+                            </div>
+                            <div class="form-group">
+                                <select id="service" name="service" required aria-label="اختر الخدمة المطلوبة" title="اختر الخدمة المطلوبة">
+                                    <option value="">اختر الخدمة</option>
+                                    <option value="photography">تصوير فوتوغرافي</option>
+                                    <option value="video">مونتاج فيديو</option>
+                                    <option value="design">تصميم جرافيك</option>
+                                    <option value="vr">واقع افتراضي</option>
+                                    <option value="consultation">استشارة</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" placeholder="رسالتك" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary btn-3d">
+                            <span>إرسال الرسالة</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo-3d small">
+                        <div class="logo-cube small">
+                            <div class="logo-face logo-front">إبداع</div>
+                            <div class="logo-face logo-back">العرب</div>
+                            <div class="logo-face logo-top">2.0</div>
+                        </div>
+                    </div>
+                    <p>منصة إبداع العرب 2.0 - المستقبل الرقمي</p>
+                    <div class="social-links">
+                        <a href="https://instagram.com/creativitymarkting" target="_blank" rel="noopener noreferrer" title="تابعنا على إنستغرام" aria-label="تابعنا على إنستغرام"><i class="fab fa-instagram"></i></a>
+                        <a href="https://twitter.com/creativitymarkting" target="_blank" rel="noopener noreferrer" title="تابعنا على تويتر" aria-label="تابعنا على تويتر"><i class="fab fa-twitter"></i></a>
+                        <a href="https://linkedin.com/company/ebdaa-arab" target="_blank" rel="noopener noreferrer" title="تابعنا على لينكدإن" aria-label="تابعنا على لينكدإن"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://youtube.com/@creativitymarkting" target="_blank" rel="noopener noreferrer" title="تابعنا على يوتيوب" aria-label="تابعنا على يوتيوب"><i class="fab fa-youtube"></i></a>
+                        <a href="https://tiktok.com/@creativitymarkting" target="_blank" rel="noopener noreferrer" title="تابعنا على تيك توك" aria-label="تابعنا على تيك توك"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h4>خدماتنا</h4>
+                        <ul>
+                            <li><a href="#">تصوير فوتوغرافي</a></li>
+                            <li><a href="#">مونتاج فيديو</a></li>
+                            <li><a href="#">تصميم جرافيك</a></li>
+                            <li><a href="#">واقع افتراضي</a></li>
+                        </ul>
+                    </div>
+                    <div class="link-group">
+                        <h4>روابط سريعة</h4>
+                        <ul>
+                            <li><a href="#">من نحن</a></li>
+                            <li><a href="#">معرض الأعمال</a></li>
+                            <li><a href="#">الأسعار</a></li>
+                            <li><a href="#">تواصل معنا</a></li>
+                        </ul>
+                    </div>
+                    <div class="link-group">
+                        <h4>الدعم الفني</h4>
+                        <ul>
+                            <li><a href="#">مركز المساعدة</a></li>
+                            <li><a href="#">الأسئلة الشائعة</a></li>
+                            <li><a href="#">سياسة الخصوصية</a></li>
+                            <li><a href="#">الشروط والأحكام</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 إبداع العرب 2.0. جميع الحقوق محفوظة.</p>
+                <p>رخصة إعلامية: 81111</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="scripts-v2.js"></script>
+    
+    <!-- Service Worker for PWA -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js');
+        }
+    </script>
+</body>
+</html>
