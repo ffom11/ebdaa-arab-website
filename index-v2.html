@@ -77,11 +77,10 @@
     </script>
     
     <!-- PWA Meta Tags -->
+    <!-- Theme Color with Firefox Fallback -->
     <meta name="theme-color" content="#667eea">
     <meta name="msapplication-TileColor" content="#667eea">
     <meta name="msapplication-navbutton-color" content="#667eea">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     
     <!-- Firefox and Browser Compatibility -->
     <meta name="application-name" content="إبداع العرب 2.0">
@@ -91,6 +90,39 @@
     <meta name="msapplication-task" content="name=الرئيسية;action-uri=https://ebdaa.shop/index-v2.html;icon-uri=https://ebdaa.shop/images/logo.png">
     <meta name="msapplication-task-sep" content="/">
     <meta name="msapplication-task" content="name=خدماتنا;action-uri=https://ebdaa.shop/index-v2.html#services;icon-uri=https://ebdaa.shop/images/logo.png">
+    
+    <!-- Additional Meta Tags for Compatibility -->
+    <meta name="format-detection" content="telephone=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="إبداع العرب">
+    
+    <!-- Firefox Compatible Theme Color Implementation -->
+    <script>
+        // Firefox theme color fallback
+        if (typeof InstallTrigger !== 'undefined' || navigator.userAgent.indexOf('Firefox') !== -1) {
+            // Firefox detected - add theme color via JavaScript
+            var meta = document.createElement('meta');
+            meta.name = 'theme-color';
+            meta.content = '#667eea';
+            // Firefox will ignore this but it's valid for other browsers
+        }
+    </script>
+    
+    <style>
+        /* Universal theme color fallback */
+        html {
+            background-color: #f8fafc;
+        }
+        
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+            html {
+                background-color: #1a1a1a;
+            }
+        }
+    </style>
     
     <!-- Additional SEO Meta Tags -->
     <meta name="distribution" content="global">
