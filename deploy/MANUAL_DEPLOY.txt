@@ -1,0 +1,27 @@
+نشر الموقع يدوياً على Hostinger
+
+البيانات:
+- البريد الإلكتروني: 5atera.3abera@gmail.com
+- كلمة المرور: RaMi1233211
+- API Key: Zi2hlcXHM7u5XfTBEuzJCJNWkeOwET2KuE8ou97s11776cd8
+
+الخطوات:
+1. تسجيل الدخول إلى Hostinger Control Panel
+2. الذهاب إلى File Manager
+3. الدخول إلى مجلد public_html
+4. رفع جميع الملفات من مجلد deploy
+
+الملفات المطلوبة:
+- index.html
+- css/style.css
+- js/script.js
+- images/ (كامل المجلد)
+- admin/ (كامل المجلد)
+- .htaccess
+- robots.txt
+- sitemap.xml
+
+بعد النشر:
+- الصفحة الرئيسية: http://your-domain.com
+- لوحة التحكم: http://your-domain.com/admin/
+- صفحة الطلبات: http://your-domain.com/admin/requests.html

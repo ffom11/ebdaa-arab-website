@@ -1,0 +1,55 @@
+# مجلد الصور
+
+هذا المجلد يحتوي على جميع الصور المستخدمة في الموقع.
+
+## مجلد الصور - مؤسسة إبداع العرب
+
+## الصور الرئيسية:
+- hero-bg.jpg (1920x1080) - صورة الخلفية الرئيسية
+- about-image.jpg (800x600) - صورة قسم من نحن
+
+## معرض التصوير:
+- photography/product1.jpg (400x300) - تصوير منتجات
+- photography/wedding1.jpg (400x300) - تصوير زفاف
+- photography/portrait1.jpg (400x300) - بورتريه
+- photography/architecture1.jpg (400x300) - تصوير معماري
+- photography/food1.jpg (400x300) - تصوير طعام
+- photography/fashion1.jpg (400x300) - تصوير أزياء
+
+## معرض الفيديو:
+- video/commercial1.jpg (400x300) - فيديو تجاري
+- video/educational1.jpg (400x300) - فيديو تعليمي
+- video/social1.jpg (400x300) - فيديو تواصل اجتماعي
+- video/event1.jpg (400x300) - تغطية فعالية
+- video/music1.jpg (400x300) - فيديو كليب
+- video/documentary1.jpg (400x300) - فيلم وثائقي
+
+## شركاء النجاح:
+- partners/partner1.png (200x100) - شعار الشريك 1
+- partners/partner2.png (200x100) - شعار الشريك 2
+- partners/partner3.png (200x100) - شعار الشريك 3
+- partners/partner4.png (200x100) - شعار الشريك 4
+- partners/partner5.png (200x100) - شعار الشريك 5
+- partners/partner6.png (200x100) - شعار الشريك 6
+- partners/partner7.png (200x100) - شعار الشريك 7
+- partners/partner8.png (200x100) - شعار الشريك 8
+
+## معرض الأعمال العام:
+- portfolio/work1.jpg (400x300) - عمل 1
+- portfolio/work2.jpg (400x300) - عمل 2
+- portfolio/work3.jpg (400x300) - عمل 3
+- portfolio/work4.jpg (400x300) - عمل 4
+- portfolio/work5.jpg (400x300) - عمل 5
+- portfolio/work6.jpg (400x300) - عمل 6
+- portfolio7.jpg - تصميم موقع
+- portfolio8.jpg - محتوى وسائط اجتماعية
+
+## مقاسات الصور المقترحة:
+- صور الهيرو: 1920x1080 بكسل
+- صور معرض الأعمال: 800x600 بكسل
+- صور القسم: 800x600 بكسل
+
+## ملاحظات:
+- استخدم صور عالية الجودة
+- يجب أن تكون الصور ذات صلة بالخدمات
+- يمكن استخدام الصور من معرض أعمالك الحقيقي
